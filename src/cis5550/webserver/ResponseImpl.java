@@ -9,7 +9,7 @@ public class ResponseImpl implements Response {
 
     private int statusCode = 200;
     private String reasonPhrase = "OK";
-    private final Map<String, List<String>> headers = new LinkedHashMap<>();
+    private final Map<String, List<String>> headers;
     private byte[] body;
     private boolean writeCalled = false;
     private boolean headersSent = false;
@@ -20,6 +20,8 @@ public class ResponseImpl implements Response {
 
     public ResponseImpl(OutputStream outputStream) {
         this.outputStream = outputStream;
+        this.headers = new LinkedHashMap<>();
+        this.type("text/html");
     }
 
     @Override
@@ -43,13 +45,15 @@ public class ResponseImpl implements Response {
     @Override
     public void header(String name, String value) {
         if (!writeCalled && !redirectCalled) {
-            headers.computeIfAbsent(name, k -> new ArrayList<>()).add(value);
+            headers.computeIfAbsent(name, k -> new ArrayList<>()).add(value.toLowerCase());
         }
     }
 
     @Override
     public void type(String contentType) {
         if (!writeCalled && !redirectCalled) {
+            headers.remove("Content-Type");
+            headers.remove("content-type");
             header("Content-Type", contentType);
         }
     }
@@ -66,6 +70,10 @@ public class ResponseImpl implements Response {
     public void write(byte[] b) throws Exception {
         if (!writeCalled && !redirectCalled) {
             writeCalled = true;
+//            headers.remove("Content-Length");
+//            headers.remove("content-length");
+            System.out.println(Arrays.toString(headers.entrySet().toArray()));
+            header("Connection", "close");
             sendHeaders();
         }
         outputStream.write(b);
@@ -74,11 +82,6 @@ public class ResponseImpl implements Response {
 
     private void sendHeaders() throws IOException {
         if (!headersSent) {
-            // Add 'Connection: close' header
-            headers.put("Connection", Collections.singletonList("close"));
-            // Remove 'Content-Length' header if present
-            headers.remove("Content-Length");
-
             // Write status line
             String statusLine = "HTTP/1.1 " + statusCode + " " + reasonPhrase + "\r\n";
             outputStream.write(statusLine.getBytes(StandardCharsets.UTF_8));

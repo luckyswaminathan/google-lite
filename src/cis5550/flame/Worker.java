@@ -20,7 +20,7 @@ import cis5550.webserver.Request;
 
 public class Worker extends cis5550.generic.Worker {
 
-  public static void main(String args[]) {
+  public static void main(String args[]) throws IOException {
     if (args.length != 2) {
       System.err.println("Syntax: Worker <port> <coordinatorIP:port>");
       System.exit(1);
@@ -28,7 +28,10 @@ public class Worker extends cis5550.generic.Worker {
 
     int port = Integer.parseInt(args[0]);
     String server = args[1];
-    startPingThread(server, "" + port, port);
+    String[] serverParts = server.split(":", 2);
+    String serverHost = serverParts[0];
+    int serverPort = Integer.parseInt(serverParts[1]);
+    startPingThread(serverPort, serverHost, port, "" + port);
     final File myJAR = new File("__worker" + port + "-current.jar");
 
     port(port);

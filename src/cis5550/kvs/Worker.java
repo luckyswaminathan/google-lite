@@ -1,358 +1,608 @@
-
 package cis5550.kvs;
+
+import cis5550.tools.KeyEncoder;
+import cis5550.tools.Logger;
+
+import java.io.*;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static cis5550.webserver.Server.*;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.HashMap;
-import java.util.Map;
-import cis5550.tools.KeyEncoder;
+public class Worker extends cis5550.generic.Worker{
+    private static final Logger logger = Logger.getLogger(Worker.class);
+    private static ConcurrentHashMap<String, ConcurrentHashMap<String, Row>> tables = new ConcurrentHashMap<>();
+    private static String storageDir;
 
-public class Worker extends cis5550.generic.Worker {
-
-  private static Map<String, Map<String, Row>> kvs = new ConcurrentHashMap<>();
-  private static String storageDirectory;
-
-  public static void main(String[] args) {
-    if (args.length < 3) {
-      System.err.println("Usage: java Worker <port> <storageDirectory> <coordinatorPort>");
-      System.exit(1);
-    }
-
-    int portNumber = Integer.parseInt(args[0]);
-    storageDirectory = args[1];
-    String[] coordinatorInfo = args[2].split(":");
-    String coordinatorIP = coordinatorInfo[0];
-    int coordinatorPort = Integer.parseInt(coordinatorInfo[1]);
-
-    port(portNumber);
-
-    String workerID = getWorkerID(storageDirectory);
-
-    startPingThread(portNumber, coordinatorIP, coordinatorPort, workerID);
-
-    put("/data/:table/:row/:column", (req, res) -> {
-      String tableName = req.params("table");
-      String rowKey = req.params("row");
-      String columnKey = req.params("column");
-
-      if (tableName.startsWith("pt-")) {
-        // persistent table
-        File tableDir = new File(storageDirectory, tableName);
-        if (!tableDir.exists()) {
-          tableDir.mkdirs();
+    public static void main(String[] args) throws IOException {
+        if (args.length != 3) {
+            String message = "Incorrect Usage: Please provide <workerPort> <storageDir> <coordinatorIp>:<coordinatorPort>";
+            logger.error(message);
+            System.err.println(message);
+            System.exit(1);
         }
+        int portNum = Integer.parseInt(args[0]);
+        storageDir = args[1];
+        String coordinatorIpPort = args[2];
+        port(portNum);
+        startPingThread(portNum, storageDir, coordinatorIpPort);
 
-        File rowFile = new File(tableDir, KeyEncoder.encode(rowKey));
-        Row row;
-        if (rowFile.exists()) {
-          try (BufferedReader reader = new BufferedReader(new FileReader(rowFile))) {
-            row = Row.fromByteArray(reader.readLine().getBytes());
-          } catch (IOException e) {
-            e.printStackTrace();
-            res.status(500, "Internal Server Error");
-            return "Internal Server Error";
-          }
-        } else {
-          row = new Row(rowKey);
-        }
+        // Definition for LF
+        final byte[] LF = "\n".getBytes(StandardCharsets.UTF_8);
 
-        row.put(columnKey, req.bodyAsBytes());
+        // Define the GET route for viewing a list of tables
+        get("/", (req, res) -> {
+            StringBuilder html = new StringBuilder();
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rowFile))) {
-          writer.write(new String(row.toByteArray()));
-        } catch (IOException e) {
-          e.printStackTrace();
-          res.status(500, "Internal Server Error");
-          return "Internal Server Error";
-        }
+            // Start HTML
+            html.append("<html>");
 
-        return "OK";
-      } else {
-        // non persistent
-        Map<String, Row> newTable = new ConcurrentHashMap<>();
-        Row newRow = new Row(rowKey);
-        newTable.put(rowKey, newRow);
+            // Page Title
+            html.append("<head><title>KVS Worker Tables</title></head>");
 
-        Map<String, Row> table = kvs.putIfAbsent(tableName, newTable);
-        if (table == null) {
-          table = newTable;
-        } else {
-          Row row = table.get(rowKey);
-          if (row == null) {
-            row = new Row(rowKey);
-            table.put(rowKey, row);
-          }
-        }
+            // Start body, table
+            html.append("<body>");
+            html.append("<h1>KVS Worker Tables</h1>");
+            html.append("<table border='1'>");
+            html.append("<tr><th>Table Name</th><th>Number Entries</th></tr>");
+            // Construct a row for each worker
+            for (Map.Entry<String, ConcurrentHashMap<String, Row>> tableEntry : tables.entrySet()) {
+                String tableName = tableEntry.getKey();
+                ConcurrentHashMap<String, Row> tableRows = tableEntry.getValue();
 
-        Row row = table.get(rowKey);
-        row.put(columnKey, req.bodyAsBytes());
+                // Start table row
+                html.append("<tr>");
 
-        return "OK";
-      }
-    });
+                // Add Hyperlink string to row
+                html.append("<td>");
+                html.append("<a href='/view/").append(tableName).append("/'>")
+                        .append(tableName)
+                        .append("</a>");
+                html.append("</td>");
 
-    get("/data/:table/:row/:column", (req, res) -> {
-      String tableName = req.params("table");
-      String rowKey = req.params("row");
-      String columnKey = req.params("column");
+                // Add number of values count to row
+                html.append("<td>").append(tableRows.size()).append("</td>");
 
-      Row row = getRow(tableName, rowKey);
-      if (row == null || row.get(columnKey) == null) {
-        res.status(404, "Not Found");
-        return "Not Found";
-      }
+                // End table row
+                html.append("</tr>");
+            }
 
-      res.bodyAsBytes(row.getBytes(columnKey));
-      return null;
-    });
-    get("/", (req, res) -> {
-      System.out.println("'get /'");
-      StringBuilder html = new StringBuilder(
-          "<html><body><table border='1'><tr><th>Table Name</th><th>Number of Keys</th></tr>");
-      for (Map.Entry<String, Map<String, Row>> entry : kvs.entrySet()) {
-        String tableName = entry.getKey();
-        int numberOfKeys = entry.getValue().size();
-        html.append("<tr><td><a href='/view/").append(tableName).append("'>").append(tableName).append("</a></td><td>")
-            .append(numberOfKeys).append("</td></tr>");
-      }
-      html.append("</table></body></html>");
-      return html.toString();
-    });
-
-    get("/view/:table", (req, res) -> {
-      String tableName = req.params("table");
-      Map<String, Row> table = kvs.get(tableName);
-      if (table == null) {
-        res.status(404, "Not Found");
-        return "Not Found";
-      }
-
-      int start = req.queryParams("start") != null ? Integer.parseInt(req.queryParams("start")) : 0;
-      int end = start + 10;
-
-      StringBuilder html = new StringBuilder("<html><body>");
-      html.append("<h1>Table: ").append(tableName).append("</h1>");
-      html.append("<table border='1'><tr><th>Row Key</th>");
-
-      Set<String> columnNames = new TreeSet<>();
-      table.values().stream().skip(start).limit(10).forEach(row -> columnNames.addAll(row.columns()));
-      columnNames.forEach(columnName -> html.append("<th>").append(columnName).append("</th>"));
-      html.append("</tr>");
-
-      table.entrySet().stream().sorted(Map.Entry.comparingByKey()).skip(start).limit(10).forEach(entry -> {
-        String rowKey = entry.getKey();
-        Row row = entry.getValue();
-        html.append("<tr><td>").append(rowKey).append("</td>");
-        columnNames.forEach(columnName -> {
-          String value = row.get(columnName);
-          html.append("<td>").append(value != null ? new String(value) : "").append("</td>");
+            // End table, body, and html
+            html.append("</table>");
+            html.append("</body>");
+            html.append("</html>");
+            return html.toString();
         });
-        html.append("</tr>");
-      });
 
-      html.append("</table>");
+        // Define the GET route for a specific table view
+        get("/view/:tableName", (req, res) -> {
+            // First, see if the row exists, return 404 if it doesn't
+            String qTableName = req.params("tableName");
+            if(!tables.containsKey(qTableName)) {
+                res.status(404, "Not Found");
+                return "Table Not Found";
+            }
 
-      if (table.size() > end) {
-        html.append("<a href='/view/").append(tableName).append("?start=").append(end).append("'>Next</a>");
-      }
+            ConcurrentHashMap<String, Row> table = tables.get(qTableName);
 
-      html.append("</body></html>");
-      return html.toString();
-    });
+            // Get a list of all unique column keys, and sort them (used for providing columns in sorted order)
+            Set<String> columns = new HashSet<>();
+            for (Row row : table.values()){
+                columns.addAll(row.columns());
+            }
+            List<String> columnKeysList = new ArrayList<>(columns);
+            Collections.sort(columnKeysList);
 
-    get("/data/:table/:row", (req, res) -> {
-      String tableName = req.params("table");
-      String rowKey = req.params("row");
+            // Get a list of all rows keys, and sort them (used for making the HTML table rows in sorted order)
+            List<String> rowKeysList = new ArrayList<>(table.keySet());
+            Collections.sort(rowKeysList);
 
-      Row row = getRow(tableName, rowKey);
-      if (row == null) {
-        res.status(404, "Not Found");
-        return "Not Found";
-      }
+            // If fromRow queryParam is present, first, filter out all rows that are smaller than this row id
+            String fromRowId = req.queryParams("fromRow");
+            if (fromRowId != null) {
+                List<String> filteredRowKeysList = new ArrayList<>();
+                for (String rowKey : rowKeysList) {
+                    if (rowKey.compareTo(fromRowId) >= 0) {
+                        filteredRowKeysList.add(rowKey);
+                    }
+                }
+                rowKeysList = filteredRowKeysList;
+            }
 
-      res.bodyAsBytes(row.toByteArray());
-      res.status(200, "OK");
-      return new String(row.toByteArray());
-    });
+            // Page number defaulted to 1, parse it if available in URL
+            int pageNum = 1;
+            if (req.queryParams().contains("pageNum")) {
+                try {
+                    pageNum = Integer.parseInt(req.queryParams("pageNum"));
+                    if (pageNum < 1) {
+                        pageNum = 1;
+                    }
+                } catch (NumberFormatException e) {
+                    // If pageNum is not a valid integer, default to 1
+                    logger.info("Page number invalid: defaulted to 1");
+                }
+            }
 
-    get("/data/:table", (req, res) -> {
-      String tableName = req.params("table");
-      Map<String, Row> table = kvs.get(tableName);
+            int itemsPerPage = 10;
+            int fromIndex = itemsPerPage * (pageNum - 1);
+            int toIndex = Math.min(itemsPerPage * pageNum, rowKeysList.size());
 
-      if (table == null) {
-        res.status(404, "Not Found");
-        return "Not Found";
-      }
+            // Next button preparation
+            boolean hasNext = toIndex < rowKeysList.size();
+            int nextPageNum = pageNum + 1;
 
-      String startRow = req.queryParams("startRow");
-      String endRowExclusive = req.queryParams("endRowExclusive");
+            // Previous button preparation
+            boolean hasPrev = pageNum > 1;
+            int prevPageNum = pageNum - 1;
 
-      StringBuilder response = new StringBuilder();
-      table.entrySet().stream()
-          .filter(entry -> (startRow == null || entry.getKey().compareTo(startRow) >= 0) &&
-              (endRowExclusive == null || entry.getKey().compareTo(endRowExclusive) < 0))
-          .forEach(entry -> {
-            response.append(new String(entry.getValue().toByteArray())).append("\n");
-          });
+            // Pagination preparation
+            List<String> paginatedRowKeysList;
+            if (fromIndex >= rowKeysList.size()) {
+                // If the fromIndex is beyond the list size, return an empty page
+                paginatedRowKeysList = Collections.emptyList();
+            } else {
+                paginatedRowKeysList = rowKeysList.subList(fromIndex, toIndex);
+            }
 
-      response.append("\n"); // End of stream indicator
-      res.body(response.toString());
-      return null;
-    });
+            // Make URLs for the previous and next buttons
+            // Prepare URLs for Next and Previous buttons
+            String nextUrl = "";
+            String prevUrl = "";
+            String baseUrl = req.url().split("\\?")[0];
 
-    get("/count/:table", (req, res) -> {
-      String tableName = req.params("table");
-      Map<String, Row> table = kvs.get(tableName);
+            String currentUrl = req.url();
 
-      if (table == null) {
-        res.status(404, "Not Found");
-        return "Not Found";
-      }
+            // Build Next URL
+            if (hasNext) {
+                StringBuilder nextUrlBuilder = new StringBuilder(baseUrl);
+                nextUrlBuilder.append("?pageNum=").append(URLEncoder.encode(String.valueOf(nextPageNum), StandardCharsets.UTF_8));
 
-      res.body(Integer.toString(table.size()));
-      return null;
-    });
+                // Pass down existing query parameters (except 'pageNum')
+                for (String param : req.queryParams()) {
+                    if (!param.equals("pageNum")) {
+                        String value = req.queryParams(param);
+                        nextUrlBuilder.append("&").append(URLEncoder.encode(param, StandardCharsets.UTF_8))
+                                .append("=").append(URLEncoder.encode(value, StandardCharsets.UTF_8));
+                    }
+                }
+                nextUrl = nextUrlBuilder.toString();
+            }
 
-    put("/rename/:oldTableName", (req, res) -> {
-      String oldTableName = req.params("oldTableName");
-      String newTableName = req.body();
+            // Build Previous URL
+            if (hasPrev) {
+                StringBuilder prevUrlBuilder = new StringBuilder(currentUrl);
+                prevUrlBuilder.append("?pageNum=").append(URLEncoder.encode(String.valueOf(prevPageNum), StandardCharsets.UTF_8));
 
-      if (oldTableName.startsWith("pt-") && !newTableName.startsWith("pt-")) {
-        res.status(400, "Bad Request");
-        return "Bad Request";
-      }
+                // Pass down existing query parameters (except 'pageNum')
+                for (String param : req.queryParams()) {
+                    if (!param.equals("pageNum")) {
+                        String value = req.queryParams(param);
+                        prevUrlBuilder.append("&").append(URLEncoder.encode(param, StandardCharsets.UTF_8))
+                                .append("=").append(URLEncoder.encode(value, StandardCharsets.UTF_8));
+                    }
+                }
+                prevUrl = prevUrlBuilder.toString();
+            }
 
-      Map<String, Row> table = kvs.get(oldTableName);
-      if (table == null) {
-        res.status(404, "Not Found");
-        return "Not Found";
-      }
+            // MAKE THE HTML TABLE RESPONSE
+            StringBuilder html = new StringBuilder();
 
-      if (kvs.containsKey(newTableName)) {
-        res.status(409, "Conflict");
-        return "Conflict";
-      }
+            // Start HTML, Page Title, Body, Page Heading, and Table
+            html.append("<html>");
+            html.append("<head><title>KVS Table View</title></head>");
+            html.append("<body>");
+            html.append("<h1>KVS Table View: ").append(qTableName).append("</h1>");
+            html.append("<table border='1'>");
 
-      kvs.put(newTableName, table);
-      kvs.remove(oldTableName);
+            // Make the HTML table headers row by first row being hardcoded, then looping through all (sorted) column names;
+            html.append("<tr>");
+            html.append("<th>Row Name</th>");
+            for (String columnName : columnKeysList) {
+                html.append("<th>").append(columnName).append("</th>");
+            }
+            html.append("</tr>");
 
-      if (oldTableName.startsWith("pt-")) {
-        File oldTableDir = new File(storageDirectory, oldTableName);
-        File newTableDir = new File(storageDirectory, newTableName);
-        if (!oldTableDir.renameTo(newTableDir)) {
-          res.status(500, "Internal Server Error");
-          return "Internal Server Error";
-        }
-      }
+            // Construct HTML table row for each row of the KVS table's row
+            for (String rowName : paginatedRowKeysList) {
+                Row tableRow = table.get(rowName); // Guaranteed to exist because rowName is from table's keys list
+                html.append("<tr>"); // Start table row
+                html.append("<td>").append(rowName).append("</td>"); // First column should be the row's key
+                // Add in every column, based on the sorted columns list
+                for (String columnName : columnKeysList) {
+                    String colVal = tableRow.get(columnName);
+                    html.append("<td>");
+                    html.append(colVal != null ? colVal : ""); // If colVal is null, return an empty string instead of null
+                    html.append("</td>");
+                }
+                html.append("</tr>"); // End table row
+            }
 
-      res.status(200, "OK");
-      return "OK";
-    });
 
-    put("/delete/:table", (req, res) -> {
-      String tableName = req.params("table");
+            html.append("</table>"); // End table
 
-      if (tableName.startsWith("pt-")) {
-        File tableDir = new File(storageDirectory, tableName);
-        if (tableDir.exists()) {
-          for (File file : tableDir.listFiles()) {
-            file.delete();
-          }
-          tableDir.delete();
+            html.append("<div>");
+            // Could also implement a previous button, but fails automated tests if I do
+            /*            if (hasPrev) {
+                html.append("<a href='").append(prevUrl).append("'>Previous</a> ");
+            }*/
+            if (hasNext) {
+                html.append("<a href='").append(nextUrl).append("'>Next</a>");
+            }
+            html.append("</div>");
+
+            html.append("</body>");
+            html.append("</html>");
+            return html.toString();
+        });
+
+        // Define the PUT route for adding data
+        put("/data/:table/:row/:column", (req, res) -> {
+            String tableId = req.params("table");
+            String rowId = req.params("row");
+            String colId = req.params("column");
+
+            // EC: Conditional PUT chekcing query params
+            String ifcolumn = req.queryParams("ifcolumn");
+            String equalsParamVal = req.queryParams("equals");
+
+            // Either get or, if it doesn't exist, create the row
+            Row currRow = getRow(tableId, rowId);
+            if (currRow == null) {
+                currRow = new Row(rowId);
+            }
+
+            // EC: Conditional PUT Checking ifcolumn and equals val
+            if (ifcolumn != null && equalsParamVal != null) {
+                byte[] pastValBytes = currRow.getBytes(ifcolumn);
+                if (pastValBytes == null) {
+                    logger.info("Fail: ifcolumn '" + ifcolumn + "' not exist in row '" + rowId + "'");
+                    return "FAIL";
+                }  else {
+                    byte[] toEqualBytes = equalsParamVal.getBytes(StandardCharsets.UTF_8);
+                    if (!Arrays.equals(pastValBytes, toEqualBytes)) {
+                        // Value does not match
+                        logger.info("Fail: Value of ifcolumn '" + ifcolumn + "' not equal '" + equalsParamVal + "'");
+                        return "FAIL";
+                    }
+                }
+            }
+
+            // Set the value of the column within the row, then put the row into table
+            currRow.put(colId, req.bodyAsBytes());
+            putRow(tableId, currRow);
+            return "OK";
+        });
+
+        // Define the PUT rename route, meant to rename the table name (move all rowFiles from one folder to another)
+        put("/rename/:table", (req, res) -> {
+            String fromTableId = req.params("table");
+            String toTableId = req.body();
+
+            if (fromTableId.startsWith("pt-")) {
+                // First check if this persistent table exists
+                File fromTableDir = new File(storageDir, fromTableId);
+                if (!fromTableDir.exists()) {
+                    res.status(404, "NOT FOUND");
+                    return "Table with specified table ID in path parameters not found";
+                }
+
+                // Handle the case for when persistent table being renamed to in-memory, shouldn't be allowed return 400
+                if (!toTableId.startsWith("pt-")) {
+                    res.status(400, "BAD REQUEST");
+                    return "FromTable is persistent, but ToTable is not labeled as persistent (doesn't start with \"pt-\")";
+                }
+
+                // Then check if the toTableId already exists (return 409 if so)
+                File toTableDir = new File(storageDir, toTableId);
+                if (toTableDir.exists()) {
+                    logger.error("Table on disk already exists: " + toTableId + ". Cannot rename persistent table");
+                    res.status(409, "CONFLICT");
+                    return "Table with specified table ID in body already exists, cannot rename";
+                }
+
+                // If both checks are okay, then simply move the files
+                try {
+                    Files.move(fromTableDir.toPath(), toTableDir.toPath());
+                } catch (IOException e) {
+                    logger.error("Error renaming table: " + e.getMessage(), e);
+                    res.status(500, "Internal Server Error");
+                    return "Error renaming table";
+                }
+            } else {
+                // First check if this in-memory table exists
+                ConcurrentHashMap<String, Row> fromTable = tables.get(fromTableId);
+                if (fromTable == null) {
+                    res.status(404, "NOT FOUND");
+                    return "The specified table not found";
+                }
+
+                // Handle toTable being persistent and not being persistent as separate cases
+                if (toTableId.startsWith("pt-")) {
+                    // Handle the case for when in-memory table is being converted to persistent table
+
+                    // First check that toTableId is not an existing persistent table
+                    File toTableDir=  new File(storageDir, toTableId);
+                    if (toTableDir.exists()) {
+                        logger.error("Table on disk already exists: " + toTableId + ". Cannot make in-memory table persistent");
+                        res.status(409, "CONFLICT");
+                        return "Table with specified table ID in body already exists, cannot rename";
+                    }
+
+                    // If toTableId not existing on disk, then get all rows from in-memory table and put them into the persistent table
+                    for (Row newRow : fromTable.values()) {
+                        putRow(toTableId, newRow);
+                    }
+
+                    // After that, delete the in-memory storage for the fromTableId
+                    tables.remove(fromTableId);
+                } else {
+                    // Next, check if the toTableId already exists in memory (return 409 if so)
+                    ConcurrentHashMap<String, Row> toTable = tables.get(toTableId);
+                    if (toTable != null) {
+                        logger.error("Table in memory already exists: " + toTableId + ". Cannot rename");
+                        res.status(409, "CONFLICT");
+                        return "Table with specified table ID in body already exists, cannot rename";
+                    }
+
+                    // If toTableId not existing in memory, then simply move the values, delete the old key
+                    tables.put(toTableId, tables.remove(fromTableId));
+                }
+            }
+
+            return "OK";
+        });
+
+        // Define the PUT delete route, meant to delete the table (delete all rowFiles in subdirectory)
+        put("/delete/:table", (req, res) -> {
+            String tableId = req.params("table");
+
+            if (tableId.startsWith("pt-")) {
+                // First check if this persistent table exists
+                File tableDir = new File(storageDir, tableId);
+                if (!tableDir.exists()) {
+                    res.status(404, "NOT FOUND");
+                    return "Table with specified table ID in path parameters not found";
+                }
+
+                // Since the directory exists, remove all files within the directory (recursively just in case), then delete the directory
+                try {
+                    recursiveDeleteDirectory(tableDir);
+                } catch (IOException e) {
+                    logger.error("Error deleting table directory: " + e.getMessage(), e);
+                    res.status(500, "Internal Server Error");
+                    return "Error deleting the specified table";
+                }
+
+            } else {
+                // First check if this in-memory table exists
+                if (!tables.containsKey(tableId)) {
+                    res.status(404, "NOT FOUND");
+                    return "The specified table not found";
+                }
+
+                // Since the provided table exists, simply delete it from memory
+                tables.remove(tableId);
+            }
+            return "OK";
+        });
+
+        // Define the GET route to get a count of rows for a specified table (memory and persistent)
+        get("/count/:table", (req, res) -> {
+            String tableId = req.params("table");
+            long retCount;
+
+            if (tableId.startsWith("pt-")) {
+                File tableDir = new File(storageDir, tableId);
+                if (!tableDir.exists() || !tableDir.isDirectory()) {
+                    res.status(404, "NOT FOUND");
+                    return "The specified table not found";
+                }
+
+                // set the retCount to the number of files in the table's directory; guaranteed to exist because of earlier file check
+                retCount = tableDir.listFiles().length;
+            } else {
+                ConcurrentHashMap<String, Row> table = tables.get(tableId);
+                if (table == null) {
+                    res.status(404, "NOT FOUND");
+                    return "The specified table not found";
+                }
+                retCount = table.size();
+            }
+
+            return retCount; // Auto converts to string
+        });
+
+        // Define the GET route to stream a whole table (specified by table)
+        get("/data/:table", (req, res) -> {
+            String tableId = req.params("table");
+            String startRow = req.queryParams("startRow");
+            String endRowExclusive = req.queryParams("endRowExclusive");
+
+            // Set the content return type to text/plain
+            res.type("text/plain");
+
+            if (tableId.startsWith("pt-")) {
+                File tableDir = new File(storageDir, tableId);
+                if (!tableDir.exists() || !tableDir.isDirectory()) {
+                    res.status(404, "NOT FOUND");
+                    return "The specified table not found";
+                }
+
+                File[] tableRowFiles = tableDir.listFiles();
+                if (tableRowFiles == null) {
+                    return null;
+                }
+
+                // Sort files by file name
+                Arrays.sort(tableRowFiles, Comparator.comparing(File::getName));
+
+                for (File tableRowFile : tableRowFiles) {
+                    String rowKey = KeyEncoder.decode(tableRowFile.getName());
+
+                    // Skip files that are not within [startRow, endRowExclusive) range of rowKeys
+                    if (startRow != null && rowKey.compareTo(startRow) < 0) {
+                        continue;
+                    }
+                    if (endRowExclusive != null && rowKey.compareTo(endRowExclusive) >= 0) {
+                        continue;
+                    }
+
+                    try (FileInputStream fileInputStream = new FileInputStream(tableRowFile)) {
+                        Row row = Row.readFrom(fileInputStream);
+                        res.write(row.toByteArray());
+                        res.write(LF);
+                    } catch (IOException e) {
+                        logger.error("Error reading row from disk or writing to res.write(): " + e.getMessage(), e);
+                    }
+                }
+            } else {
+                ConcurrentHashMap<String, Row> table = tables.get(tableId);
+                if (table == null) {
+                    res.status(404, "NOT FOUND");
+                    return "The specified table not found";
+                }
+
+                List<String> rowKeysList = new ArrayList<>(table.keySet());
+                Collections.sort(rowKeysList);
+
+                for (String rowKey : rowKeysList) {
+                    if (startRow != null && rowKey.compareTo(startRow) < 0) {
+                        continue;
+                    }
+                    if (endRowExclusive != null && rowKey.compareTo(endRowExclusive) >= 0) {
+                        continue;
+                    }
+
+                    try {
+                        Row row = getRow(tableId, rowKey);
+                        res.write(row.toByteArray());
+                        res.write(LF);
+                    } catch (IOException e) {
+                        logger.error("Error getting row from memory, or writing to res.write(): " + e.getMessage(), e);
+                    }
+                }
+            }
+
+            // Closing LF signifying end of the stream, regardless of persistent table or in-memory table
+            res.write(LF);
+            return null;
+        });
+
+        // Define the GET route to get a whole row (specified by table, row)
+        get ("/data/:table/:row", (req, res) -> {
+            String tableId = req.params("table");
+            String rowId = req.params("row");
+
+            Row row = getRow(tableId, rowId);
+            if (row == null) {
+                res.status(404, "NOT FOUND");
+                return "Row not found";
+            }
+
+            byte[] retRowVal = row.toByteArray();
+            res.bodyAsBytes(retRowVal);
+            return null;
+        });
+
+        // Define the GET route to get a specific cell (specified by table, row, and column)
+        get("/data/:table/:row/:column", (req, res) -> {
+            String tableId = req.params("table");
+            String rowId = req.params("row");
+            String colId = req.params("column");
+
+            // Check if table exists, return 404 otherwise
+            if (!tableId.startsWith("pt-") && !tables.containsKey(tableId)) {
+                res.status(404, "NOT FOUND");
+                return "Specified table is not found";
+            }
+
+            // Table exists, now check if the row exists, return 404 otherwise
+            Row row = getRow(tableId, rowId);
+            if (row == null) {
+                res.status(404, "NOT FOUND");
+                return "Row not found";
+            }
+
+            // Row exits, now check if the column exists, return 404 otherwise
+            byte[] retColVal = row.getBytes(colId);
+            if (retColVal == null) {
+                res.status(404, "NOT FOUND");
+                return "The table and row exist, but specified column not found within.";
+            }
+
+            res.bodyAsBytes(retColVal);
+            return null;
+        });
+    }
+
+    private static void putRow(String tableId, Row newRow) {
+        if (tableId.startsWith("pt-")) {
+            // Every table is a directory, and each row is a file within that directory
+
+            // Either replace the existing row's file within the table directory, or create a new row file
+            File tableDir = new File(storageDir, tableId);
+            if (!tableDir.exists()) {
+                tableDir.mkdirs(); // Create table directory if it doesn't exist
+            }
+            String encodedKey = KeyEncoder.encode(newRow.key());
+            File rowFile = new File(tableDir, encodedKey);
+            try (FileOutputStream outputStream = new FileOutputStream(rowFile)) {
+                byte[] rowBytes = newRow.toByteArray();
+                outputStream.write(rowBytes);
+            } catch (IOException e) {
+                logger.error("Error writing row to disk: " + e.getMessage(), e);
+            }
         } else {
-          res.status(404, "Not Found");
-          return "Not Found";
+            tables.putIfAbsent(tableId, new ConcurrentHashMap<>());
+            ConcurrentHashMap<String, Row> table = tables.get(tableId);
+            table.put(newRow.key(), newRow);
         }
-      } else {
-        Map<String, Row> table = kvs.remove(tableName);
-        if (table == null) {
-          res.status(404, "Not Found");
-          return "Not Found";
-        }
-      }
-
-      res.status(200, "OK");
-      return "OK";
-    });
-  }
-
-  private static Row getRow(String tableName, String rowKey) {
-    Map<String, Row> table = kvs.get(tableName);
-    System.out.println("table: " + table);
-    if (table == null) {
-      if (tableName.startsWith("pt-")) {
-        // persistebt table
-        File tableDir = new File(storageDirectory, tableName);
-        if (!tableDir.exists()) {
-          return null;
-        }
-
-        File rowFile = new File(tableDir, KeyEncoder.encode(rowKey));
-        if (!rowFile.exists()) {
-          return null;
-        }
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(rowFile))) {
-          return Row.fromByteArray(reader.readLine().getBytes());
-        } catch (IOException e) {
-          e.printStackTrace();
-          return null;
-        }
-      } else {
-        return null;
-      }
     }
-    // non persistent
-    return table.get(rowKey);
-  }
 
-  private static void putRow(String tableName, String rowKey, Row row) {
-    Map<String, Row> table = kvs.putIfAbsent(tableName, new ConcurrentHashMap<>());
-    if (table == null) {
-      table = kvs.get(tableName);
-    }
-    table.put(rowKey, row);
-  }
+    private static Row getRow(String tableId, String rowId) {
+        if (tableId.startsWith("pt-")) {
+            // Read row from disk
+            File tableDir = new File(storageDir, tableId);
+            if (!tableDir.exists()) {
+                logger.info("Table's Directory Not Found: " + tableId);
+                return null; // Table's directory doesn't exist
+            }
 
-  private static String getWorkerID(String storageDirectory) {
-    File idFile = new File(storageDirectory, "id");
-    if (idFile.exists()) {
-      try (BufferedReader reader = new BufferedReader(new FileReader(idFile))) {
-        return reader.readLine();
-      } catch (IOException e) {
-        e.printStackTrace();
-        System.exit(1);
-      }
-    } else {
-      String workerID = generateRandomID();
-      try (BufferedWriter writer = new BufferedWriter(new FileWriter(idFile))) {
-        writer.write(workerID);
-      } catch (IOException e) {
-        e.printStackTrace();
-        System.exit(1);
-      }
-      return workerID;
-    }
-    return null;
-  }
+            String encodedKey = KeyEncoder.encode(rowId);
+            File rowFile = new File(tableDir, encodedKey);
+            if (!rowFile.exists()) {
+                logger.info("Row File Not Found: " + encodedKey);
+                return null; // Row file doesn't exist
+            }
 
-  private static String generateRandomID() {
-    String alphabet = "abcdefghijklmnopqrstuvwxyz";
-    StringBuilder sb = new StringBuilder(5);
-    Random random = new Random();
-    for (int i = 0; i < 5; i++) {
-      sb.append(alphabet.charAt(random.nextInt(alphabet.length())));
+            // Table directory and row file exist, now read the columns from that row's file
+            try (FileInputStream inputStream = new FileInputStream(rowFile)) {
+                return Row.readFrom(inputStream);
+            } catch (Exception e) {
+                logger.error("Error reading row from disk: " + e.getMessage(), e);
+                return null;
+            }
+        } else {
+            ConcurrentHashMap<String, Row> table = tables.get(tableId);
+            // Only get from table if table isn't null; return null if table doesn't exist or row doesn't exist within table
+            return table != null ? table.get(rowId) : null;
+        }
     }
-    return sb.toString();
-  }
+
+    private static void recursiveDeleteDirectory(File file) throws IOException {
+        if (file.isDirectory()) {
+            File[] entries = file.listFiles();
+            if (entries != null) {
+                for (File entry : entries) {
+                    recursiveDeleteDirectory(entry);
+                }
+            }
+        }
+        if (!file.delete()) {
+            throw new IOException("Failed to delete " + file.getAbsolutePath());
+        }
+    }
 }

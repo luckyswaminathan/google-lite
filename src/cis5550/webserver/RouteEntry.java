@@ -1,8 +1,6 @@
 package cis5550.webserver;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 // Record class since data is immutable, just carrying paths and have helper function
 public record RouteEntry(String method, String pathPattern, Route handler) {

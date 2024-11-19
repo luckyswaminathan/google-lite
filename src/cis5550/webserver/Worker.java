@@ -2,11 +2,9 @@ package cis5550.webserver;
 
 import cis5550.tools.Logger;
 
+import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLSocket;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.URLDecoder;
@@ -54,235 +52,267 @@ class Worker implements Runnable {
     private void handleRequest(InputStream inputStream, OutputStream outputStream) throws IOException {
         BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
 
-        String requestLine;
-        while (true) {
-            requestLine = readLine(bufferedInputStream);
-            if (requestLine == null) {
-                // End of stream, close connection
-                return;
-            }
-            if (!requestLine.isEmpty()) {
-                // Found non-empty line, continue
-                break;
-            }
-            // If the line is empty, continue to read the next line
-        }
+        boolean keepAlive = true;
 
-        logger.info("Request line: " + requestLine);
-
-        // Bad Request Line - not 3 parts
-        String[] requestParts = requestLine.split(" ");
-        if (requestParts.length != 3) {
-            sendErrorResponse(outputStream, 400, "Bad Request");
-            return;
-        }
-
-        String method = requestParts[0];
-        String uri = requestParts[1];
-        String protocol = requestParts[2];
-
-        // Check for forbidden methods
-        if (isMethodForbidden(method)) {
-            sendErrorResponse(outputStream, 405, "Method Not Allowed");
-            return;
-        }
-
-        // Check if the method is implemented
-        if (!isMethodAllowed(method)) {
-            sendErrorResponse(outputStream, 501, "Not Implemented");
-            return;
-        }
-
-        // Verify protocol version
-        if (!protocol.equalsIgnoreCase("HTTP/1.1")) {
-            sendErrorResponse(outputStream, 505, "HTTP Version Not Supported");
-            return;
-        }
-
-
-
-        // Store headers in below map
-        Map<String, String> headersMap = new HashMap<>();
-        int contentLength = 0;
-        String modifiedSinceHeader = null;
-
-        // Read and process headers
-        String line;
-        while ((line = readLine(bufferedInputStream)) != null && !line.isEmpty()) {
-            logger.info("Header: " + line);
-            String[] headerParts = line.split(":", 2);
-            if (headerParts.length == 2) {
-                String headerName = headerParts[0].trim().toLowerCase();
-                String headerValue = headerParts[1].trim();
-                headersMap.put(headerName, headerValue);
-                switch (headerName) {
-                    case "content-length" -> contentLength = Integer.parseInt(headerValue);
-                    case "if-modified-since" -> modifiedSinceHeader = headerValue;
-                }
-            }
-        }
-
-        if (!headersMap.containsKey("host")) {
-            sendErrorResponse(outputStream, 400, "Bad Request");
-            return;
-        }
-
-        // Read body using contentLength
-        byte[] bodyBytes = null;
-        if (contentLength > 0) {
-            bodyBytes = new byte[contentLength];
-            int totalBytesRead = 0;
-            while (totalBytesRead < contentLength) {
-                int bytesRead = bufferedInputStream.read(bodyBytes, totalBytesRead, contentLength - totalBytesRead);
-                if (bytesRead == -1) {
-                    // End of stream reached but shouldn't have
-                    sendErrorResponse(outputStream, 400, "Bad Request");
+        while (keepAlive) {
+            String requestLine;
+            while (true) {
+                requestLine = readLine(bufferedInputStream);
+                if (requestLine == null) {
+                    // End of stream, close connection
                     return;
                 }
-                totalBytesRead += bytesRead;
-            }
-            logger.info("Body read with length: " + totalBytesRead);
-        } else {
-            bodyBytes = new byte[0];
-        }
-
-        String contentTypeHeader = headersMap.get("content-type");
-        Map<String, String> bodyParams = new HashMap<>();
-        if ("application/x-www-form-urlencoded".equalsIgnoreCase(contentTypeHeader) && bodyBytes.length > 0) {
-            String bodyString = new String(bodyBytes, StandardCharsets.UTF_8);
-            bodyParams = parseQueryString(bodyString);
-        }
-
-        Map<String, String> queryParams = parseQueryParams(uri);
-        queryParams.putAll(bodyParams);
-
-        // Check for matching routes
-        boolean routeMatched = false;
-        List<RouteEntry> routes = Server.getRoutes(); // Get the routes from the Server class
-        for (RouteEntry routeEntry : routes) {
-            if (routeEntry.method().equalsIgnoreCase(method) && routeEntry.matches(uri)) {
-                routeMatched = true;
-
-                // Extract path parameters
-                Map<String, String> params = routeEntry.extractParams(uri);
-
-                // Instantiate Request and Response objects
-                InetSocketAddress remoteAddress = (InetSocketAddress) clientSocket.getRemoteSocketAddress();
-
-                ResponseImpl response = new ResponseImpl(outputStream);
-
-                RequestImpl request = new RequestImpl(
-                        method,
-                        uri,
-                        protocol,
-                        headersMap,
-                        queryParams,
-                        params,
-                        remoteAddress,
-                        bodyBytes,
-                        Server.getServer(),
-                        response, // passing response into request for session cookie handling
-                        clientSocket instanceof SSLSocket
-                );
-
-
-                try {
-                    Object result = routeEntry.handler().handle(request, response);
-                    if (!response.isWriteCalled()) {
-                        // Determine response body according to the rules, including the case with redirects
-                        byte[] responseBody = null;
-
-                        if (response.isRedirectCalled()) {
-                            // No sending body for redirects (unless set explicitly)
-                            if (response.getBody() != null) {
-                                responseBody = response.getBody();
-                            } else {
-                                responseBody = new byte[0];
-                            }
-                        } else {
-                            if (result != null) {
-                                // Use result of Route.handle()
-                                responseBody = result.toString().getBytes(StandardCharsets.UTF_8);
-                            } else if (response.getBody() != null) {
-                                // Use body set by body() or bodyAsBytes()
-                                responseBody = response.getBody();
-                            } else {
-                                // No response body to send
-                                responseBody = new byte[0];
-                            }
-                        }
-
-                        int contentLengthResponse = responseBody.length;
-
-                        // Confirm content-length header and body is set
-                        response.header("content-length", String.valueOf(contentLengthResponse));
-                        response.bodyAsBytes(responseBody);
-
-                        sendResponse(outputStream, response);
-                    }
-                } catch (Exception e) {
-                    // Handle handler exceptions by sending 500 Internal Server Error
-                    if(response.isWriteCalled()){
-                        logger.error("Exception while handling route, write already called: " + e.getMessage(), e);
-                        return;
-                    }
-                    logger.error("Exception while handling route, write not called: " + e.getMessage(), e);
-                    sendErrorResponse(outputStream, 500, "Internal Server Error");
+                if (!requestLine.isEmpty()) {
+                    // Found non-empty line, continue
+                    break;
                 }
-
-                break; // Break after a single route is already matched
+                // If the line is empty, continue to read the next line
             }
-        }
 
-        if (!routeMatched && homeDirectory != null) {
-            // No matching route found, check static files like HW1
-            Path filePath = Paths.get(homeDirectory + uri);
+            logger.info("Request line: " + requestLine);
 
-            // Handle If-Modified-Since header
-            if (modifiedSinceHeader != null) {
-                Instant modifiedSinceParsed = parseRfc1123Date(modifiedSinceHeader);
-                if (Files.exists(filePath)) {
-                    Instant lastModifiedTime = Files.getLastModifiedTime(filePath).toInstant();
-                    if (modifiedSinceParsed != null && !lastModifiedTime.isAfter(modifiedSinceParsed)) {
-                        // Send Not Modified response
-                        sendNotModifiedResponse(outputStream);
-                        return;
+            // Bad Request Line - not 3 parts
+            String[] requestParts = requestLine.split(" ");
+            if (requestParts.length != 3) {
+                sendErrorResponse(outputStream, 400, "Bad Request");
+                return;
+            }
+
+            String method = requestParts[0];
+            String uri = requestParts[1];
+            String protocol = requestParts[2];
+
+            // Check for forbidden methods
+            if (isMethodForbidden(method)) {
+                sendErrorResponse(outputStream, 405, "Method Not Allowed");
+                return;
+            }
+
+            // Check if the method is implemented
+            if (!isMethodAllowed(method)) {
+                sendErrorResponse(outputStream, 501, "Not Implemented");
+                return;
+            }
+
+            // Verify protocol version
+            if (!protocol.equalsIgnoreCase("HTTP/1.1")) {
+                sendErrorResponse(outputStream, 505, "HTTP Version Not Supported");
+                return;
+            }
+
+
+
+            // Store headers in below map
+            Map<String, String> headersMap = new HashMap<>();
+            int contentLength = 0;
+            String modifiedSinceHeader = null;
+
+            // Read and process headers
+            String line;
+            while ((line = readLine(bufferedInputStream)) != null && !line.isEmpty()) {
+                logger.info("Header: " + line);
+                String[] headerParts = line.split(":", 2);
+                if (headerParts.length == 2) {
+                    String headerName = headerParts[0].trim().toLowerCase();
+                    String headerValue = headerParts[1].trim();
+                    headersMap.put(headerName, headerValue);
+                    switch (headerName) {
+                        case "content-length" -> contentLength = Integer.parseInt(headerValue);
+                        case "if-modified-since" -> modifiedSinceHeader = headerValue;
                     }
                 }
             }
 
-            // Handle static files - as from HW1
-            if (uri.contains("..")) {
-                sendErrorResponse(outputStream, 403, "Forbidden");
+            if (!headersMap.containsKey("host")) {
+                sendErrorResponse(outputStream, 400, "Bad Request");
                 return;
             }
 
-            if (!Files.exists(filePath)) {
-                sendErrorResponse(outputStream, 404, "Not Found");
-                return;
+            // Read body using contentLength
+            byte[] bodyBytes = null;
+            if (contentLength > 0) {
+                bodyBytes = new byte[contentLength];
+                int totalBytesRead = 0;
+                while (totalBytesRead < contentLength) {
+                    int bytesRead = bufferedInputStream.read(bodyBytes, totalBytesRead, contentLength - totalBytesRead);
+                    if (bytesRead == -1) {
+                        // End of stream reached but shouldn't have
+                        sendErrorResponse(outputStream, 400, "Bad Request");
+                        return;
+                    }
+                    totalBytesRead += bytesRead;
+                }
+                logger.info("Body read with length: " + totalBytesRead);
+            } else {
+                bodyBytes = new byte[0];
             }
 
-            if (!Files.isReadable(filePath)) {
-                sendErrorResponse(outputStream, 403, "Forbidden");
-                return;
+            String contentTypeHeader = headersMap.get("content-type");
+            Map<String, String> bodyParams = new HashMap<>();
+            if ("application/x-www-form-urlencoded".equalsIgnoreCase(contentTypeHeader) && bodyBytes.length > 0) {
+                String bodyString = new String(bodyBytes, StandardCharsets.UTF_8);
+                bodyParams = parseQueryString(bodyString);
             }
 
-            String contentType = getContentType(filePath.toString());
-            long fileSize = Files.size(filePath);
+            Map<String, String> queryParams = parseQueryParams(uri);
+            queryParams.putAll(bodyParams);
 
-            // Build response using ResponseImpl
+            // Check for matching routes
+            boolean routeMatched = false;
+            List<RouteEntry> routes = Server.getRoutes(); // Get the routes from the Server class
             ResponseImpl response = new ResponseImpl(outputStream);
-            response.status(200, "OK");
-            response.type(contentType);
-            response.header("content-length", String.valueOf(fileSize));
+            for (RouteEntry routeEntry : routes) {
+                if (routeEntry.method().equalsIgnoreCase(method) && routeEntry.matches(uri)) {
+                    routeMatched = true;
 
-            sendResponse(outputStream, response);
+                    // Extract path parameters
+                    Map<String, String> params = routeEntry.extractParams(uri);
 
-            if (method.equals("GET")) {
-                sendFile(outputStream, filePath);
+                    // Instantiate Request and Response objects
+                    InetSocketAddress remoteAddress = (InetSocketAddress) clientSocket.getRemoteSocketAddress();
+
+                    RequestImpl request = new RequestImpl(
+                            method,
+                            uri,
+                            protocol,
+                            headersMap,
+                            queryParams,
+                            params,
+                            remoteAddress,
+                            bodyBytes,
+                            Server.getServer(),
+                            response, // passing response into request for session cookie handling
+                            clientSocket instanceof SSLSocket
+                    );
+
+
+                    try {
+                        Object result = routeEntry.handler().handle(request, response);
+                        if (!response.isWriteCalled()) {
+                            // Determine response body according to the rules, including the case with redirects
+                            byte[] responseBody = null;
+
+                            if (response.isRedirectCalled()) {
+                                // No sending body for redirects (unless set explicitly)
+                                if (response.getBody() != null) {
+                                    responseBody = response.getBody();
+                                } else {
+                                    responseBody = new byte[0];
+                                }
+                            } else {
+                                if (result != null) {
+                                    // Use result of Route.handle()
+                                    responseBody = result.toString().getBytes(StandardCharsets.UTF_8);
+                                } else if (response.getBody() != null) {
+                                    // Use body set by body() or bodyAsBytes()
+                                    responseBody = response.getBody();
+                                } else {
+                                    // No response body to send
+                                    responseBody = new byte[0];
+                                }
+                            }
+
+                            int contentLengthResponse = responseBody.length;
+
+                            // Confirm content-length header and body is set
+                            response.header("content-length", String.valueOf(contentLengthResponse));
+                            response.bodyAsBytes(responseBody);
+
+                            sendResponse(outputStream, response);
+                        }
+                    } catch (Exception e) {
+                        // Handle handler exceptions by sending 500 Internal Server Error
+                        if(response.isWriteCalled()){
+                            logger.error("Exception while handling route, write already called: " + e.getMessage(), e);
+                            keepAlive = false;
+                            break;
+                        }
+                        logger.error("Exception while handling route, write not called: " + e.getMessage(), e);
+                        sendErrorResponse(outputStream, 500, "Internal Server Error");
+                    }
+
+                    break; // Break after a single route is already matched
+                }
             }
 
-            logger.info("File sent: " + filePath);
+            if (!routeMatched && homeDirectory != null) {
+                // No matching route found, check static files like HW1
+                Path filePath = Paths.get(homeDirectory + uri);
+
+                // Handle If-Modified-Since header
+                if (modifiedSinceHeader != null) {
+                    Instant modifiedSinceParsed = parseRfc1123Date(modifiedSinceHeader);
+                    if (Files.exists(filePath)) {
+                        Instant lastModifiedTime = Files.getLastModifiedTime(filePath).toInstant();
+                        if (modifiedSinceParsed != null && !lastModifiedTime.isAfter(modifiedSinceParsed)) {
+                            // Send Not Modified response
+                            sendNotModifiedResponse(outputStream);
+                            return;
+                        }
+                    }
+                }
+
+                // Handle static files - as from HW1
+                if (uri.contains("..")) {
+                    sendErrorResponse(outputStream, 403, "Forbidden");
+                    return;
+                }
+
+                if (!Files.exists(filePath)) {
+                    sendErrorResponse(outputStream, 404, "Not Found");
+                    return;
+                }
+
+                if (!Files.isReadable(filePath)) {
+                    sendErrorResponse(outputStream, 403, "Forbidden");
+                    return;
+                }
+
+                String contentType = getContentType(filePath.toString());
+                long fileSize = Files.size(filePath);
+
+                // Build response using ResponseImpl
+                response.status(200, "OK");
+                response.type(contentType);
+                response.header("content-length", String.valueOf(fileSize));
+
+                sendResponse(outputStream, response);
+
+                if (method.equals("GET")) {
+                    sendFile(outputStream, filePath);
+                }
+
+                logger.info("File sent: " + filePath);
+            }
+
+            if (response.isWriteCalled()) {
+                keepAlive = false;
+            } else {
+                // Check for 'Connection: close' header in the response
+                List<String> responseConnectionHeaders = response.getHeaders().get("Connection");
+                if (responseConnectionHeaders != null) {
+                    for (String connValue : responseConnectionHeaders) {
+                        if (connValue.equalsIgnoreCase("close")) {
+                            keepAlive = false;
+                            break;
+                        }
+                    }
+                }
+
+                // Check for 'Connection: close' header in the request
+                String connectionHeader = headersMap.get("connection");
+                if (connectionHeader != null && connectionHeader.equalsIgnoreCase("close")) {
+                    keepAlive = false;
+                }
+            }
+
+            if (!keepAlive) {
+                break;
+            }
+
+            // Prepare for the next request
+            headersMap.clear();
+            queryParams.clear();
         }
     }
 

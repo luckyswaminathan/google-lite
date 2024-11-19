@@ -1,5 +1,6 @@
 package cis5550.flame;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.net.*;
 import java.io.*;
@@ -17,7 +18,7 @@ class Coordinator extends cis5550.generic.Coordinator {
   static int nextJobID = 1;
   public static KVSClient kvs;
 
-  public static void main(String args[]) {
+  public static void main(String[] args) throws IOException {
 
     // Check the command-line arguments
 
@@ -26,7 +27,7 @@ class Coordinator extends cis5550.generic.Coordinator {
       System.exit(1);
     }
 
-    int myPort = Integer.valueOf(args[0]);
+    int myPort = Integer.parseInt(args[0]);
     kvs = new KVSClient(args[1]);
 
     logger.info("Flame coordinator (" + version + ") starting on port " + myPort);
@@ -41,7 +42,7 @@ class Coordinator extends cis5550.generic.Coordinator {
 
     get("/", (request, response) -> {
       response.type("text/html");
-      return "<html><head><title>Flame coordinator</title></head><body><h3>Flame Coordinator</h3>\n" + clientTable()
+      return "<html><head><title>Flame coordinator</title></head><body><h3>Flame Coordinator</h3>\n" + workerTable()
           + "</body></html>";
     });
 
@@ -67,16 +68,16 @@ class Coordinator extends cis5550.generic.Coordinator {
 
       Vector<String> argVector = new Vector<String>();
       for (int i = 1; request.queryParams("arg" + i) != null; i++)
-        argVector.add(URLDecoder.decode(request.queryParams("arg" + i), "UTF-8"));
+        argVector.add(URLDecoder.decode(request.queryParams("arg" + i), StandardCharsets.UTF_8));
 
       // We begin by uploading the JAR to each of the workers. This should be done in
       // parallel, so we'll use a separate
       // thread for each upload.
 
-      Thread threads[] = new Thread[getWorkers().size()];
-      String results[] = new String[getWorkers().size()];
+      Thread[] threads = new Thread[getWorkers().size()];
+      String[] results = new String[getWorkers().size()];
       for (int i = 0; i < getWorkers().size(); i++) {
-        final String url = "http://" + getWorkers().elementAt(i) + "/useJAR";
+        final String url = "http://" + getWorkers().get(i) + "/useJAR";
         final int j = i;
         threads[i] = new Thread("JAR upload #" + (i + 1)) {
           public void run() {
@@ -84,7 +85,7 @@ class Coordinator extends cis5550.generic.Coordinator {
               results[j] = new String(HTTP.doRequest("POST", url, request.bodyAsBytes()).body());
             } catch (Exception e) {
               results[j] = "Exception: " + e;
-              e.printStackTrace();
+              logger.error("Exception: " + e, e);
             }
           }
         };
@@ -93,12 +94,11 @@ class Coordinator extends cis5550.generic.Coordinator {
 
       // Wait for all the uploads to finish
 
-      for (int i = 0; i < threads.length; i++) {
-        try {
-          threads[i].join();
-        } catch (InterruptedException ie) {
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException ignored) {}
         }
-      }
 
       // Write the JAR file to a local file. Remember, we will need to invoke the
       // 'run' method of the job, but, if the job

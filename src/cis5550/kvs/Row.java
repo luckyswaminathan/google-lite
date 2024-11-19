@@ -1,16 +1,20 @@
 package cis5550.kvs;
 
-import java.util.*;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Set;
 
 public class Row implements Serializable {
 
   protected String key;
-  protected HashMap<String, byte[]> values;
+  protected HashMap<String,byte[]> values;
 
   public Row(String keyArg) {
     key = keyArg;
-    values = new HashMap<String, byte[]>();
+    values = new HashMap<String,byte[]>();
   }
 
   public synchronized String key() {
@@ -39,7 +43,7 @@ public class Row implements Serializable {
   public synchronized String get(String key) {
     if (values.get(key) == null)
       return null;
-    return new String(values.get(key));
+  	return new String(values.get(key));
   }
 
   public synchronized byte[] getBytes(String key) {
@@ -56,9 +60,9 @@ public class Row implements Serializable {
       int b = in.read();
       if ((b < 0) || (b == 10))
         return null;
-      buffer[numRead++] = (byte) b;
+      buffer[numRead++] = (byte)b;
       if (b == ' ')
-        return new String(buffer, 0, numRead - 1);
+        return new String(buffer, 0, numRead-1);
     }
   }
 
@@ -72,15 +76,15 @@ public class Row implements Serializable {
       int b = in.read();
       if ((b < 0) || (b == 10))
         return null;
-      buffer[numRead++] = (byte) b;
+      buffer[numRead++] = (byte)b;
       if (b == ' ')
-        return new String(buffer, 0, numRead - 1);
+        return new String(buffer, 0, numRead-1);
     }
   }
 
   public static Row readFrom(InputStream in) throws Exception {
     String theKey = readStringSpace(in);
-    if (theKey == null)
+    if (theKey == null) 
       return null;
 
     Row newRow = new Row(theKey);
@@ -95,15 +99,13 @@ public class Row implements Serializable {
       while (bytesRead < len) {
         int n = in.read(theValue, bytesRead, len - bytesRead);
         if (n < 0)
-          throw new Exception("Premature end of stream while reading value for key '" + keyOrMarker + "' (read "
-              + bytesRead + " bytes, expecting " + len + ")");
+          throw new Exception("Premature end of stream while reading value for key '"+keyOrMarker+"' (read "+bytesRead+" bytes, expecting "+len+")");
         bytesRead += n;
       }
 
-      byte b = (byte) in.read();
+      byte b = (byte)in.read();
       if (b != ' ')
-        throw new Exception(
-            "Expecting a space separator after value for key '" + keyOrMarker + "', but got " + ((int) b));
+        throw new Exception("Expecting a space separator after value for key '"+keyOrMarker+"', but got "+((int)b));
 
       newRow.put(keyOrMarker, theValue);
     }
@@ -111,7 +113,7 @@ public class Row implements Serializable {
 
   public static Row readFrom(RandomAccessFile in) throws Exception {
     String theKey = readStringSpace(in);
-    if (theKey == null)
+    if (theKey == null) 
       return null;
 
     Row newRow = new Row(theKey);
@@ -126,30 +128,29 @@ public class Row implements Serializable {
       while (bytesRead < len) {
         int n = in.read(theValue, bytesRead, len - bytesRead);
         if (n < 0)
-          throw new Exception("Premature end of stream while reading value for key '" + keyOrMarker + "' (read "
-              + bytesRead + " bytes, expecting " + len + ")");
+          throw new Exception("Premature end of stream while reading value for key '"+keyOrMarker+"' (read "+bytesRead+" bytes, expecting "+len+")");
         bytesRead += n;
       }
 
-      byte b = (byte) in.read();
+      byte b = (byte)in.read();
       if (b != ' ')
-        throw new Exception("Expecting a space separator after value for key '" + keyOrMarker + "'");
+        throw new Exception("Expecting a space separator after value for key '"+keyOrMarker+"'");
 
       newRow.put(keyOrMarker, theValue);
     }
   }
 
   public synchronized String toString() {
-    String s = key + " {";
+    String s = key+" {";
     boolean isFirst = true;
     for (String k : values.keySet()) {
-      s = s + (isFirst ? " " : ", ") + k + ": " + new String(values.get(k));
+      s = s + (isFirst ? " " : ", ")+k+": "+new String(values.get(k));
       isFirst = false;
     }
     return s + " }";
   }
 
-  public synchronized byte[] toByteArray() {
+  public synchronized byte[] toByteArray()  {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
     try {
@@ -159,7 +160,7 @@ public class Row implements Serializable {
       for (String s : values.keySet()) {
         baos.write(s.getBytes());
         baos.write(' ');
-        baos.write(("" + values.get(s).length).getBytes());
+        baos.write((""+values.get(s).length).getBytes());
         baos.write(' ');
         baos.write(values.get(s));
         baos.write(' ');
@@ -167,45 +168,8 @@ public class Row implements Serializable {
     } catch (Exception e) {
       e.printStackTrace();
       throw new RuntimeException("This should not happen!");
-    }
-    ;
+    };
 
     return baos.toByteArray();
-  }
-
-  public static Row fromByteArray(byte[] bytes) {
-    try {
-      ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-      String theKey = readStringSpace(bais);
-      if (theKey == null)
-        return null;
-
-      Row newRow = new Row(theKey);
-      while (true) {
-        String keyOrMarker = readStringSpace(bais);
-        if (keyOrMarker == null)
-          return newRow;
-
-        int len = Integer.parseInt(readStringSpace(bais));
-        byte[] theValue = new byte[len];
-        int bytesRead = 0;
-        while (bytesRead < len) {
-          int n = bais.read(theValue, bytesRead, len - bytesRead);
-          if (n < 0)
-            throw new Exception("Premature end of stream while reading value for key '" + keyOrMarker + "' (read "
-                + bytesRead + " bytes, expecting " + len + ")");
-          bytesRead += n;
-        }
-
-        byte b = (byte) bais.read();
-        if (b != ' ')
-          throw new Exception("Expecting a space separator after value for key '" + keyOrMarker + "'");
-
-        newRow.put(keyOrMarker, theValue);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-      throw new RuntimeException("Error while converting from byte array", e);
-    }
   }
 }

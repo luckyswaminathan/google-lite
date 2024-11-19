@@ -1,8 +1,8 @@
 package cis5550.kvs;
 
-import java.util.Iterator;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 
 public interface KVS {
   void put(String tableName, String row, String column, byte value[]) throws FileNotFoundException, IOException;

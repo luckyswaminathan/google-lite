@@ -1,9 +1,12 @@
 package cis5550.kvs;
 
-import java.util.*;
-import java.net.*;
-import java.io.*;
 import cis5550.tools.HTTP;
+
+import java.io.*;
+import java.net.*;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Vector;
 
 public class KVSClient implements KVS {
 
@@ -209,7 +212,7 @@ public class KVSClient implements KVS {
     boolean result = true;
     for (WorkerEntry w : workers) {
       try {
-        byte[] response = HTTP.doRequest("PUT", "http://"+w.address+"/rename/"+java.net.URLEncoder.encode(oldTableName, "UTF-8")+"/", newTableName.getBytes()).body();
+        byte[] response = HTTP.doRequest("PUT", "http://"+w.address+"/rename/"+ URLEncoder.encode(oldTableName, "UTF-8")+"/", newTableName.getBytes()).body();
         String res = new String(response);
         result &= res.equals("OK");
       } catch (Exception e) {}
@@ -224,7 +227,7 @@ public class KVSClient implements KVS {
 
     for (WorkerEntry w : workers) {
       try {
-        byte[] response = HTTP.doRequest("PUT", "http://"+w.address+"/delete/"+java.net.URLEncoder.encode(oldTableName, "UTF-8")+"/", null).body();
+        byte[] response = HTTP.doRequest("PUT", "http://"+w.address+"/delete/"+ URLEncoder.encode(oldTableName, "UTF-8")+"/", null).body();
         String result = new String(response);
       } catch (Exception e) {}
     }
@@ -235,7 +238,7 @@ public class KVSClient implements KVS {
       downloadWorkers();
 
     try {
-      String target = "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+java.net.URLEncoder.encode(row, "UTF-8")+"/"+java.net.URLEncoder.encode(column, "UTF-8");
+      String target = "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+ URLEncoder.encode(row, "UTF-8")+"/"+ URLEncoder.encode(column, "UTF-8");
       byte[] response = HTTP.doRequest("PUT", target, value).body();
       String result = new String(response);
       if (!result.equals("OK")) 
@@ -263,7 +266,7 @@ public class KVSClient implements KVS {
     if (!haveWorkers)
       downloadWorkers();
 
-    HTTP.Response resp = HTTP.doRequest("GET", "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+java.net.URLEncoder.encode(row, "UTF-8"), null);
+    HTTP.Response resp = HTTP.doRequest("GET", "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+ URLEncoder.encode(row, "UTF-8"), null);
     if (resp.statusCode() == 404)
       return null;
 
@@ -271,7 +274,7 @@ public class KVSClient implements KVS {
     try {
       return Row.readFrom(new ByteArrayInputStream(result));
     } catch (Exception e) {
-      throw new RuntimeException("Decoding error while reading Row '"+row+"' in table '"+tableName+"' from getRow() URL (encoded as '"+java.net.URLEncoder.encode(row, "UTF-8")+"')");
+      throw new RuntimeException("Decoding error while reading Row '"+row+"' in table '"+tableName+"' from getRow() URL (encoded as '"+ URLEncoder.encode(row, "UTF-8")+"')");
     }
   }
 
@@ -279,7 +282,7 @@ public class KVSClient implements KVS {
     if (!haveWorkers)
       downloadWorkers();
 
-    HTTP.Response res = HTTP.doRequest("GET", "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+java.net.URLEncoder.encode(row, "UTF-8")+"/"+java.net.URLEncoder.encode(column, "UTF-8"), null);
+    HTTP.Response res = HTTP.doRequest("GET", "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+ URLEncoder.encode(row, "UTF-8")+"/"+ URLEncoder.encode(column, "UTF-8"), null);
     return ((res != null) && (res.statusCode() == 200)) ? res.body() : null;
   }
 
@@ -287,7 +290,7 @@ public class KVSClient implements KVS {
     if (!haveWorkers)
       downloadWorkers();
 
-    HTTP.Response r = HTTP.doRequest("GET", "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+java.net.URLEncoder.encode(row, "UTF-8"), null);
+    HTTP.Response r = HTTP.doRequest("GET", "http://"+workers.elementAt(workerIndexForKey(row)).address+"/data/"+tableName+"/"+ URLEncoder.encode(row, "UTF-8"), null);
     return r.statusCode() == 200;
   }
 

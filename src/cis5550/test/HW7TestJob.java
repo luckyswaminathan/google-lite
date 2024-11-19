@@ -107,7 +107,7 @@ public class HW7TestJob {
 				list.add(args[i]);
 
 			List<String> out = ctx.parallelize(list)
-					.filter(s -> s.startsWith("a"))
+					.filter(s -> s.contains("a"))
 					.collect();
 
 			Collections.sort(out);

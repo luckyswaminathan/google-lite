@@ -1,9 +1,8 @@
 package cis5550.webserver;
 
-import java.net.InetSocketAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.net.*;
+import java.nio.charset.*;
 
 // Provided as part of the framework code
 
