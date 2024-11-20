@@ -246,6 +246,8 @@ public class KVSClient implements KVS, Serializable {
             .body();
         String result = new String(response);
       } catch (Exception e) {
+        System.out.println("caught error: ");
+        System.err.println(e);
       }
     }
   }
@@ -273,7 +275,6 @@ public class KVSClient implements KVS, Serializable {
 
   @Override
   public void putRow(String tableName, Row row) throws FileNotFoundException, IOException {
-    System.out.println("putrow");
     if (!haveWorkers)
       downloadWorkers();
 

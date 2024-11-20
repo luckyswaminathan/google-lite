@@ -1,12 +1,12 @@
 package cis5550.flame;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import cis5550.kvs.KVSClient;
 import cis5550.kvs.Row;
 import cis5550.tools.Serializer;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class FlamePairRDDImpl implements FlamePairRDD {
 
@@ -51,7 +51,11 @@ public class FlamePairRDDImpl implements FlamePairRDD {
 
     @Override
     public void saveAsTable(String tableNameArg) throws Exception {
-        throw new UnsupportedOperationException("Unimplemented method 'saveAsTable'");
+        if (kvs.rename(tableName, tableNameArg)) {
+            this.tableName = tableNameArg;
+        } else {
+            throw new IOException("Failed to rename table from " + tableName + " to " + tableNameArg);
+        }
     }
 
     @Override

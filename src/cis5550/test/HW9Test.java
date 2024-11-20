@@ -39,6 +39,9 @@ public class HW9Test extends GenericTest {
 		if (response != null) {
 			String[] listOfTables = new String(response.body()).split("\n");
 			for (String table : listOfTables) {
+				if (table.equals("")) {
+					continue;
+				}
 				kvs.delete(table);
 			}
 		}
@@ -164,6 +167,43 @@ public class HW9Test extends GenericTest {
 
 		System.out.printf("\n%-10s%-40sResult\n", "Test", "Description");
 		System.out.println("--------------------------------------------------------");
+
+		if (tests.contains("demo"))
+			try {
+				startTest("demo", "Running indexer & pagerank back to back", 25);
+				System.out.println("running indexer");
+				(new KVSClient("localhost:8000")).delete("pt-index");
+				try {
+					String output = FlameSubmit.submit("localhost:9000", "indexer.jar", "cis5550.jobs.Indexer",
+							new String[] {});
+					if (output == null)
+						testFailed("Looks like we weren't able to submit 'indexer.jar'; the response code was "
+								+ FlameSubmit.getResponseCode() + ", and the output was:\n\n"
+								+ FlameSubmit.getErrorResponse());
+				} catch (FileNotFoundException fnfe) {
+					testFailed("Looks like 'indexer.jar' was not found in the current directory.");
+				}
+
+				System.out.println("running pagerank");
+				(new KVSClient("localhost:8000")).delete("pt-pageranks");
+
+				try {
+					System.out.println("submitted");
+					String output = FlameSubmit.submit("localhost:9000", "pagerank.jar", "cis5550.jobs.PageRank",
+							new String[] { "0.001" });
+					if (output == null)
+						testFailed("Looks like we weren't able to submit 'pagerank.jar'; the response code was "
+								+ FlameSubmit.getResponseCode() + ", and the output was:\n\n"
+								+ FlameSubmit.getErrorResponse());
+				} catch (FileNotFoundException fnfe) {
+					testFailed("Looks like 'pagerank.jar' was not found in the current directory.");
+				}
+
+				testSucceeded();
+			} catch (Exception e) {
+				testFailed("An exception occurred: " + e, false);
+				e.printStackTrace();
+			}
 
 		if (tests.contains("indexer"))
 			try {
@@ -302,6 +342,10 @@ public class HW9Test extends GenericTest {
 		} else if ((args.length > 0) && args[0].equals("version")) {
 			System.out.println("HW9 autograder v1.1a (Nov 3, 2023)");
 			System.exit(1);
+		}
+
+		if (args[0].equals("demo")) {
+			tests.add("demo");
 		}
 
 		if ((args.length == 0) || args[0].equals("auto") || args[0].equals("all")) {

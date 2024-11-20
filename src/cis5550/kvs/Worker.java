@@ -2,6 +2,7 @@ package cis5550.kvs;
 
 import cis5550.tools.KeyEncoder;
 import cis5550.tools.Logger;
+import cis5550.webserver.Server;
 import static cis5550.webserver.Server.*;
 import java.io.*;
 import java.net.URLEncoder;
@@ -418,11 +419,21 @@ public class Worker extends cis5550.generic.Worker {
           res.status(404, "NOT FOUND");
           return "The specified table not found";
         }
-
         // Since the provided table exists, simply delete it from memory
         tables.remove(tableId);
       }
       return "OK";
+    });
+
+    Server.get("/tables", (res, req) -> {
+      String ret = "";
+
+      String tmp;
+      for (Iterator it = tables.keySet().iterator(); it.hasNext(); ret = ret + tmp + "\n") {
+        tmp = (String) it.next();
+      }
+
+      return ret;
     });
 
     // Define the GET route to get a count of rows for a specified table (memory and
