@@ -7,7 +7,6 @@ import cis5550.kvs.Row;
 import cis5550.tools.Hasher;
 import cis5550.tools.Logger;
 import cis5550.tools.URLParser;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -19,7 +18,7 @@ import java.util.Stack;
 public class Crawler {
     private static final Logger logger = Logger.getLogger(Crawler.class);
 
-    private static final long defaultCrawlDelay = 1000; // in milliseconds
+    private static final long defaultCrawlDelay = 0; // in milliseconds
 
     public static void run(FlameContext flameContext, String[] args) throws Exception {
         if (args.length != 1) {
@@ -37,9 +36,9 @@ public class Crawler {
         FlameRDD urlQueue = flameContext.parallelize(List.of(seedUrl));
 
         while (urlQueue.count() > 0) {
+            System.out.println("Current queue size: " + urlQueue.count());
             urlQueue = urlQueue.flatMap(url -> {
                 List<String> extractedAndNormalizedUrls = new ArrayList<>();
-
                 try {
                     String rowKey = Hasher.hash(url);
                     KVSClient kvsClient = flameContext.getKVS();
@@ -110,7 +109,7 @@ public class Crawler {
                     row.put("responseCode", String.valueOf(responseCode));
 
                     String contentType = headConnection.getContentType();
-                    if (contentType != null){
+                    if (contentType != null) {
                         row.put("contentType", contentType);
                     }
 
@@ -123,8 +122,10 @@ public class Crawler {
                             }
                         }
                     } else {
-                        // Do GET request only if responseCode on HEAD is 200 AND contentType is text/html
-                        if (responseCode == HttpURLConnection.HTTP_OK && contentType != null && contentType.equalsIgnoreCase("text/html")) {
+                        // Do GET request only if responseCode on HEAD is 200 AND contentType is
+                        // text/html
+                        if (responseCode == HttpURLConnection.HTTP_OK && contentType != null
+                                && contentType.equalsIgnoreCase("text/html")) {
                             HttpURLConnection getConnection = (HttpURLConnection) urlObj.openConnection();
                             getConnection.setRequestMethod("GET");
                             getConnection.setRequestProperty("User-Agent", "cis5550-crawler");
@@ -152,11 +153,11 @@ public class Crawler {
             });
 
             // Sleep to prevent too-quick loops during testing
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+            // try {
+            // Thread.sleep(500);
+            // } catch (InterruptedException e) {
+            // Thread.currentThread().interrupt();
+            // }
         }
     }
 
@@ -261,7 +262,8 @@ public class Crawler {
                         posInAttributes = endQuotePos + 1;
                     } else { // No quote around attribute val
                         int valueEnd = posInAttributes;
-                        while (valueEnd < attributesAsString.length() && !Character.isWhitespace(attributesAsString.charAt(valueEnd))) {
+                        while (valueEnd < attributesAsString.length()
+                                && !Character.isWhitespace(attributesAsString.charAt(valueEnd))) {
                             valueEnd++;
                         }
                         attrValue = attributesAsString.substring(posInAttributes, valueEnd);
@@ -340,9 +342,11 @@ public class Crawler {
             }
 
             // Handle setting normalizedUrlPort
-            if ((rawExtractedUrlHost != null && rawExtractedUrlHost.equalsIgnoreCase(normalizedUrlHost)) && (rawExtractedUrlPort != null && !rawExtractedUrlPort.isEmpty())) {
+            if ((rawExtractedUrlHost != null && rawExtractedUrlHost.equalsIgnoreCase(normalizedUrlHost))
+                    && (rawExtractedUrlPort != null && !rawExtractedUrlPort.isEmpty())) {
                 normalizedUrlPort = rawExtractedUrlPort;
-            } else if ((baseUrlHost != null && baseUrlHost.equalsIgnoreCase(normalizedUrlHost)) && (baseUrlPort != null && !baseUrlPort.isEmpty())) {
+            } else if ((baseUrlHost != null && baseUrlHost.equalsIgnoreCase(normalizedUrlHost))
+                    && (baseUrlPort != null && !baseUrlPort.isEmpty())) {
                 normalizedUrlPort = baseUrlPort;
             } else {
                 // Default ports based on protocol if not specified by input URLs
@@ -376,7 +380,8 @@ public class Crawler {
                     String combinedPath = basePath + rawExtractedUrlPath;
                     normalizedUrlPath = normalizePath(combinedPath);
                 }
-            } else if ((baseUrlHost != null && baseUrlHost.equalsIgnoreCase(normalizedUrlHost)) && (baseUrlPath != null && !baseUrlPath.isEmpty())) {
+            } else if ((baseUrlHost != null && baseUrlHost.equalsIgnoreCase(normalizedUrlHost))
+                    && (baseUrlPath != null && !baseUrlPath.isEmpty())) {
                 // No need to normalize baseUrlPath since baseUrl is already normalized
                 normalizedUrlPath = baseUrlPath;
             } else {
@@ -385,10 +390,12 @@ public class Crawler {
             }
 
             // Reconstruct the normalized URL
-            String normalizedUrl = normalizedUrlHttpProtocol + "://" + normalizedUrlHost + ":" + normalizedUrlPort + normalizedUrlPath;
+            String normalizedUrl = normalizedUrlHttpProtocol + "://" + normalizedUrlHost + ":" + normalizedUrlPort
+                    + normalizedUrlPath;
 
             // Filter URLs based on protocol and URL doc type
-            if (!"http".equalsIgnoreCase(normalizedUrlHttpProtocol) && !"https".equalsIgnoreCase(normalizedUrlHttpProtocol)) {
+            if (!"http".equalsIgnoreCase(normalizedUrlHttpProtocol)
+                    && !"https".equalsIgnoreCase(normalizedUrlHttpProtocol)) {
                 return null;
             }
             if (normalizedUrlPath.matches(".*\\.(jpg|jpeg|gif|png|txt)$")) {
@@ -424,11 +431,11 @@ public class Crawler {
     }
 
     private static boolean isRedirect(int responseCode) {
-        return responseCode == HttpURLConnection.HTTP_MOVED_PERM ||    // 301
-                responseCode == HttpURLConnection.HTTP_MOVED_TEMP ||    // 302
-                responseCode == HttpURLConnection.HTTP_SEE_OTHER ||     // 303
-                responseCode == 307 ||                                  // 307
-                responseCode == 308;                                    // 308
+        return responseCode == HttpURLConnection.HTTP_MOVED_PERM || // 301
+                responseCode == HttpURLConnection.HTTP_MOVED_TEMP || // 302
+                responseCode == HttpURLConnection.HTTP_SEE_OTHER || // 303
+                responseCode == 307 || // 307
+                responseCode == 308; // 308
     }
 
     // Fetch robots.txt from the host
@@ -491,16 +498,19 @@ public class Crawler {
 
             if (currentLineRuleType.equals("user-agent")) {
                 // Set up collecting so that we collect rules if under *,
-                // unless (or until) we have already found (or later find) cis5550-crawler user-agent rules
-                // If already collected for * user-agent & then we find cis5550-crawler, we clear the already collected rules
+                // unless (or until) we have already found (or later find) cis5550-crawler
+                // user-agent rules
+                // If already collected for * user-agent & then we find cis5550-crawler, we
+                // clear the already collected rules
 
                 currentUserAgent = value.toLowerCase();
                 if (currentUserAgent.equals("cis5550-crawler")) {
-                    // Clear all past collected rules (from * user-agent) since we found specific cis5550-crawler rules
+                    // Clear all past collected rules (from * user-agent) since we found specific
+                    // cis5550-crawler rules
                     relevantUserAgentFound = true;
                     collectRules = true;
                     robotsTxtObj.rules.clear();
-                } else  {
+                } else {
                     // Only collect rules under * if not found cis5550-crawler rules (yet)
                     collectRules = currentUserAgent.equals("*") && !relevantUserAgentFound;
                 }
@@ -512,7 +522,8 @@ public class Crawler {
                         try {
                             robotsTxtObj.crawlDelay = Double.parseDouble(value);
                         } catch (NumberFormatException e) {
-                            logger.info("Crawl delay parsing failed, defaulting to: " + defaultCrawlDelay + " milliseconds");
+                            logger.info("Crawl delay parsing failed, defaulting to: " + defaultCrawlDelay
+                                    + " milliseconds");
                         }
                     }
                 }
@@ -554,7 +565,8 @@ public class Crawler {
             try {
                 robotsInfo.crawlDelay = Double.parseDouble(hostRow.get("crawlDelay"));
             } catch (NumberFormatException e) {
-                logger.info("Crawl delay parsing failed when reading from host table, defaulting to: " + defaultCrawlDelay + " milliseconds");
+                logger.info("Crawl delay parsing failed when reading from host table, defaulting to: "
+                        + defaultCrawlDelay + " milliseconds");
             }
         }
 
@@ -572,7 +584,8 @@ public class Crawler {
         // Use the first matching rule, or allow by default if no rule found
         for (RobotsTxtRule rule : robotsTxtObj.rules) {
             if (path.startsWith(rule.ruleInfo)) {
-                // prefix matched based on the rule, so simply whether this is an allow or disallow rule
+                // prefix matched based on the rule, so simply whether this is an allow or
+                // disallow rule
                 return rule.type.equals("allow");
             }
         }

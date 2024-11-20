@@ -1,23 +1,20 @@
 package cis5550.flame;
 
+import cis5550.kvs.*;
+import cis5550.tools.HTTP;
+import cis5550.tools.HTTP.Response;
+import cis5550.tools.Hasher;
+import cis5550.tools.Partitioner;
+import cis5550.tools.Serializer;
+import java.io.Serializable;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
 
-import cis5550.kvs.*;
-import cis5550.tools.HTTP;
-import cis5550.tools.Hasher;
-import cis5550.tools.Partitioner;
-import cis5550.tools.Serializer;
-import cis5550.tools.HTTP.Response;
-
-import java.net.URLDecoder;
-
-public class FlameContextImpl implements FlameContext {
+public class FlameContextImpl implements FlameContext, Serializable {
 
     private StringBuilder outputStr = new StringBuilder();
     private final KVSClient kvs;
@@ -89,6 +86,9 @@ public class FlameContextImpl implements FlameContext {
         }
 
         Vector<Partitioner.Partition> partitions = partitioner.assignPartitions();
+        if (partitions.size() == 0) {
+            System.out.println("ERROR! NO PARTITIONS REGISTERED!");
+        }
         CountDownLatch latch = new CountDownLatch(partitions.size());
         List<Thread> threads = new ArrayList<>();
 

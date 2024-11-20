@@ -1,8 +1,6 @@
 package cis5550.generic;
 
-import cis5550.tools.HTTP;
 import cis5550.tools.Logger;
-
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,7 +13,8 @@ public class Worker {
     private static final Logger logger = Logger.getLogger(Worker.class);
     private static final ScheduledExecutorService pingExecutor = Executors.newSingleThreadScheduledExecutor();
 
-    static protected void startPingThread(Integer coordinatorPort, String coordinatorIP, Integer workerPort, String workerId) {
+    static protected void startPingThread(Integer coordinatorPort, String coordinatorIP, Integer workerPort,
+            String workerId) {
         new Thread(() -> {
             try {
                 while (true) {
@@ -29,7 +28,6 @@ public class Worker {
                     String urlString = String.format("http://%s:%d/ping?id=%s&port=%d", coordinatorIP, coordinatorPort,
                             workerId, workerPort);
                     URL url = new URL(urlString);
-                    System.out.println("Calling first function");
                     url.getContent();
                 }
             } catch (Exception e) {
@@ -43,14 +41,13 @@ public class Worker {
             String workerId = getIdForWorker(storageDir);
             try {
                 URL callURL = new URL("http://" + coordinatorIpPort + "/ping?id=" + workerId + "&port=" + portNum);
-                System.out.println("Calling second function");
                 callURL.getContent();
             } catch (MalformedURLException e) {
                 logger.error("Error, invalid coordinatorIpPort, id, or worker port format" + e.getMessage(), e);
             } catch (IOException e) {
                 logger.error("Error Pinging " + coordinatorIpPort + " for worker " + workerId, e);
             }
-//            logger.info("Pinged " + coordinatorIpPort + " for worker " + workerId);
+            // logger.info("Pinged " + coordinatorIpPort + " for worker " + workerId);
         }, 5, 5, TimeUnit.SECONDS);
     }
 
@@ -65,16 +62,24 @@ public class Worker {
             } catch (IOException e) {
                 logger.error("Error Pinging " + coordinatorIpPort + " for worker " + workerId, e);
             }
-//            logger.info("Pinged " + coordinatorIpPort + " for worker " + workerId);
+            // logger.info("Pinged " + coordinatorIpPort + " for worker " + workerId);
         }, 5, 5, TimeUnit.SECONDS);
     }
 
-    public static String getIdForWorker(String storageDir){
+    public static String getIdForWorker(String storageDir) {
         File idStore = new File(storageDir, "id");
         String workerId = null;
 
+        File parentDir = idStore.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            if (!parentDir.mkdirs()) {
+                logger.error("Failed to create directory: " + parentDir.getAbsolutePath());
+                System.exit(1);
+            }
+        }
+
         if (idStore.exists()) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(idStore))){
+            try (BufferedReader reader = new BufferedReader(new FileReader(idStore))) {
                 workerId = reader.readLine();
             } catch (IOException e) {
                 logger.error("Error reading ID from file: " + e.getMessage(), e);
