@@ -167,6 +167,28 @@ public class HW9Test extends GenericTest {
 
 		System.out.printf("\n%-10s%-40sResult\n", "Test", "Description");
 		System.out.println("--------------------------------------------------------");
+		if (tests.contains("tfidf"))
+			try {
+				startTest("tfidf", "Running tfidf", 25);
+				System.out.println("running tfidf");
+				(new KVSClient("localhost:8000")).delete("jack-tmp");
+				(new KVSClient("localhost:8000")).delete("pt-idf");
+				(new KVSClient("localhost:8000")).delete("pt-tf");
+				try {
+					String output = FlameSubmit.submit("localhost:9000", "tfidf.jar", "cis5550.jobs.TFIDF",
+							new String[] {});
+					if (output == null)
+						testFailed("Looks like we weren't able to submit 'tfidf.jar'; the response code was "
+								+ FlameSubmit.getResponseCode() + ", and the output was:\n\n"
+								+ FlameSubmit.getErrorResponse());
+				} catch (FileNotFoundException fnfe) {
+					testFailed("Looks like 'tfidf.jar' was not found in the current directory.");
+				}
+				testSucceeded();
+			} catch (Exception e) {
+				testFailed("An exception occurred: " + e, false);
+				e.printStackTrace();
+			}
 
 		if (tests.contains("demo"))
 			try {
@@ -346,6 +368,10 @@ public class HW9Test extends GenericTest {
 
 		if (args[0].equals("demo")) {
 			tests.add("demo");
+		}
+
+		if (args[0].equals("search")) {
+			tests.add("search");
 		}
 
 		if ((args.length == 0) || args[0].equals("auto") || args[0].equals("all")) {
