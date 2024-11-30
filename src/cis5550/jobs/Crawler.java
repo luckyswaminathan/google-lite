@@ -12,14 +12,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
+
 
 public class Crawler {
     private static final Logger logger = Logger.getLogger(Crawler.class);
 
     private static final long defaultCrawlDelay = 0; // in milliseconds
-
+    private static int countIt = 0;
     public static void run(FlameContext flameContext, String[] args) throws Exception {
         if (args.length != 1) {
             flameContext.output("Error: Seed URL required");
@@ -35,16 +37,38 @@ public class Crawler {
 
         FlameRDD urlQueue = flameContext.parallelize(List.of(seedUrl));
 
-        while (urlQueue.count() > 0) {
-            System.out.println("Current queue size: " + urlQueue.count());
+        KVSClient kvsC = flameContext.getKVS();
+
+        // Clear existing tables
+        try {
+            kvsC.delete("pt-crawl");
+            kvsC.delete("hosts");
+            System.out.println("Cleared existing KVS tables");
+            // Verify tables are empty
+            Iterator<Row> verifyEmpty = kvsC.scan("pt-crawl");
+            System.out.println("KVS empty after clear: " + !verifyEmpty.hasNext());
+        } catch (Exception e) {
+            System.out.println("Error clearing KVS: " + e.getMessage());
+        }
+
+        while (urlQueue.count() > 0 && countIt < 100) {
+            System.out.println("iter: " + countIt);
+
+
             urlQueue = urlQueue.flatMap(url -> {
+
                 List<String> extractedAndNormalizedUrls = new ArrayList<>();
+
+
                 try {
                     String rowKey = Hasher.hash(url);
                     KVSClient kvsClient = flameContext.getKVS();
+
+
                     if (kvsClient.existsRow("pt-crawl", rowKey)) {
                         return extractedAndNormalizedUrls; // Should be empty at this point
                     }
+                    countIt++;
 
                     // Parse URL to get the host, check that hosts robotsTxt
                     URL urlObj = new URL(url);
@@ -79,6 +103,10 @@ public class Crawler {
                     if (hostRow != null && hostRow.get("lastAccessTime") != null) {
                         long lastAccessTime = Long.parseLong(hostRow.get("lastAccessTime"));
                         if (currentTime - lastAccessTime < currHostCrawlDelay) {
+
+                            System.out.println("Rate limited for host: " + host +
+                                    " Current delay: " + currHostCrawlDelay +
+                                    " Time since last access: " + (currentTime - lastAccessTime));
                             // Rate limit reached so return this url for trying next cycle
                             extractedAndNormalizedUrls.add(url);
                             return extractedAndNormalizedUrls;
@@ -125,7 +153,7 @@ public class Crawler {
                         // Do GET request only if responseCode on HEAD is 200 AND contentType is
                         // text/html
                         if (responseCode == HttpURLConnection.HTTP_OK && contentType != null
-                                && contentType.equalsIgnoreCase("text/html")) {
+                                && contentType.toLowerCase().contains("text/html")) {
                             HttpURLConnection getConnection = (HttpURLConnection) urlObj.openConnection();
                             getConnection.setRequestMethod("GET");
                             getConnection.setRequestProperty("User-Agent", "cis5550-crawler");
@@ -179,6 +207,8 @@ public class Crawler {
 
     public static List<String> extractNormalizedUrls(String pageContent, String baseUrl) {
         List<String> extractedAndNormalizedUrls = new ArrayList<>();
+        System.out.println("Starting URL extraction. Page content length: " + pageContent.length());
+        System.out.println("Base URL: " + baseUrl);
 
         List<String> rawExtractedUrls = extractRawUrls(pageContent);
         for (String rawExtractedUrl : rawExtractedUrls) {
