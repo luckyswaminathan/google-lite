@@ -9,5 +9,6 @@
 worker1
 data
 .env
+__worker
 
 ~/.aws/credentials
