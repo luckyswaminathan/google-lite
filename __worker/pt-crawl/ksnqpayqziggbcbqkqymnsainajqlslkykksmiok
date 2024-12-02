@@ -1,0 +1,607 @@
+ksnqpayqziggbcbqkqymnsainajqlslkykksmiok s3_key 40 ksnqpayqziggbcbqkqymnsainajqlslkykksmiok page 34433 <!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+<title>AAPG Datapages/Archives: Origin of Petroleum</title>
+<meta name="msvalidate.01" content="50F1377FCFBF63D8D7CD6CCB8ACE4B29" />
+<meta name="google-site-verification" content="E2Md6FPYBzhDmg3MONmgFnjf3UI93U_Y_5mfE2bU4eU" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="noarchive"/>
+
+		<meta name="response_code" content="success" />
+
+		<meta name="pageview" content="abstract" />
+
+<meta name="organization" content="Guest" />
+
+
+<meta id="request-method" name="request-method" content="GET">
+<link rel="shortcut icon" type="image/x-icon" href="https://archives.datapages.com/favicon.ico?cachebuster=12345">
+<link href="/data/aapg-styles/archives.css?x=17" rel="stylesheet" type="text/css" />
+<link href="/data/aapg-styles/article.css" rel="stylesheet" type="text/css" />
+<link href="/data/aapg-styles/endowment.css" rel="stylesheet" type="text/css" />
+<!--[if gte IE 7]>
+        <link rel="stylesheet" type="text/css" href="/data/aapg-styles/ie7plus.css" />
+<![endif]-->
+
+<!-- jQuery and jQuery UI Required for Dialog Box and Tabs -->
+<script type="text/javascript" src="/data/aapg-scripts/jquery/1.6.4/jquery.min.js" ></script>
+<script type="text/javascript" src="/data/aapg-scripts/jqueryui/1.8.16/jquery-ui.min.js" ></script>
+<script type="text/javascript" src="/data/aapg-scripts/jquery.cookie/jquery.cookie.js"></script> 
+<!-- Default AAPG Scripts -->
+<script type="text/javascript" src="/data/aapg-scripts/jquery.ba-bbq.min.js"></script>
+<script type="text/javascript" src="/data/aapg-scripts/aapg.js"></script>
+<!-- Validation Script -->
+<script type="text/javascript" src="/data/aapg-scripts/aapgv.js"></script>
+<!-- Tooltip script -->
+<script type="text/javascript" src="/data/aapg-scripts/jquery.tools.min.js"></script>
+<!-- Google Analytics script -->
+<script type="text/javascript" src="/data/aapg-scripts/google-analytics-custom/archives-analytics-custom.js"></script>
+<!-- Initialize Tabs -->
+<script type="text/javascript">
+jQuery(function() {
+	$("#articles-tabs").tabs();
+// Initialize Tooltip - Note Tooltip bug: if title attribute is empty, odd things happen
+	if ($(".check-all-target").length > 0) {
+		$(".check-all-target label[title]").tooltip({
+			position: "top left",
+			offset: [0, 600]
+		});
+	}
+
+
+});
+</script>
+
+<script defer type='text/javascript' src=https://www.aapg.org/js/custom-js/jquery.dfp.min.js></script>
+<script defer type='text/javascript'>
+$(document).ready(function(){
+    $('.adslot').dfp(
+        {
+          dfpID:'65958724',
+          setCentering:true,
+          collapseEmptyDivs:true,
+          enableSingleRequest:true,
+          url:window.location.toString(),
+          sizeMapping: {
+            'my-leaderboard': [
+                {browser: [0, 0], ad_sizes: [728, 90]}
+//                 {browser: [1024, 768], ad_sizes: [728, 90]},
+//                 {browser: [   0,   0], ad_sizes: [320, 50]}
+            ],
+            'my-skyscraper': [
+                {browser: [0, 0], ad_sizes: [120, 600]}
+            ]
+            }
+        }
+    );
+});
+</script>
+
+
+
+
+	<!-- Juicy Metadata. Google Scholar eats this up. -->
+			<!-- journals -->
+			<meta name="citation_journal_title" content="AAPG Bulletin">
+			<meta name="citation_issn" content="0149-1423">
+			<meta name="citation_publisher" content="American Association of Petroleum Geologists">
+		
+			<meta name="citation_title" content="Origin of Petroleum">
+			<meta name="DC.Title" content="Origin of Petroleum">
+					<meta name="citation_author" content="W. G. Meinschein">
+					<meta name="DC.Contributor" content="W. G. Meinschein">
+			<meta name="citation_publication_date" content="1959">
+			<meta name="DC.Date" content="1959">
+		
+			<meta name="citation_volume" content="43">
+		
+			<meta name="citation_issue" content="5">
+		
+			<meta name="citation_firstpage" content="925">
+			<meta name="citation_lastpage" content="943">
+			<meta name="citation_fulltext_html_url" content="https://archives.datapages.com/data/bulletns/1957-60/data/pg/0043/0005/0900/0925.htm">
+			<meta name="citation_pdf_url" content="https://archives.datapages.com/data/bulletns/1957-60/images/pg/00430005/0900/09250.pdf">
+
+<!--
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+        "HTML-CSS": {
+            preferredFont:"STIX",
+            webFont:"STIX",
+            imageFont:"STIX",
+        }
+  });
+</script>
+ 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+-->
+
+<script type="text/javascript" src="/data/aapg-scripts/mathjax.js"></script>
+<script type="text/javascript" src="/data/aapg-scripts/endowment.js"></script>
+
+<!-- 
+
+DoubleClick    <script type='text/javascript'>
+      var googletag = googletag || {};
+      googletag.cmd = googletag.cmd || [];
+      (function() {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+          '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+      })();
+    </script>
+
+    <script type='text/javascript'>
+      googletag.cmd.push(function() {
+        googletag.defineSlot('/65958724/DParchivesWeb_Sidebar_180x150_1of4', [180, 150], 'div-gpt-ad-1460383520307-0').addService(googletag.pubads());
+        googletag.defineSlot('/65958724/DParchivesWeb_Sidebar_180x150_2of4', [180, 150], 'div-gpt-ad-1460383520307-1').addService(googletag.pubads());
+        googletag.defineSlot('/65958724/DParchivesWeb_Sidebar_180x150_3of4', [180, 150], 'div-gpt-ad-1460383520307-2').addService(googletag.pubads());
+        googletag.defineSlot('/65958724/DParchivesWeb_Sidebar_180x150_4of4', [180, 150], 'div-gpt-ad-1460383520307-3').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+      });
+    </script>
+ -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GFKYT0BW6Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GFKYT0BW6Y');
+</script>
+
+<!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5df25e358d3fd000125ee1ba&product=inline-share-buttons&cms=sop' async='async'></script> -->
+
+</head>
+<body>
+
+<!-- BEGIN LOGIN DIALOG BOX -->
+<div id="db-login" class="db" title="Login" style="display: none;">
+<form>
+	<div id="db-login-error" class="error" style="display: none;"></div>
+	<p>
+	<label for="f-username">Username</label><input id="f-username" name="username" type="text" value="" placeholder="enter text..." class="login-field" />
+	</p>
+	<p>
+	<label for="f-password">Password</label><input id="f-password" name="password" type="password" value="" placeholder="enter text..." class="login-field" />
+<!--	<span class="hint">
+	<a href="#" class="note">Forgot Password?</a>
+	</span>-->
+	</p>
+	<p>
+	<input type="image" src="/data/aapg-images/button_login.png" alt="Login" width="53" height="28" class="login-submit" />
+	</p>
+	<p class="clear"></p>
+	<p>AAPG Members can login at the <a href="http://login.aapg.org/?returnurl=http%3A%2F%2Fauth.aapg.org%2Fdata%2Fauth%3FTargetURL%3Dhttp%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&refurl=http%3A%2F%2Fauth.aapg.org%2Fdata%2Fauth%3FTargetURL%3Dhttp%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&Internal=true">AAPG Members User Log In</a> to access full-text articles from the AAPG Bulletin.</p>
+
+</form>
+</div>
+<!-- END LOGIN DIALOG BOX -->
+
+<div class="adslot" id="DParchivesWeb_Leaderboard_728_1" data-size-mapping="my-leaderboard" style="min-height:90px; padding-top: 20px; padding-bottom:20px;"></div>
+
+<!-- BEGIN WRAPPER -->
+<div id="wrapper">
+
+
+<!-- Begin Supra Navigation -->
+<div id="supra-navigation">
+	<ul id="supra-nav">
+		<li><a href="https://www.datapages.com/">Datapages</a>
+			<ul class="dropdown">
+				<li><a href="https://www.datapages.com/">Datapages Home</a></li>
+			</ul>
+	
+		</li>
+
+        <li id="portaltab-associated-websites" class="plain">
+          <a href="https://www.datapages.com/associated-websites" class="plain" title="">Associated Websites</a>
+          <ul class="dropdown">
+            <li>
+              <a href="https://archives.datapages.com" class="state-published" title="">Archives</a>
+            </li>
+            <li>
+              <a href="http://www.searchanddiscovery.com/" class="state-published" title="Search and Discovery is an online journal for geoscientists working in energy fields (primarily oil, gas, and energy minerals) including material in environmental geosciences, with relevance for faculty and students, linking new ideas, data, and technology related not only to the exploration and development of various energy sources but also to concepts and practices related to use of various natural resources. Search and Discovery is published by AAPG/Datapages, Inc. ">Search and Discovery</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/gis-map-publishing-program" class="state-published" title="">GIS Map Publishing Program</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/gis-open-files/" class="state-published" title="">GIS Open Files</a>
+            </li>
+            <li>
+              <a href="http://deo.datapages.com/" class="state-published" title="">DEO-GIS</a>
+            </li>
+            <li>
+              <a href="http://store.aapg.org/" class="state-published" title="">AAPG Store</a>
+            </li>
+            <li>
+              <a href="http://www.aapg.org/" class="state-published" title="">AAPG Home</a>
+            </li>
+          </ul>
+        </li>
+        <li id="portaltab-news" class="plain">
+          <a href="https://www.datapages.com/news" class="plain" title="">News</a>
+          <ul class="dropdown">
+            <li>
+              <a href="https://www.datapages.com/news/announcements" class="state-published" title="">Announcements</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/news/webinars" class="state-published" title="">Webinars</a>
+            </li>
+            <li>
+              <a href="http://datapages.com/news/update-featured-articles" class="state-published" title="">Datapages UPDATE Featured Articles</a>
+            </li>
+          </ul>
+        </li>
+        <li id="portaltab-content-partners" class="plain">
+          <a href="https://www.datapages.com/content-partners" class="plain" title=" ">Content Partners</a>
+          <ul class="dropdown">
+            <li>
+              <a href="https://www.datapages.com/content-partners/aapg-foundation-osu-geoscience-gis-consortium" class="state-published" title="">AAPG/OSU Consortium</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/content-partners/techplace" class="state-published" title="TECHPLACE is a new online information resource provided by the Petroleum Technology Transfer Council (PTTC) and AAPG Datapages. ">Techplace</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/content-partners/aapg-gis-publications-committee" class="state-published" title="The GIS Publications Committee consists of AAPG member geoscientists who utilize and promote the application of GIS technology and methodologies in petroleum and environmental geosciences.">AAPG GIS Publications Committee</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/content-partners/author-resources" class="state-published" title="AAPG Peer-Reviewed Spatial Publications Library">GIS Author Resources</a>
+            </li>
+          </ul>
+        </li>
+        <li id="portaltab-financial-supporters" class="plain">
+          <a href="https://www.datapages.com/financial-supporters" class="plain" title="">Financial Supporters</a>
+          <ul class="dropdown">
+            <li>
+              <a href="https://www.datapages.com/financial-supporters/pickens-digital-fund" class="state-published" title="">The Boone Pickens Digital Geology Fund</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/financial-supporters/anadarko" class="state-published" title="">Anadarko</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/financial-supporters/aapg-foundation" class="state-published" title="">AAPG Foundation</a>
+            </li>
+          </ul>
+        </li>
+        <li id="portaltab-about" class="plain">
+          <a href="https://www.datapages.com/about" class="plain" title="">About</a>
+          <ul class="dropdown">
+            <li>
+              <a href="https://www.datapages.com/about/datapages-board" class="state-published" title="">Datapages Board of Directors</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/about/about-staff" class="state-published" title="">About Staff</a>
+            </li>
+            <li>
+              <a href="https://www.datapages.com/about/contact-us" class="state-published" title="">Contact US</a>
+            </li>
+          </ul>
+        </li>
+
+	</ul>
+</div>
+<!-- End Supra Navigation -->
+<!-- BEGIN BANNER -->
+<div id="header">
+
+	<div id="logo" class="noprint">
+		<a href="/"><img alt="AAPG Datapages/Archives" height="55" src="/data/aapg-images/logo_archives.png" width="359" /></a>
+	</div>
+	<h1 class="print">AAPG Datapages/Archives</h1>
+	<div id="welcome">
+		<h2>Welcome Guest</h2>	
+	</div>
+	<div id="access" class="noprint">
+		<p>
+		<a href="javascript:void(0);" id="call-login">Login as a different user</a>
+		<span class="pipe">|</span><a href="http://login.aapg.org/?returnurl=http%3A%2F%2Fauth.aapg.org%2Fdata%2Fauth%3FTargetURL%3Dhttp%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&refurl=http%3A%2F%2Fauth.aapg.org%2Fdata%2Fauth%3FTargetURL%3Dhttp%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&Internal=true">AAPG Members User Log In</a>
+		</p>
+	</div>
+
+</div>
+<!-- END BANNER -->
+
+<!-- BEGIN NAVIGATION -->
+<div id="navigation">
+		
+	<ul id="nav">
+		<li><a href="/data/">Home</a>
+			<ul>
+				<li><a href="/data/">Archives Home</a></li>
+			</ul>
+		</li>		<li><a href="/data/">Search</a>
+			<ul>
+				<li><a href="/data/">Search the Archives</a></li>
+			</ul>
+		</li>
+		<li><a href="/data/browse/index.html">Browse</a>
+			<ul>
+				<li><a href="/data/browse/">All Content Collections</a></li>
+				<li><a href="/data/browse/aapg-bulletin/">AAPG Bulletin</a></li>
+				<li><a href="/data/alt-browse/aapg-special-volumes/toc.htm">AAPG Special Volumes</a></li>
+			</ul>
+		</li>
+		<li><a href="https://www.datapages.com/subscription-information">Subscribe</a>
+			<ul>
+				<li><a href="https://datapages.com/subscription-information">Subscribe to the Archives</a></li>
+			</ul>
+		</li>
+	</ul>
+      
+</div>
+<!-- END NAVIGATION -->      
+
+
+<!-- BEGIN CONTENT -->      
+<div id="content" class="article">
+
+<!-- BEGIN RIGHT SIDEBAR -->
+    <div id="rightsidebar">
+
+        <div class="rsblock">
+                <div class="adwrapper">
+                            <div class="adslot" id="DParchivesWeb_Skyscraper_120x600" data-size-mapping="my-skyscraper" ></div>
+<!-- 
+            /65958724/DParchivesWeb_Sidebar_180x150_1of4            <div id="div-gpt-ad-1460383520307-0" class="adbox">
+            <script type="text/javascript">
+            googletag.cmd.push(function() { googletag.display("div-gpt-ad-1460383520307-0"); });
+            </script>
+            </div>
+
+            /65958724/DParchivesWeb_Sidebar_180x150_2of4            <div id="div-gpt-ad-1460383520307-1" class="adbox">
+            <script type="text/javascript">
+            googletag.cmd.push(function() { googletag.display("div-gpt-ad-1460383520307-1"); });
+            </script>
+            </div>
+
+            /65958724/DParchivesWeb_Sidebar_180x150_3of4            <div id="div-gpt-ad-1460383520307-2" class="adbox">
+            <script type="text/javascript">
+            googletag.cmd.push(function() { googletag.display("div-gpt-ad-1460383520307-2"); });
+            </script>
+            </div>
+
+            /65958724/DParchivesWeb_Sidebar_180x150_4of4            <div id="div-gpt-ad-1460383520307-3" class="adbox">
+            <script type="text/javascript">
+            googletag.cmd.push(function() { googletag.display("div-gpt-ad-1460383520307-3"); });
+            </script>
+            </div>
+ -->
+    </div>
+
+		</div>
+		<div class="adblock">
+		</div>
+<!-- 		<div class="rsblock connect fleft">
+			<h1><span class="fleft connect-label">Connect with AAPG</span></h1><br />
+			<h1><a href="http://www.facebook.com/AAPGeologists"><span class="icon25 icon-facebook fleft">Facebook</span></a>
+			<a href="http://www.linkedin.com/groups?about=&gid=104901"><span class="icon25 icon-linked-in fleft">Linked In</span></a>
+			<a href="http://twitter.com/datapages"><span class="icon25 icon-twitter fleft">Twitter</span></a>
+			</h1>
+		</div>
+
+-->
+    </div>
+<!-- END RIGHT SIDEBAR -->
+
+<!-- Leaderboard -->
+
+<!-- end Leaderboard -->
+
+<!-- BEGIN COPY -->
+    <div id="copy">
+
+        <div class="article-about">
+            <h2>About This Item</h2>
+            <ul>
+                        <!-- view is abstract view -->
+                        <!-- if abstract is in title and collection is not TSOP -->
+            
+                            <li><a href="#purchaseoptions"><span class="icon16 icon-html">Full Text</span></a><a href="#purchaseoptions">Full Text</a><span class="note block">(subscription required)</span></li>
+                            <li><span class="icon16 icon-on-demand">Pay-Per-View Purchase</span>Pay-Per-View <br/>Purchase Options&nbsp;&nbsp;<a href="#purchaseoptions" class="showOptions">Explain</a>
+        
+                                <ul>
+<!-- 
+                                    <li><a href="https://pubsecure.com/order/buy?c=1059113&buyopt=2&url_back=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&url=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fimages%2Fpg%2F00430005%2F0900%2F09250.pdf&title=Origin+of+Petroleum&authors=W.+G.+Meinschein&journal=AAPG+Bulletin&volume=43&issue=5.+%28May%29&startpage=925&pages=19&publication_id=bulletins&price=10">&gt; Protected PDF: $10</a></li>
+ -->
+                                    <li><a href="https://pubsecure.com/order/buy?c=1059113&buyopt=30&url_back=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&url=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fimages%2Fpg%2F00430005%2F0900%2F09250.pdf&title=Origin+of+Petroleum&authors=W.+G.+Meinschein&journal=AAPG+Bulletin&volume=43&issue=5.+%28May%29&startpage=925&pages=19&publication_id=bulletins&price=14">&gt; Watermarked PDF: $14</a></li>
+                                    <li><a href="https://pubsecure.com/order/buy?c=1059113&buyopt=20&url_back=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&url=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fimages%2Fpg%2F00430005%2F0900%2F09250.pdf&title=Origin+of+Petroleum&authors=W.+G.+Meinschein&journal=AAPG+Bulletin&volume=43&issue=5.+%28May%29&startpage=925&pages=19&publication_id=bulletins&price=24">&gt; Open PDF: $24</a></li>
+                                </ul>
+                    <!-- view is not abstract view -->
+            </ul>
+            <h2>Share This Item</h2>
+            <p>
+                <span  class='st_linkedin' ></span>
+                <span  class='st_twitter' ></span>
+                <span  class='st_facebook' ></span>
+                <!-- <span  class='st_google' ></span> -->
+                <span  class='st_email' ></span>
+                <!--<span  class='st_connotea' ></span>-->
+                <span  class='st_sharethis' ></span>
+                <script type="text/javascript">var switchTo5x=false;</script><script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'43f96167-524f-4d0a-a6b1-39e1ea0d390b',doNotHash: true});</script>
+
+<!-- 
+<div class="sharethis-inline-share-buttons"></div>
+ -->
+            </p>
+        </div><!-- end article-about -->
+        
+        
+        <div id="breadcrumb">
+
+            <p><a href="/">Home</a> &gt; <a href="/data/browse/">Browse Collections</a>
+                 &gt; <a href="/data/browse/aapg-bulletin/">  AAPG Bulletin</a> 
+                 &gt; <a href="/data/browse/aapg-bulletin/1959/">Year 1959</a> 
+                 &gt; <a href="/data/browse/aapg-bulletin/1959/5/">Issue May</a> 
+            </p>
+        </div><!-- end breadcrumb -->
+
+        <h2 class="subtitle">
+        <a href="/" class="action">The AAPG/Datapages Combined Publications Database</a>
+        </h2><!-- end subtitle -->
+
+        <h1>
+                <a href="/data/browse/aapg-bulletin/" class="action collection-name">AAPG Bulletin</a>
+        </h1>
+
+        <p class="article-type">
+            Abstract
+        </p>
+        <highlightZeroLink />
+         
+    <!-- fragment start -->
+<div id="fragment">
+  <div><div id="oldbody">
+<p/>
+<hr/><p><strong>Volume:</strong> <cjsvolume>43</cjsvolume> (<cjsyear>1959</cjsyear>)</p><p><strong>Issue:</strong> <cjsissue>5. (May)</cjsissue></p>
+<p><strong>First Page:</strong> <cjsfirstpage>925</cjsfirstpage></p>
+<p><strong>Last Page:</strong> <cjslastpage>943</cjslastpage></p>
+<p><strong>Title:</strong> <cjstitle>Origin of Petroleum</cjstitle></p>
+<p><strong>Author(s):</strong> <cjsauthor>W. G. Meinschein (2)</cjsauthor></p>
+<p><strong>Abstract:</strong></p>
+<cjsabstract><p>Sediments and crude oils contain the same types of hydrocarbons. This analogy indicates that petroleum is derived from sedimentary organic matter. The close resemblances of hydrocarbons in sediments and crude oils to plant and animal products show that most of these hydrocarbons are obtained either directly from the remains of living things or are minor modifications of living matter. Although many sediment and petroleum hydrocarbons are of the same type and are derived from a common source, the distributions of these compounds in petroleum differ from their distributions in sediments. Therefore, the conversion or accumulation of sedimentary organic matter to form petroleum must be done selectively. An explanation is presented of how water serving as the accumulating agen
+ can produce the changes in distribution that are observed between sedimentary organic matter and petroleum.</p></cjsabstract></div></div></div>
+    <!-- fragment end -->
+
+         <!-- if abstractView -->
+    
+    
+        
+                <h2 id="purchaseoptions">Pay-Per-View Purchase Options</h2>
+                    
+                    <p>The article is available through a document delivery service. <a href="javascript:void(0)" id="toggleOptions" class="showOptions">Explain these Purchase Options.</a></p>
+                            <table style="margin-left:20px;">
+                    <tr valign="top">
+<!-- 
+                    <td width="200"><a href="https://pubsecure.com/order/buy?c=1059113&buyopt=2&url_back=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&url=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fimages%2Fpg%2F00430005%2F0900%2F09250.pdf&title=Origin+of+Petroleum&authors=W.+G.+Meinschein&journal=AAPG+Bulletin&volume=43&issue=5.+%28May%29&startpage=925&pages=19&publication_id=bulletins&price=10">Protected Document: $10</a></td>
+                    <td>
+                        <div class="options" style="display:none;">
+                         <p><b>Protected PDF Document</b> &#150; A Protected Document provides both the reader and the publisher with maximum security and helps guard against unauthorized users. A Protected Document is delivered as a PDF file &ldquo;wrapped&rdquo; in a registration file (DRM &#150; Digital Rights Management file) that only allows the user to review and print the PDF from the machine to which it was originally downloaded. Certainly the best value and the lowest price, Protected Documents are recommended for librarians and others for whom security and copyright control is important.</p>
+                        </div>
+                    </td>
+                    </tr>
+ -->
+                    <tr valign="top">
+                    <td><a href="https://pubsecure.com/order/buy?c=1059113&buyopt=30&url_back=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&url=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fimages%2Fpg%2F00430005%2F0900%2F09250.pdf&title=Origin+of+Petroleum&authors=W.+G.+Meinschein&journal=AAPG+Bulletin&volume=43&issue=5.+%28May%29&startpage=925&pages=19&publication_id=bulletins&price=14">Watermarked PDF Document: $14</a></td>
+                    <td>
+                        <div class="options" style="display:none;">
+                            <p><b>Watermarked Document</b> &#150; A Watermarked Document is branded with the name of the original licensed customer to discourage unauthorized users from sharing the document outside the user's organization. The PDF is no longer restricted to one machine, but can be circulated to others in the same company or department. A Watermarked Document also can be printed for hard copy distribution internally but is not authorized for outside distribution nor posting on the internet. Users will not be able to cut-and-paste text or images from one document to another.</p>
+                        </div>
+                    </td>
+                    </tr>            
+                    <tr valign="top"><td><a href="https://pubsecure.com/order/buy?c=1059113&buyopt=20&url_back=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&url=https%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fimages%2Fpg%2F00430005%2F0900%2F09250.pdf&title=Origin+of+Petroleum&authors=W.+G.+Meinschein&journal=AAPG+Bulletin&volume=43&issue=5.+%28May%29&startpage=925&pages=19&publication_id=bulletins&price=24">Open PDF Document: $24</a></td>
+                    <td>
+                        <div class="options" style="display:none;">
+                             <p><b>Open Document</b> &#150; An Open Document is a fully functional PDF that can be circulated (a digital copy or hard-copy printed documents) outside the purchasing organization. Purchase of an Open Document does NOT constitute license for republication in any form, nor does it allow web posting without prior written permission from AAPG/Datapages (<a href="/cdn-cgi/l/email-protection#88f8edfae5e1fbfbe1e7e6fbc8e9e9f8efa6e7faef"><span class="__cf_email__" data-cfemail="6d1d081f00041e1e0402031e2d0c0c1d0a43021f0a">[email&#160;protected]</span></a>). </p>
+                        </div>
+                    </td>
+                    </tr>            
+            </table>            
+        
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+             $(document).ready(function() {
+               $('.showOptions').click(function(){
+                 $('div.options').toggle("slow");
+                 $('a#toggleOptions').hide();
+               });
+            });
+            </script>
+            
+             
+
+            <h2>AAPG Member?</h2>
+            <p><a href="http://login.aapg.org/?returnurl=http%3A%2F%2Fauth.aapg.org%2Fdata%2Fauth%3FTargetURL%3Dhttp%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&refurl=http%3A%2F%2Fauth.aapg.org%2Fdata%2Fauth%3FTargetURL%3Dhttp%3A%2F%2Farchives.datapages.com%2Fdata%2Fbulletns%2F1957-60%2Fdata%2Fpg%2F0043%2F0005%2F0900%2F0925.htm&Internal=true">Please login with your Member username and password.</a></p>
+            <p>Members of AAPG receive access to the full AAPG Bulletin Archives as part of their membership. For more information, contact the AAPG Membership Department at <a href="/cdn-cgi/l/email-protection#610c040c0304131221000011064f0e1306"><span class="__cf_email__" data-cfemail="79141c141b1c0b0a391818091e57160b1e">[email&#160;protected]</span></a>.</p>
+
+
+<p></p>
+    </div><!-- END COPY -->
+    <!-- BIG FOOTER -->
+<!-- big-footer.ftl -->
+<div id="contentsub" class="noprint">
+  
+<div id="column_noline">
+   
+<h1><b><a href="http://www.searchanddiscovery.com" >Search and Discovery</a></b><br />Featured Articles</h1>
+<ul>
+<li><a href="https://www.searchanddiscovery.com/abstracts/pdf/2023/91206rms/index.htm" target="_blank">&raquo; 2023 RMS Meeting Abstracts</a></li>
+<li><a href="https://www.searchanddiscovery.com/abstracts/pdf/2023/91205geogulf/index.htm" target="_blank">&raquo; 2023 GeoGulf Meeting Abstracts</a></li>
+<li><a href="https://www.searchanddiscovery.com/documents/2023/11379sigler/ndx_sigler.pdf" target="_blank">&raquo; Uinta Basin Stacked Pay</a></li>
+<li><a href="https://www.searchanddiscovery.com/documents/2023/11373breyer/ndx_breyer.pdf" target="_blank">&raquo; Carrier Beds as Reservoirs</a></li>
+</ul>
+ </div>
+   <div class="column">
+      <h1><a href="https://archives.datapages.com/"><b>Archives</b><br />&nbsp;</a></h1>
+        <ul>
+          <li><a href="https://archives.datapages.com/data/browse/australian-petroleum-production-exploration-association-appea-journal/" target="_blank">&raquo; APPEA</a></li>
+          <li><a href="https://archives.datapages.com/data/browse/the-society-for-organic-petrology-tsop/" target="_blank">&raquo; TSOP</a></li>
+          <li><a href="https://archives.datapages.com/data/browse/journal-of-sedimentary-research-sepm/" target="_blank">&raquo; SEPM</a></li>
+          <li><a href="https://archives.datapages.com/data/browse/bulletin-of-canadian-energy-geoscience-cega/" target="_blank">&raquo; CEGA</a></li>
+          <li><a href="https://www.datapages.com/subscription-information" target="_blank">&raquo; Subscription Information</a></li>
+      </ul>
+  </div>
+  <div class="column">
+        <h1><b><a href="http://store.aapg.org" target="_blank">AAPG Store</a></b><br />Featured Digital Pubs</h1>
+         <ul>
+          <li><a href="https://store.aapg.org/searchresults.aspx?categoryid=24" target="_blank">&raquo; COSUNA Charts</a></li>
+		  <li><a href="https://store.aapg.org/searchresults.aspx?categoryid=26" target="_blank">&raquo; Highway Maps</a></li>
+		  <li><a href="https://store.aapg.org/searchresults.aspx?categoryid=36" target="_blank">&raquo; Special Pubs Downloads</a></li>
+		  <li><a href="https://store.aapg.org/searchresults.aspx?categoryid=34" target="_blank">&raquo; RMAG Maps</a></li>
+		  <li><a href="https://store.aapg.org/ATSResources/product-splash/dibblee.aspx" target="_blank">&raquo; California Geo Maps</a></li>
+    </ul>
+  </div>
+    <div class="column">
+        <h1><b>GIS Map Publishing Program <br /></b></h1>
+          <ul class="nopadding">
+          <li><a href="http://www.datapages.com/gis-map-publishing-program" target="_blank">&raquo; GIS Maps Overview </a></li>
+          <li><a href="http://deo.datapages.com/" target="_blank">&raquo; DEO-GIS (Subscription)</a></li>
+          <li><a href="http://www.datapages.com/gis-map-publishing-program" target="_blank">&raquo; GIS-UDRIL (Subscription)</a></li>
+          <li><a href="http://www.datapages.com/gis-map-publishing-program/gis-open-files">&raquo; GIS Open Files (Free)</a></li><!--<li><img alt="GIS-UDRIL" height="75" src="/Portals/3/img/world.png" width="168" /></li>--></li>
+
+          
+
+      </ul>
+  </div>
+</div>
+     <!-- END BIG FOOTER -->
+
+</div>
+<!-- END CONTENT -->
+
+
+
+<!-- BEGIN UTILITY FOOTER -->
+<div id="footer">
+	<div id="footernavigation">
+		<ul class="noprint" style="padding-top:0px;">
+			<li><a href="https://www.facebook.com/AAPGeologists"><span class="icon25 icon-facebook fleft">Facebook</span></a></li>
+			<li><a href="https://www.linkedin.com/groups?about=&gid=104901"><span class="icon25 icon-linked-in fleft">Linked In</span></a></li>
+			<li><a href="https://twitter.com/datapages"><span class="icon25 icon-twitter fleft">Twitter</span></a></li>
+		</ul>
+		<ul class="noprint">
+			<li><a href="https://www.datapages.com/privacy-statement" rel="nofollow">Privacy Statement</a><span class="pipe">|</span></li>
+			<li><a href="https://www.datapages.com/terms-of-use" rel="nofollow">Terms of Use</a><span class="pipe">|</span></li>
+			<li><a href="https://www.aapg.org/">AAPG.org</a></li>
+		</ul>
+		<div id="copyright">Copyright &copy; 2024 Datapages, Inc. All rights reserved</div>
+	</div>	
+</div>
+<!-- END UTILITY FOOTER -->
+
+</div><!--Wrapper Close-->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8ebba80f7e50c8fd',t:'MTczMzE0NjA2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+ contentType 23 text/html;charset=UTF-8 url 88 https://archives.datapages.com:443/data/bulletns/1957-60/data/pg/0043/0005/0900/0925.htm responseCode 3 200 

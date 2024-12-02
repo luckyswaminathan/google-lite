@@ -1,0 +1,1004 @@
+jotglapscihmjgpktihswgkqbqmsukfggqfobsxm length 6 126256 s3_key 40 jotglapscihmjgpktihswgkqbqmsukfggqfobsxm page 126256 <!DOCTYPE html>
+<html class="client-nojs vector-feature-language-in-header-enabled vector-feature-language-in-main-page-header-disabled vector-feature-sticky-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 vector-feature-night-mode-enabled skin-theme-clientpref-day vector-toc-available" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>Spectroelectrochemistry - Wikipedia</title>
+<script>(function(){var className="client-js vector-feature-language-in-header-enabled vector-feature-language-in-main-page-header-disabled vector-feature-sticky-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 vector-feature-night-mode-enabled skin-theme-clientpref-day vector-toc-available";var cookie=document.cookie.match(/(?:^|; )enwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy",
+"wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"2a8a96b5-6e64-4633-9a77-e89e8a7cc713","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Spectroelectrochemistry","wgTitle":"Spectroelectrochemistry","wgCurRevisionId":1250267418,"wgRevisionId":1250267418,"wgArticleId":64073069,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Use dmy dates from January 2024","Physical chemistry","Spectroscopy","Electrochemistry"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Spectroelectrochemistry","wgRelevantArticleId":64073069,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"wikipedia","wgCiteReferencePreviewsActive":false,"wgFlaggedRevsParams":{"tags":{
+"status":{"levels":1}}},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgPopupsFlags":0,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":20000,"wgRelatedArticlesCompat":[],"wgEditSubmitButtonLabelPublish":true,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":false,"wgVector2022LanguageInHeader":true,"wgULSisLanguageSelectorEmpty":false,"wgWikibaseItemId":"Q96212237","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"],"GEHomepageSuggestedEditsEnableTopics":true,"wgGETopicsMatchModeEnabled":false,"wgGEStructuredTaskRejectionReasonTextInputEnabled":false,"wgGELevelingUpEnabledForUser":false};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles"
+:"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","skins.vector.search.codex.styles":"ready","skins.vector.styles":"ready","skins.vector.icons":"ready","jquery.makeCollapsible.styles":"ready","ext.wikimediamessages.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","wikibase.client.init":"ready","ext.wikimediaBadges":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","mediawiki.page.media","site","mediawiki.page.ready","jquery.makeCollapsible","mediawiki.toc","skins.vector.js","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.gadget.ReferenceTooltips","ext.gadget.switcher","ext.urlShortener.toolbar","ext.centralauth.centralautologin","mmv.bootstrap","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.echo.centralauth","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.interface",
+"ext.cx.eventlogging.campaigns","ext.cx.uls.quick.actions","wikibase.client.vector-2022","ext.checkUser.clientHints","ext.growthExperiments.SuggestedEditSession","wikibase.sidebar.tracking"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cext.wikimediamessages.styles%7Cjquery.makeCollapsible.styles%7Cskins.vector.icons%2Cstyles%7Cskins.vector.search.codex.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector-2022">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector-2022"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector-2022">
+<meta name="generator" content="MediaWiki 1.44.0-wmf.5">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tipos_SEC.png/1200px-Tipos_SEC.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tipos_SEC.png/800px-Tipos_SEC.png">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tipos_SEC.png/640px-Tipos_SEC.png">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="360">
+<meta name="viewport" content="width=1120">
+<meta property="og:title" content="Spectroelectrochemistry - Wikipedia">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="//upload.wikimedia.org">
+<link rel="alternate" media="only screen and (max-width: 640px)" href="//en.m.wikipedia.org/wiki/Spectroelectrochemistry">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png">
+<link rel="icon" href="/static/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Spectroelectrochemistry">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="//login.wikimedia.org">
+</head>
+<body class="skin--responsive skin-vector skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Spectroelectrochemistry rootpage-Spectroelectrochemistry skin-vector-2022 action-view"><a class="mw-jump-link" href="#bodyContent">Jump to content</a>
+<div class="vector-header-container">
+	<header class="vector-header mw-header">
+		<div class="vector-header-start">
+			<nav class="vector-main-menu-landmark" aria-label="Site">
+				
+<div id="vector-main-menu-dropdown" class="vector-dropdown vector-main-menu-dropdown vector-button-flush-left vector-button-flush-right"  >
+	<input type="checkbox" id="vector-main-menu-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-main-menu-dropdown" class="vector-dropdown-checkbox "  aria-label="Main menu"  >
+	<label id="vector-main-menu-dropdown-label" for="vector-main-menu-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-menu mw-ui-icon-wikimedia-menu"></span>
+
+<span class="vector-dropdown-label-text">Main menu</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+				<div id="vector-main-menu-unpinned-container" class="vector-unpinned-container">
+		
+<div id="vector-main-menu" class="vector-main-menu vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-main-menu-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="main-menu-pinned"
+	data-pinnable-element-id="vector-main-menu"
+	data-pinned-container-id="vector-main-menu-pinned-container"
+	data-unpinned-container-id="vector-main-menu-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Main menu</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-main-menu.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-main-menu.unpin">hide</button>
+</div>
+
+	
+<div id="p-navigation" class="vector-menu mw-portlet mw-portlet-navigation"  >
+	<div class="vector-menu-heading">
+		Navigation
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-contents" class="mw-list-item"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia"><span>Contents</span></a></li><li id="n-currentevents" class="mw-list-item"><a href="/wiki/Portal:Current_events" title="Articles related to current events"><span>Current events</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" title="Visit a randomly selected article [x]" accesskey="x"><span>Random article</span></a></li><li id="n-aboutsite" class="mw-list-item"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works"><span>About Wikipedia</span></a></li><li id="n-contactpage" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia"><span>Contact us</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+	
+<div id="p-interaction" class="vector-menu mw-portlet mw-portlet-interaction"  >
+	<div class="vector-menu-heading">
+		Contribute
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-help" class="mw-list-item"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia"><span>Help</span></a></li><li id="n-introduction" class="mw-list-item"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia"><span>Learn to edit</span></a></li><li id="n-portal" class="mw-list-item"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_upload_wizard" title="Add images or other media for use on Wikipedia"><span>Upload file</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+				</div>
+
+	</div>
+</div>
+
+		</nav>
+			
+<a href="/wiki/Main_Page" class="mw-logo">
+	<img class="mw-logo-icon" src="/static/images/icons/wikipedia.png" alt="" aria-hidden="true" height="50" width="50">
+	<span class="mw-logo-container skin-invert">
+		<img class="mw-logo-wordmark" alt="Wikipedia" src="/static/images/mobile/copyright/wikipedia-wordmark-en.svg" style="width: 7.5em; height: 1.125em;">
+		<img class="mw-logo-tagline" alt="The Free Encyclopedia" src="/static/images/mobile/copyright/wikipedia-tagline-en.svg" width="117" height="13" style="width: 7.3125em; height: 0.8125em;">
+	</span>
+</a>
+
+		</div>
+		<div class="vector-header-end">
+			
+<div id="p-search" role="search" class="vector-search-box-vue  vector-search-box-collapses vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+	<a href="/wiki/Special:Search" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only search-toggle" title="Search Wikipedia [f]" accesskey="f"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search"></span>
+
+<span>Search</span>
+	</a>
+	<div class="vector-typeahead-search-container">
+		<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail cdx-typeahead-search--auto-expand-width">
+			<form action="/w/index.php" id="searchform" class="cdx-search-input cdx-search-input--has-end-button">
+				<div id="simpleSearch" class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+					<div class="cdx-text-input cdx-text-input--has-start-icon">
+						<input
+							class="cdx-text-input__input"
+							 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="sentences" title="Search Wikipedia [f]" accesskey="f" id="searchInput"
+							>
+						<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+					</div>
+					<input type="hidden" name="title" value="Special:Search">
+				</div>
+				<button class="cdx-button cdx-search-input__end-button">Search</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+			<nav class="vector-user-links vector-user-links-wide" aria-label="Personal tools">
+	<div class="vector-user-links-main">
+	
+<div id="p-vector-user-menu-preferences" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-userpage" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	<nav class="vector-appearance-landmark" aria-label="Appearance">
+		
+<div id="vector-appearance-dropdown" class="vector-dropdown "  title="Change the appearance of the page&#039;s font size, width, and color" >
+	<input type="checkbox" id="vector-appearance-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-appearance-dropdown" class="vector-dropdown-checkbox "  aria-label="Appearance"  >
+	<label id="vector-appearance-dropdown-label" for="vector-appearance-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-appearance mw-ui-icon-wikimedia-appearance"></span>
+
+<span class="vector-dropdown-label-text">Appearance</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+			<div id="vector-appearance-unpinned-container" class="vector-unpinned-container">
+				
+			</div>
+		
+	</div>
+</div>
+
+	</nav>
+	
+<div id="p-vector-user-menu-notifications" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-overflow" class="vector-menu mw-portlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="pt-sitesupport-2" class="user-links-collapsible-item mw-list-item user-links-collapsible-item"><a data-mw="interface" href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" class=""><span>Donate</span></a>
+</li>
+<li id="pt-createaccount-2" class="user-links-collapsible-item mw-list-item user-links-collapsible-item"><a data-mw="interface" href="/w/index.php?title=Special:CreateAccount&amp;returnto=Spectroelectrochemistry" title="You are encouraged to create an account and log in; however, it is not mandatory" class=""><span>Create account</span></a>
+</li>
+<li id="pt-login-2" class="user-links-collapsible-item mw-list-item user-links-collapsible-item"><a data-mw="interface" href="/w/index.php?title=Special:UserLogin&amp;returnto=Spectroelectrochemistry" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o" class=""><span>Log in</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	</div>
+	
+<div id="vector-user-links-dropdown" class="vector-dropdown vector-user-menu vector-button-flush-right vector-user-menu-logged-out"  title="Log in and more options" >
+	<input type="checkbox" id="vector-user-links-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-user-links-dropdown" class="vector-dropdown-checkbox "  aria-label="Personal tools"  >
+	<label id="vector-user-links-dropdown-label" for="vector-user-links-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-ellipsis mw-ui-icon-wikimedia-ellipsis"></span>
+
+<span class="vector-dropdown-label-text">Personal tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+		
+<div id="p-personal" class="vector-menu mw-portlet mw-portlet-personal user-links-collapsible-item"  title="User menu" >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="pt-sitesupport" class="user-links-collapsible-item mw-list-item"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en"><span>Donate</span></a></li><li id="pt-createaccount" class="user-links-collapsible-item mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Spectroelectrochemistry" title="You are encouraged to create an account and log in; however, it is not mandatory"><span class="vector-icon mw-ui-icon-userAdd mw-ui-icon-wikimedia-userAdd"></span> <span>Create account</span></a></li><li id="pt-login" class="user-links-collapsible-item mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Spectroelectrochemistry" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o"><span class="vector-icon mw-ui-icon-logIn mw-ui-icon-wikimedia-logIn"></span> <span>Log in</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-user-menu-anon-editor" class="vector-menu mw-portlet mw-portlet-user-menu-anon-editor"  >
+	<div class="vector-menu-heading">
+		Pages for logged out editors <a href="/wiki/Help:Introduction" aria-label="Learn more about editing"><span>learn more</span></a>
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y"><span>Contributions</span></a></li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n"><span>Talk</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+	</div>
+</div>
+
+</nav>
+
+		</div>
+	</header>
+</div>
+<div class="mw-page-container">
+	<div class="mw-page-container-inner">
+		<div class="vector-sitenotice-container">
+			<div id="siteNotice"><!-- CentralNotice --></div>
+		</div>
+		<div class="vector-column-start">
+			<div class="vector-main-menu-container">
+		<div id="mw-navigation">
+			<nav id="mw-panel" class="vector-main-menu-landmark" aria-label="Site">
+				<div id="vector-main-menu-pinned-container" class="vector-pinned-container">
+				
+				</div>
+		</nav>
+		</div>
+	</div>
+	<div class="vector-sticky-pinned-container">
+				<nav id="mw-panel-toc" aria-label="Contents" data-event-name="ui.sidebar-toc" class="mw-table-of-contents-container vector-toc-landmark">
+					<div id="vector-toc-pinned-container" class="vector-pinned-container">
+					<div id="vector-toc" class="vector-toc vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-toc-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="toc-pinned"
+	data-pinnable-element-id="vector-toc"
+	
+	
+>
+	<h2 class="vector-pinnable-header-label">Contents</h2>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-toc.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-toc.unpin">hide</button>
+</div>
+
+
+	<ul class="vector-toc-contents" id="mw-panel-toc-list">
+		<li id="toc-mw-content-text"
+			class="vector-toc-list-item vector-toc-level-1">
+			<a href="#" class="vector-toc-link">
+				<div class="vector-toc-text">(Top)</div>
+			</a>
+		</li>
+		<li id="toc-Classification_of_spectroelectrochemical_techniques"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#Classification_of_spectroelectrochemical_techniques">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">1</span>
+				<span>Classification of spectroelectrochemical techniques</span>
+			</div>
+		</a>
+		
+			<button aria-controls="toc-Classification_of_spectroelectrochemical_techniques-sublist" class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-toc-toggle">
+				<span class="vector-icon mw-ui-icon-wikimedia-expand"></span>
+				<span>Toggle Classification of spectroelectrochemical techniques subsection</span>
+			</button>
+		
+		<ul id="toc-Classification_of_spectroelectrochemical_techniques-sublist" class="vector-toc-list">
+			<li id="toc-Ultraviolet-visible_absorption_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Ultraviolet-visible_absorption_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.1</span>
+					<span>Ultraviolet-visible absorption spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Ultraviolet-visible_absorption_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Photoluminescence_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Photoluminescence_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.2</span>
+					<span>Photoluminescence spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Photoluminescence_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Infrared_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Infrared_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.3</span>
+					<span>Infrared spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Infrared_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Raman_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Raman_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.4</span>
+					<span>Raman spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Raman_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-X-ray_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#X-ray_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.5</span>
+					<span>X-ray spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-X-ray_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Nuclear_magnetic_resonance_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Nuclear_magnetic_resonance_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.6</span>
+					<span>Nuclear magnetic resonance spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Nuclear_magnetic_resonance_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+		<li id="toc-Electron_paramagnetic_resonance_spectroelectrochemistry"
+			class="vector-toc-list-item vector-toc-level-2">
+			<a class="vector-toc-link" href="#Electron_paramagnetic_resonance_spectroelectrochemistry">
+				<div class="vector-toc-text">
+					<span class="vector-toc-numb">1.7</span>
+					<span>Electron paramagnetic resonance spectroelectrochemistry</span>
+				</div>
+			</a>
+			
+			<ul id="toc-Electron_paramagnetic_resonance_spectroelectrochemistry-sublist" class="vector-toc-list">
+			</ul>
+		</li>
+	</ul>
+	</li>
+	<li id="toc-Advantages_and_applications"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#Advantages_and_applications">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">2</span>
+				<span>Advantages and applications</span>
+			</div>
+		</a>
+		
+		<ul id="toc-Advantages_and_applications-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+	<li id="toc-References"
+		class="vector-toc-list-item vector-toc-level-1 vector-toc-list-item-expanded">
+		<a class="vector-toc-link" href="#References">
+			<div class="vector-toc-text">
+				<span class="vector-toc-numb">3</span>
+				<span>References</span>
+			</div>
+		</a>
+		
+		<ul id="toc-References-sublist" class="vector-toc-list">
+		</ul>
+	</li>
+</ul>
+</div>
+
+					</div>
+		</nav>
+			</div>
+		</div>
+		<div class="mw-content-container">
+			<main id="content" class="mw-body">
+				<header class="mw-body-header vector-page-titlebar">
+					<nav aria-label="Contents" class="vector-toc-landmark">
+						
+<div id="vector-page-titlebar-toc" class="vector-dropdown vector-page-titlebar-toc vector-button-flush-left"  >
+	<input type="checkbox" id="vector-page-titlebar-toc-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-titlebar-toc" class="vector-dropdown-checkbox "  aria-label="Toggle the table of contents"  >
+	<label id="vector-page-titlebar-toc-label" for="vector-page-titlebar-toc-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-listBullet mw-ui-icon-wikimedia-listBullet"></span>
+
+<span class="vector-dropdown-label-text">Toggle the table of contents</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+							<div id="vector-page-titlebar-toc-unpinned-container" class="vector-unpinned-container">
+			</div>
+		
+	</div>
+</div>
+
+					</nav>
+					<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">Spectroelectrochemistry</span></h1>
+							
+<div id="p-lang-btn" class="vector-dropdown mw-portlet mw-portlet-lang"  >
+	<input type="checkbox" id="p-lang-btn-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-p-lang-btn" class="vector-dropdown-checkbox mw-interlanguage-selector" aria-label="Go to an article in another language. Available in 1 language"   >
+	<label id="p-lang-btn-label" for="p-lang-btn-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--action-progressive mw-portlet-lang-heading-1" aria-hidden="true"  ><span class="vector-icon mw-ui-icon-language-progressive mw-ui-icon-wikimedia-language-progressive"></span>
+
+<span class="vector-dropdown-label-text">1 language</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+		<div class="vector-menu-content">
+			
+			<ul class="vector-menu-content-list">
+				
+				<li class="interlanguage-link interwiki-es mw-list-item"><a href="https://es.wikipedia.org/wiki/Espectroelectroqu%C3%ADmica" title="Espectroelectroquímica – Spanish" lang="es" hreflang="es" data-title="Espectroelectroquímica" data-language-autonym="Español" data-language-local-name="Spanish" class="interlanguage-link-target"><span>Español</span></a></li>
+			</ul>
+			<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q96212237#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+		</div>
+
+	</div>
+</div>
+</header>
+				<div class="vector-page-toolbar">
+					<div class="vector-page-toolbar-container">
+						<div id="left-navigation">
+							<nav aria-label="Namespaces">
+								
+<div id="p-associated-pages" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-associated-pages"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-nstab-main" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/Spectroelectrochemistry" title="View the content page [c]" accesskey="c"><span>Article</span></a></li><li id="ca-talk" class="vector-tab-noicon mw-list-item"><a href="/wiki/Talk:Spectroelectrochemistry" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t"><span>Talk</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+								
+<div id="vector-variants-dropdown" class="vector-dropdown emptyPortlet"  >
+	<input type="checkbox" id="vector-variants-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-variants-dropdown" class="vector-dropdown-checkbox " aria-label="Change language variant"   >
+	<label id="vector-variants-dropdown-label" for="vector-variants-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">English</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+					
+<div id="p-variants" class="vector-menu mw-portlet mw-portlet-variants emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+						<div id="right-navigation" class="vector-collapsible">
+							<nav aria-label="Views">
+								
+<div id="p-views" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-views"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-view" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/Spectroelectrochemistry"><span>Read</span></a></li><li id="ca-edit" class="vector-tab-noicon mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-history" class="vector-tab-noicon mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=history" title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+							</nav>
+				
+							<nav class="vector-page-tools-landmark" aria-label="Page tools">
+								
+<div id="vector-page-tools-dropdown" class="vector-dropdown vector-page-tools-dropdown"  >
+	<input type="checkbox" id="vector-page-tools-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-tools-dropdown" class="vector-dropdown-checkbox "  aria-label="Tools"  >
+	<label id="vector-page-tools-dropdown-label" for="vector-page-tools-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">Tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+									<div id="vector-page-tools-unpinned-container" class="vector-unpinned-container">
+						
+<div id="vector-page-tools" class="vector-page-tools vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-page-tools-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="page-tools-pinned"
+	data-pinnable-element-id="vector-page-tools"
+	data-pinned-container-id="vector-page-tools-pinned-container"
+	data-unpinned-container-id="vector-page-tools-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Tools</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-page-tools.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-page-tools.unpin">hide</button>
+</div>
+
+	
+<div id="p-cactions" class="vector-menu mw-portlet mw-portlet-cactions emptyPortlet vector-has-collapsible-items"  title="More options" >
+	<div class="vector-menu-heading">
+		Actions
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-more-view" class="selected vector-more-collapsible-item mw-list-item"><a href="/wiki/Spectroelectrochemistry"><span>Read</span></a></li><li id="ca-more-edit" class="vector-more-collapsible-item mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-more-history" class="vector-more-collapsible-item mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=history"><span>View history</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-tb" class="vector-menu mw-portlet mw-portlet-tb"  >
+	<div class="vector-menu-heading">
+		General
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Spectroelectrochemistry" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Spectroelectrochemistry" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q"><span>Special pages</span></a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;oldid=1250267418" title="Permanent link to this revision of this page"><span>Permanent link</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-cite" class="mw-list-item"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Spectroelectrochemistry&amp;id=1250267418&amp;wpFormIdentifier=titleform" title="Information on how to cite this page"><span>Cite this page</span></a></li><li id="t-urlshortener" class="mw-list-item"><a href="/w/index.php?title=Special:UrlShortener&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSpectroelectrochemistry"><span>Get shortened URL</span></a></li><li id="t-urlshortener-qrcode" class="mw-list-item"><a href="/w/index.php?title=Special:QrCode&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSpectroelectrochemistry"><span>Download QR code</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-coll-print_export" class="vector-menu mw-portlet mw-portlet-coll-print_export"  >
+	<div class="vector-menu-heading">
+		Print/export
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="coll-download-as-rl" class="mw-list-item"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=Spectroelectrochemistry&amp;action=show-download-screen" title="Download this page as a PDF file"><span>Download as PDF</span></a></li><li id="t-print" class="mw-list-item"><a href="/w/index.php?title=Spectroelectrochemistry&amp;printable=yes" title="Printable version of this page [p]" accesskey="p"><span>Printable version</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-wikibase-otherprojects" class="vector-menu mw-portlet mw-portlet-wikibase-otherprojects"  >
+	<div class="vector-menu-heading">
+		In other projects
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-wikibase" class="wb-otherproject-link wb-otherproject-wikibase-dataitem mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q96212237" title="Structured data on this page hosted by Wikidata [g]" accesskey="g"><span>Wikidata item</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+									</div>
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="vector-column-end">
+					<div class="vector-sticky-pinned-container">
+						<nav class="vector-page-tools-landmark" aria-label="Page tools">
+							<div id="vector-page-tools-pinned-container" class="vector-pinned-container">
+				
+							</div>
+		</nav>
+						<nav class="vector-appearance-landmark" aria-label="Appearance">
+							<div id="vector-appearance-pinned-container" class="vector-pinned-container">
+				<div id="vector-appearance" class="vector-appearance vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-appearance-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="appearance-pinned"
+	data-pinnable-element-id="vector-appearance"
+	data-pinned-container-id="vector-appearance-pinned-container"
+	data-unpinned-container-id="vector-appearance-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Appearance</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-appearance.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-appearance.unpin">hide</button>
+</div>
+
+
+</div>
+
+							</div>
+		</nav>
+					</div>
+				</div>
+				<div id="bodyContent" class="vector-body" aria-labelledby="firstHeading" data-mw-ve-target-container>
+					<div class="vector-body-before-content">
+							<div class="mw-indicators">
+		</div>
+
+						<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+					</div>
+					<div id="contentSub"><div id="mw-content-subtitle"></div></div>
+					
+					
+					<div id="mw-content-text" class="mw-body-content"><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p class="mw-empty-elt">
+</p>
+<figure class="mw-halign-right" typeof="mw:File/Thumb"><a href="/wiki/File:Tipos_SEC.png" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tipos_SEC.png/450px-Tipos_SEC.png" decoding="async" width="450" height="253" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tipos_SEC.png/675px-Tipos_SEC.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Tipos_SEC.png/900px-Tipos_SEC.png 2x" data-file-width="2000" data-file-height="1125" /></a><figcaption>Spectroscopic and electrochemical techniques that form the spectroelectrochemistry</figcaption></figure>
+<p><b>Spectroelectrochemistry</b> (<b>SEC</b>) is a set of multi-response analytical techniques in which complementary chemical information (<a href="/wiki/Electrochemical" class="mw-redirect" title="Electrochemical">electrochemical</a> and <a href="/wiki/Spectroscopic" class="mw-redirect" title="Spectroscopic">spectroscopic</a>) is obtained in a single experiment. Spectroelectrochemistry provides a whole vision of the phenomena that take place in the electrode process.<sup id="cite_ref-Uno_1-0" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Dos_2-0" class="reference"><a href="#cite_note-Dos-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Tres_3-0" class="reference"><a href="#cite_note-Tres-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Cuatro_4-0" class="reference"><a href="#cite_note-Cuatro-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Cinco_5-0" class="reference"><a href="#cite_note-Cinco-5"><span class="cite-bracket">&#91;</span>5<span class="cite-bracket">&#93;</span></a></sup> The first spectroelectrochemical experiment was carried out by <a href="/wiki/Theodore_Kuwana" title="Theodore Kuwana">Theodore Kuwana</a>, PhD, in 1964.<sup id="cite_ref-Seis_6-0" class="reference"><a href="#cite_note-Seis-6"><span class="cite-bracket">&#91;</span>6<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The main objective of spectroelectrochemical experiments is to obtain simultaneous, time-resolved and in-situ <a href="/wiki/Electrochemical" class="mw-redirect" title="Electrochemical">electrochemical</a> and <a href="/wiki/Spectroscopic" class="mw-redirect" title="Spectroscopic">spectroscopic</a> information on reactions taking place on the electrode surface.<sup id="cite_ref-Uno_1-1" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> The base of the technique consist in studying the interaction of a beam of <a href="/wiki/Electromagnetic_radiation" title="Electromagnetic radiation">electromagnetic radiation</a> with the compounds involved in these reactions. The changes of the optical and electrical signal allow us to understand the evolution of the electrode process. 
+</p><p>The techniques on which the spectroelectrochemistry is based are:
+</p>
+<ul><li><b><a href="/wiki/Electrochemistry" title="Electrochemistry">Electrochemistry</a></b>, which studies the interaction between electrical energy and chemical changes. This technique allows us to analyse reactions that involve electron transfer processes (<a href="/wiki/Redox" title="Redox">redox</a> reactions).<sup id="cite_ref-Siete_7-0" class="reference"><a href="#cite_note-Siete-7"><span class="cite-bracket">&#91;</span>7<span class="cite-bracket">&#93;</span></a></sup></li></ul>
+<ul><li><b><a href="/wiki/Spectroscopy" title="Spectroscopy">Spectroscopy</a></b>, which studies the interaction between <a href="/wiki/Electromagnetic_radiation" title="Electromagnetic radiation">electromagnetic radiation</a> and matter (absorption, dispersion or emission).<sup id="cite_ref-Ocho_8-0" class="reference"><a href="#cite_note-Ocho-8"><span class="cite-bracket">&#91;</span>8<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Nueve_9-0" class="reference"><a href="#cite_note-Nueve-9"><span class="cite-bracket">&#91;</span>9<span class="cite-bracket">&#93;</span></a></sup></li></ul>
+<p>Spectroelectrochemistry provides molecular, <a href="/wiki/Thermodynamic" class="mw-redirect" title="Thermodynamic">thermodynamic</a> and <a href="/wiki/Kinetic_energy" title="Kinetic energy">kinetic</a> information of reagents, products and/or intermediates involved in the electron transfer process.<sup id="cite_ref-Uno_1-2" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Dos_2-1" class="reference"><a href="#cite_note-Dos-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Tres_3-1" class="reference"><a href="#cite_note-Tres-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Cuatro_4-1" class="reference"><a href="#cite_note-Cuatro-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Cinco_5-1" class="reference"><a href="#cite_note-Cinco-5"><span class="cite-bracket">&#91;</span>5<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<meta property="mw:PageProp/toc" />
+<div class="mw-heading mw-heading2"><h2 id="Classification_of_spectroelectrochemical_techniques">Classification of spectroelectrochemical techniques</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=1" title="Edit section: Classification of spectroelectrochemical techniques"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>There are different <b>spectroelectrochemical techniques</b> based on the combination of spectroscopic and electrochemical techniques. Regarding electrochemistry, the most common techniques used are:
+</p>
+<ul><li><b><a href="/wiki/Chronoamperometry" title="Chronoamperometry">Chronoamperometry</a></b>, which measures current intensity as a function of time by applying a constant difference of potential to the working electrode.</li></ul>
+<ul><li><b><a href="/wiki/Chronopotentiometry" class="mw-redirect" title="Chronopotentiometry">Chronopotentiometry</a></b>, which measures the difference of potential as a function of time by applying a constant current.</li></ul>
+<ul><li><b><a href="/wiki/Voltammetry" title="Voltammetry">Voltammetry</a></b>, which measures the change of current as a function of the linear change of the working electrode potential.</li></ul>
+<ul><li><b>Pulse techniques</b>, which measure the change of current as a function of difference of potential, applying pulse potential functions to the working electrode.</li></ul>
+<p>The general classification of the spectroelectrochemical techniques is based on the spectroscopic technique chosen.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Ultraviolet-visible_absorption_spectroelectrochemistry">Ultraviolet-visible absorption spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=2" title="Edit section: Ultraviolet-visible absorption spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><a href="/wiki/UV-Vis_absorption_spectroelectrochemistry" title="UV-Vis absorption spectroelectrochemistry"><b>Ultraviolet-visible</b>(<b>UV-Vis</b>) <b>absorption</b> spectroelectrochemistry</a> is a technique that studies the absorption of <a href="/wiki/Electromagnetic_radiation" title="Electromagnetic radiation">electromagnetic radiation</a> in the UV-Vis regions of the spectrum, providing molecular information related to the electronic levels of molecules.<sup id="cite_ref-Diez_10-0" class="reference"><a href="#cite_note-Diez-10"><span class="cite-bracket">&#91;</span>10<span class="cite-bracket">&#93;</span></a></sup> It provides qualitative as well as quantitative information. UV-Vis spectroelectrochemistry helps to characterize compounds and materials, determines concentrations and different parameters such as absorptivity coefficients, diffusion coefficients, formal potentials or electron transfer rates.<sup id="cite_ref-Once_11-0" class="reference"><a href="#cite_note-Once-11"><span class="cite-bracket">&#91;</span>11<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Doce_12-0" class="reference"><a href="#cite_note-Doce-12"><span class="cite-bracket">&#91;</span>12<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Photoluminescence_spectroelectrochemistry">Photoluminescence spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=3" title="Edit section: Photoluminescence spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b><a href="/wiki/Photoluminescence" title="Photoluminescence">Photoluminescence</a></b> (PL) is a phenomenon related to the ability of some compounds that, after absorbing specific <a href="/wiki/Electromagnetic_radiation" title="Electromagnetic radiation">electromagnetic radiation</a>, relax to a lower energy state through emission of <a href="/wiki/Photons" class="mw-redirect" title="Photons">photons</a>. This spectroelectrochemical technique is limited to those compounds with <a href="/wiki/Fluorescent" class="mw-redirect" title="Fluorescent">fluorescent</a> or <a href="/wiki/Luminescent" class="mw-redirect" title="Luminescent">luminescent</a> properties. The experiments are strongly interfered by <a href="/wiki/Available_light" title="Available light">ambient light</a>.<sup id="cite_ref-Uno_1-3" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> This technique provides structural information and quantitative information with great <a href="/wiki/Detection_limit" title="Detection limit">detection limits</a>.<sup id="cite_ref-Ocho_8-1" class="reference"><a href="#cite_note-Ocho-8"><span class="cite-bracket">&#91;</span>8<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Infrared_spectroelectrochemistry">Infrared spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=4" title="Edit section: Infrared spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b><a href="/wiki/Infrared_spectroscopy" title="Infrared spectroscopy">Infrared spectroscopy</a></b> is based on the fact that molecules absorb <a href="/wiki/Electromagnetic_radiation" title="Electromagnetic radiation">electromagnetic radiation</a> at characteristic frequencies related to their vibrational structure. <a href="/wiki/Infrared" title="Infrared">Infrared</a> (IR) spectroelectrochemistry is a technique that allows the characterization of molecules based on the resistance, stiffness and number of bonds present. It also detects the presence of compounds, determines the concentration of species during a reaction, the structure of compounds, the properties of the chemical bonds, etc.<sup id="cite_ref-Diez_10-1" class="reference"><a href="#cite_note-Diez-10"><span class="cite-bracket">&#91;</span>10<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Raman_spectroelectrochemistry">Raman spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=5" title="Edit section: Raman spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b>Raman spectroelectrochemistry</b> is based on the <a href="/wiki/Inelastic_scattering" title="Inelastic scattering">inelastic scattering</a> or <a href="/wiki/Raman_scattering" title="Raman scattering">Raman scattering</a> of <a href="/wiki/Monochromatic_light" class="mw-redirect" title="Monochromatic light">monochromatic light</a> when it strikes upon a specific molecule, providing information about vibrational energy of that molecule. Raman spectrum provides highly specific information about the structure and composition of the molecules, such as a true fingerprint of them.<sup id="cite_ref-Uno_1-4" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> It has been extensively used to study single wall carbon nanotubes<sup id="cite_ref-13" class="reference"><a href="#cite_note-13"><span class="cite-bracket">&#91;</span>13<span class="cite-bracket">&#93;</span></a></sup> and graphene.<sup id="cite_ref-14" class="reference"><a href="#cite_note-14"><span class="cite-bracket">&#91;</span>14<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="X-ray_spectroelectrochemistry">X-ray spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=6" title="Edit section: X-ray spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b>X-ray spectroelectrochemistry</b> is a technique that studies the interaction of high-energy radiation with matter during an electrode process. <a href="/wiki/X-rays" class="mw-redirect" title="X-rays">X-rays</a> can originate absorption, emission or scattering phenomena, allowing to perform both quantitative and qualitative analysis depending on the phenomenon taking place.<sup id="cite_ref-Ocho_8-2" class="reference"><a href="#cite_note-Ocho-8"><span class="cite-bracket">&#91;</span>8<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Nueve_9-1" class="reference"><a href="#cite_note-Nueve-9"><span class="cite-bracket">&#91;</span>9<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Diez_10-2" class="reference"><a href="#cite_note-Diez-10"><span class="cite-bracket">&#91;</span>10<span class="cite-bracket">&#93;</span></a></sup> All these processes involve <a href="/wiki/Electronic_transition" class="mw-redirect" title="Electronic transition">electronic transitions</a> in the inner layers of the atoms involved. Particularly, it is interesting to study the processes of <a href="/wiki/Radiation" title="Radiation">radiation</a>, <a href="/wiki/Absorption_(chemistry)" title="Absorption (chemistry)">absorption</a> and <a href="/wiki/Emission_spectrum" title="Emission spectrum">emission</a> that take place during an electron transfer reaction. In these processes, the promotion or relaxation of an electron can occur between an outer shell and an inner shell of the atom.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Nuclear_magnetic_resonance_spectroelectrochemistry">Nuclear magnetic resonance spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=7" title="Edit section: Nuclear magnetic resonance spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b><a href="/wiki/Nuclear_magnetic_resonance" title="Nuclear magnetic resonance">Nuclear magnetic resonance</a></b> (NMR) is a technique used to obtain physical, chemical, electronic and structural information about molecules due to the chemical shift of the resonance frequencies of nuclear <a href="/wiki/Spins" title="Spins">spins</a> in the sample. Its combination with electrochemical techniques can provide detailed and quantitative information about the functional groups, topology, dynamics and the three-dimensional structure of molecules in solution during a charge transfer process. The area under an <a href="/wiki/NMR" class="mw-redirect" title="NMR">NMR</a> peak is related to the ratio of the number of turns involved and the peak integrals to determine the composition quantitatively. 
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Electron_paramagnetic_resonance_spectroelectrochemistry">Electron paramagnetic resonance spectroelectrochemistry</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=8" title="Edit section: Electron paramagnetic resonance spectroelectrochemistry"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b><a href="/wiki/Electron_paramagnetic_resonance" title="Electron paramagnetic resonance">Electron paramagnetic resonance</a></b> (EPR) is a technique that allows the detection of <a href="/wiki/Free_radicals" class="mw-redirect" title="Free radicals">free radicals</a> formed in chemical or biological systems. In addition, it studies the symmetry and <a href="/wiki/Electron_configuration" title="Electron configuration">electronic distribution</a> of <a href="/wiki/Paramagnetic" class="mw-redirect" title="Paramagnetic">paramagnetic</a> ions. This is a highly specific technique because the magnetic parameters are characteristic of each ion or <a href="/wiki/Free_radical" class="mw-redirect" title="Free radical">free radical</a>.<sup id="cite_ref-Trece_15-0" class="reference"><a href="#cite_note-Trece-15"><span class="cite-bracket">&#91;</span>15<span class="cite-bracket">&#93;</span></a></sup> The physical principles of this technique are analogous to those of <a href="/wiki/NMR" class="mw-redirect" title="NMR">NMR</a>, but in the case of <a href="/wiki/Electron_paramagnetic_resonance" title="Electron paramagnetic resonance">EPR</a>, electronic spins are excited instead of nuclear, that is interesting in certain electrode reactions.
+</p>
+ <figure class="mw-halign-center" typeof="mw:File/Thumb"><a href="/wiki/File:Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png" class="mw-file-description"><img src="//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png/400px-Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png" decoding="async" width="400" height="278" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png/600px-Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png/800px-Andrea_Santiuste_Lydia_Garc%C3%ADa_Cristina_Moreno.png 2x" data-file-width="1633" data-file-height="1135" /></a><figcaption>Screen-printed electrode with some of the different types of SEC measurements (absorption, emission, Raman scattering). The figure shows a system of three electrodes: the central disc, corresponding to the working electrode; the semicircle with the largest arc, corresponding to the auxiliary or counter electrode; and the semicircle with the smallest arc, the reference electrode. </figcaption></figure>
+<div class="mw-heading mw-heading2"><h2 id="Advantages_and_applications">Advantages and applications</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=9" title="Edit section: Advantages and applications"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The versatility of spectroelectrochemistry is increasing due to the possibility of using several <a href="/wiki/Electrochemical" class="mw-redirect" title="Electrochemical">electrochemical</a> techniques in different spectral regions depending on the purpose of the study and the information of interest.<sup id="cite_ref-Doce_12-1" class="reference"><a href="#cite_note-Doce-12"><span class="cite-bracket">&#91;</span>12<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The main advantages of spectroelectrochemical techniques are:
+</p>
+<ul><li>The simultaneous information is obtained by different techniques in a single experiment, increasing the selectivity and the sensitivity.</li></ul>
+<ul><li>Both qualitative and quantitative information can be obtained.</li></ul>
+<ul><li>The possibility of working with a small amount of sample, saving it for future analysis.<sup id="cite_ref-Uno_1-5" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup></li></ul>
+<p>Due to the high versatility of the technique, the field of applications is considerably wide.<sup id="cite_ref-Uno_1-6" class="reference"><a href="#cite_note-Uno-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Dos_2-2" class="reference"><a href="#cite_note-Dos-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Tres_3-2" class="reference"><a href="#cite_note-Tres-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Cuatro_4-2" class="reference"><a href="#cite_note-Cuatro-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Cinco_5-2" class="reference"><a href="#cite_note-Cinco-5"><span class="cite-bracket">&#91;</span>5<span class="cite-bracket">&#93;</span></a></sup><sup id="cite_ref-Catorce_16-0" class="reference"><a href="#cite_note-Catorce-16"><span class="cite-bracket">&#91;</span>16<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<ul><li>Study of <a href="/wiki/Reaction_mechanism" title="Reaction mechanism">reaction mechanisms</a>, where the <a href="/wiki/Oxidation_and_reduction" class="mw-redirect" title="Oxidation and reduction">oxidation and reduction</a> of the species involved in the reaction can be observed, as well as the generation of <a href="/wiki/Reaction_intermediates" class="mw-redirect" title="Reaction intermediates">reaction intermediates</a>.</li></ul>
+<ul><li>Characterization of organic and inorganic materials, that allow to understand the structure and properties of the material when is perturbed by a signal (electric, light, etc.).</li></ul>
+<ul><li>Development of spectroelectrochemical sensors, which are based on optical and electrical responses, capable of providing two independent signals about the same sample and offering a self-validated determination.</li></ul>
+<ul><li>Study of <a href="/wiki/Catalysts" class="mw-redirect" title="Catalysts">catalysts</a>, obtaining relationships between the <a href="/wiki/Electrochemical" class="mw-redirect" title="Electrochemical">electrochemical</a> and <a href="/wiki/Spectroscopic" class="mw-redirect" title="Spectroscopic">spectroscopic</a> properties and their photochemical and photophysical behaviour.</li></ul>
+<ul><li>Study different processes and molecules in biotechnology, biochemistry or medicine.</li></ul>
+<ul><li>Determine specific properties and characteristics of new materials in fields such as energy or <a href="/wiki/Nanotechnology" title="Nanotechnology">nanotechnology</a>.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="References">References</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Spectroelectrochemistry&amp;action=edit&amp;section=10" title="Edit section: References"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<style data-mw-deduplicate="TemplateStyles:r1239543626">.mw-parser-output .reflist{margin-bottom:0.5em;list-style-type:decimal}@media screen{.mw-parser-output .reflist{font-size:90%}}.mw-parser-output .reflist .references{font-size:100%;margin-bottom:0;list-style-type:inherit}.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}.mw-parser-output .reflist-columns{margin-top:0.3em}.mw-parser-output .reflist-columns ol{margin-top:0}.mw-parser-output .reflist-columns li{page-break-inside:avoid;break-inside:avoid-column}.mw-parser-output .reflist-upper-alpha{list-style-type:upper-alpha}.mw-parser-output .reflist-upper-roman{list-style-type:upper-roman}.mw-parser-output .reflist-lower-alpha{list-style-type:lower-alpha}.mw-parser-output .reflist-lower-greek{list-style-type:lower-greek}.mw-parser-output .reflist-lower-roman{list-style-type:lower-roman}</style><div class="reflist">
+<div class="mw-references-wrap mw-references-columns"><ol class="references">
+<li id="cite_note-Uno-1"><span class="mw-cite-backlink">^ <a href="#cite_ref-Uno_1-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Uno_1-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Uno_1-2"><sup><i><b>c</b></i></sup></a> <a href="#cite_ref-Uno_1-3"><sup><i><b>d</b></i></sup></a> <a href="#cite_ref-Uno_1-4"><sup><i><b>e</b></i></sup></a> <a href="#cite_ref-Uno_1-5"><sup><i><b>f</b></i></sup></a> <a href="#cite_ref-Uno_1-6"><sup><i><b>g</b></i></sup></a></span> <span class="reference-text"><style data-mw-deduplicate="TemplateStyles:r1238218222">.mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#d33)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#d33)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}}</style><cite id="CITEREFGaroz-RuizPerales-RondonHerasColina2019" class="citation journal cs1">Garoz-Ruiz, Jesus; Perales-Rondon, Juan Victor; Heras, Aranzazu; Colina, Alvaro (5 April 2019). "Spectroelectrochemical Sensing: Current Trends and Challenges". <i>Electroanalysis</i>. <b>31</b> (7): 1254–1278. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1002%2Felan.201900075">10.1002/elan.201900075</a>. <a href="/wiki/Hdl_(identifier)" class="mw-redirect" title="Hdl (identifier)">hdl</a>:<span class="id-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://hdl.handle.net/10259%2F6122">10259/6122</a></span>. <a href="/wiki/S2CID_(identifier)" class="mw-redirect" title="S2CID (identifier)">S2CID</a>&#160;<a rel="nofollow" class="external text" href="https://api.semanticscholar.org/CorpusID:133304199">133304199</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Electroanalysis&amp;rft.atitle=Spectroelectrochemical+Sensing%3A+Current+Trends+and+Challenges&amp;rft.volume=31&amp;rft.issue=7&amp;rft.pages=1254-1278&amp;rft.date=2019-04-05&amp;rft_id=info%3Ahdl%2F10259%2F6122&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A133304199%23id-name%3DS2CID&amp;rft_id=info%3Adoi%2F10.1002%2Felan.201900075&amp;rft.aulast=Garoz-Ruiz&amp;rft.aufirst=Jesus&amp;rft.au=Perales-Rondon%2C+Juan+Victor&amp;rft.au=Heras%2C+Aranzazu&amp;rft.au=Colina%2C+Alvaro&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Dos-2"><span class="mw-cite-backlink">^ <a href="#cite_ref-Dos_2-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Dos_2-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Dos_2-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFKeyesForster2007" class="citation book cs1">Keyes, Tia E.; Forster, Robert J. (2007). <i>Handbook of electrochemistry</i> (1st&#160;ed.). Amsterdam, Netherlands: Elsevier. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/9780444519580" title="Special:BookSources/9780444519580"><bdi>9780444519580</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Handbook+of+electrochemistry&amp;rft.place=Amsterdam%2C+Netherlands&amp;rft.edition=1st&amp;rft.pub=Elsevier&amp;rft.date=2007&amp;rft.isbn=9780444519580&amp;rft.aulast=Keyes&amp;rft.aufirst=Tia+E.&amp;rft.au=Forster%2C+Robert+J.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Tres-3"><span class="mw-cite-backlink">^ <a href="#cite_ref-Tres_3-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Tres_3-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Tres_3-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFKaimFiedler2009" class="citation journal cs1">Kaim, Wolfgang; Fiedler, Jan (2009). "Spectroelectrochemistry: the best of two worlds". <i>Chemical Society Reviews</i>. <b>38</b> (12): 3373–3382. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1039%2Fb504286k">10.1039/b504286k</a>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/20449056">20449056</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Chemical+Society+Reviews&amp;rft.atitle=Spectroelectrochemistry%3A+the+best+of+two+worlds&amp;rft.volume=38&amp;rft.issue=12&amp;rft.pages=3373-3382&amp;rft.date=2009&amp;rft_id=info%3Adoi%2F10.1039%2Fb504286k&amp;rft_id=info%3Apmid%2F20449056&amp;rft.aulast=Kaim&amp;rft.aufirst=Wolfgang&amp;rft.au=Fiedler%2C+Jan&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Cuatro-4"><span class="mw-cite-backlink">^ <a href="#cite_ref-Cuatro_4-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Cuatro_4-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Cuatro_4-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFLozemanFührerOlthuisOdijk2020" class="citation journal cs1">Lozeman, Jasper J. A.; Führer, Pascal; Olthuis, Wouter; Odijk, Mathieu (2020). <a rel="nofollow" class="external text" href="https://doi.org/10.1039%2Fc9an02105a">"Spectroelectrochemistry, the future of visualizing electrode processes by hyphenating electrochemistry with spectroscopic techniques"</a>. <i>The Analyst</i>. <b>145</b> (7): 2482–2509. <a href="/wiki/Bibcode_(identifier)" class="mw-redirect" title="Bibcode (identifier)">Bibcode</a>:<a rel="nofollow" class="external text" href="https://ui.adsabs.harvard.edu/abs/2020Ana...145.2482L">2020Ana...145.2482L</a>. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<span class="id-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://doi.org/10.1039%2Fc9an02105a">10.1039/c9an02105a</a></span>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/31998878">31998878</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=The+Analyst&amp;rft.atitle=Spectroelectrochemistry%2C+the+future+of+visualizing+electrode+processes+by+hyphenating+electrochemistry+with+spectroscopic+techniques&amp;rft.volume=145&amp;rft.issue=7&amp;rft.pages=2482-2509&amp;rft.date=2020&amp;rft_id=info%3Apmid%2F31998878&amp;rft_id=info%3Adoi%2F10.1039%2Fc9an02105a&amp;rft_id=info%3Abibcode%2F2020Ana...145.2482L&amp;rft.aulast=Lozeman&amp;rft.aufirst=Jasper+J.+A.&amp;rft.au=F%C3%BChrer%2C+Pascal&amp;rft.au=Olthuis%2C+Wouter&amp;rft.au=Odijk%2C+Mathieu&amp;rft_id=https%3A%2F%2Fdoi.org%2F10.1039%252Fc9an02105a&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Cinco-5"><span class="mw-cite-backlink">^ <a href="#cite_ref-Cinco_5-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Cinco_5-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Cinco_5-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFZhaiZhuZhouZhu2018" class="citation journal cs1">Zhai, Yanling; Zhu, Zhijun; Zhou, Susan; Zhu, Chengzhou; Dong, Shaojun (2018). "Recent advances in spectroelectrochemistry". <i>Nanoscale</i>. <b>10</b> (7): 3089–3111. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1039%2Fc7nr07803j">10.1039/c7nr07803j</a>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/29379916">29379916</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Nanoscale&amp;rft.atitle=Recent+advances+in+spectroelectrochemistry&amp;rft.volume=10&amp;rft.issue=7&amp;rft.pages=3089-3111&amp;rft.date=2018&amp;rft_id=info%3Adoi%2F10.1039%2Fc7nr07803j&amp;rft_id=info%3Apmid%2F29379916&amp;rft.aulast=Zhai&amp;rft.aufirst=Yanling&amp;rft.au=Zhu%2C+Zhijun&amp;rft.au=Zhou%2C+Susan&amp;rft.au=Zhu%2C+Chengzhou&amp;rft.au=Dong%2C+Shaojun&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Seis-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-Seis_6-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFKuwanaDarlingtonLeedy1964" class="citation journal cs1">Kuwana, Theodore.; Darlington, R. K.; Leedy, D. W. (September 1964). "Electrochemical Studies Using Conducting Glass Indicator Electrodes". <i>Analytical Chemistry</i>. <b>36</b> (10): 2023–2025. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1021%2Fac60216a003">10.1021/ac60216a003</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Analytical+Chemistry&amp;rft.atitle=Electrochemical+Studies+Using+Conducting+Glass+Indicator+Electrodes.&amp;rft.volume=36&amp;rft.issue=10&amp;rft.pages=2023-2025&amp;rft.date=1964-09&amp;rft_id=info%3Adoi%2F10.1021%2Fac60216a003&amp;rft.aulast=Kuwana&amp;rft.aufirst=Theodore.&amp;rft.au=Darlington%2C+R.+K.&amp;rft.au=Leedy%2C+D.+W.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Siete-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-Siete_7-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFElgrishiRountreeMcCarthyRountree2017" class="citation journal cs1">Elgrishi, Noémie; Rountree, Kelley J.; McCarthy, Brian D.; Rountree, Eric S.; Eisenhart, Thomas T.; Dempsey, Jillian L. (3 November 2017). <a rel="nofollow" class="external text" href="https://doi.org/10.1021%2Facs.jchemed.7b00361">"A Practical Beginner's Guide to Cyclic Voltammetry"</a>. <i>Journal of Chemical Education</i>. <b>95</b> (2): 197–206. <a href="/wiki/Bibcode_(identifier)" class="mw-redirect" title="Bibcode (identifier)">Bibcode</a>:<a rel="nofollow" class="external text" href="https://ui.adsabs.harvard.edu/abs/2018JChEd..95..197E">2018JChEd..95..197E</a>. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<span class="id-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://doi.org/10.1021%2Facs.jchemed.7b00361">10.1021/acs.jchemed.7b00361</a></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Journal+of+Chemical+Education&amp;rft.atitle=A+Practical+Beginner%27s+Guide+to+Cyclic+Voltammetry&amp;rft.volume=95&amp;rft.issue=2&amp;rft.pages=197-206&amp;rft.date=2017-11-03&amp;rft_id=info%3Adoi%2F10.1021%2Facs.jchemed.7b00361&amp;rft_id=info%3Abibcode%2F2018JChEd..95..197E&amp;rft.aulast=Elgrishi&amp;rft.aufirst=No%C3%A9mie&amp;rft.au=Rountree%2C+Kelley+J.&amp;rft.au=McCarthy%2C+Brian+D.&amp;rft.au=Rountree%2C+Eric+S.&amp;rft.au=Eisenhart%2C+Thomas+T.&amp;rft.au=Dempsey%2C+Jillian+L.&amp;rft_id=https%3A%2F%2Fdoi.org%2F10.1021%252Facs.jchemed.7b00361&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Ocho-8"><span class="mw-cite-backlink">^ <a href="#cite_ref-Ocho_8-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Ocho_8-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Ocho_8-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFBraun2006" class="citation book cs1">Braun, Robert D. (2006). <i>Introduction to instrumental analysis</i> (5th&#160;ed.). New York, United States: W.H. Freeman &amp; Co Ltd. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-8188449156" title="Special:BookSources/978-8188449156"><bdi>978-8188449156</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Introduction+to+instrumental+analysis&amp;rft.place=New+York%2C+United+States&amp;rft.edition=5th&amp;rft.pub=W.H.+Freeman+%26+Co+Ltd.&amp;rft.date=2006&amp;rft.isbn=978-8188449156&amp;rft.aulast=Braun&amp;rft.aufirst=Robert+D.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Nueve-9"><span class="mw-cite-backlink">^ <a href="#cite_ref-Nueve_9-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Nueve_9-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFSkoogHollerCrouch2001" class="citation book cs1">Skoog, Douglas; Holler, James F; Crouch, Stanley (2001). <i>Principios de análisis instrumental</i> (6&#160;ed.). México: CENCAGE Learning. pp.&#160;481–498. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/9788578110796" title="Special:BookSources/9788578110796"><bdi>9788578110796</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Principios+de+an%C3%A1lisis+instrumental&amp;rft.place=M%C3%A9xico&amp;rft.pages=481-498&amp;rft.edition=6&amp;rft.pub=CENCAGE+Learning&amp;rft.date=2001&amp;rft.isbn=9788578110796&amp;rft.aulast=Skoog&amp;rft.aufirst=Douglas&amp;rft.au=Holler%2C+James+F&amp;rft.au=Crouch%2C+Stanley&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Diez-10"><span class="mw-cite-backlink">^ <a href="#cite_ref-Diez_10-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Diez_10-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-Diez_10-2"><sup><i><b>c</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFAtkins2010" class="citation book cs1">Atkins, Peter Jones L. (2010). <i>Chemical Principles: The Quest for Insight</i> (5th&#160;ed.). New York, United States: W H Freeman &amp; Co Ltd. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-1429209656" title="Special:BookSources/978-1429209656"><bdi>978-1429209656</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Chemical+Principles%3A+The+Quest+for+Insight&amp;rft.place=New+York%2C+United+States&amp;rft.edition=5th&amp;rft.pub=W+H+Freeman+%26+Co+Ltd&amp;rft.date=2010&amp;rft.isbn=978-1429209656&amp;rft.aulast=Atkins&amp;rft.aufirst=Peter+Jones+L.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Once-11"><span class="mw-cite-backlink"><b><a href="#cite_ref-Once_11-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFGaroz-RuizPerales-RondonHerasColina2019" class="citation journal cs1">Garoz-Ruiz, Jesus; Perales-Rondon, Juan V.; Heras, Aranzazu; Colina, Alvaro (3 May 2019). "Spectroelectrochemistry of Quantum Dots". <i>Israel Journal of Chemistry</i>. <b>59</b> (8): 679–694. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1002%2Fijch.201900028">10.1002/ijch.201900028</a>. <a href="/wiki/Hdl_(identifier)" class="mw-redirect" title="Hdl (identifier)">hdl</a>:<span class="id-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://hdl.handle.net/10259%2F6123">10259/6123</a></span>. <a href="/wiki/S2CID_(identifier)" class="mw-redirect" title="S2CID (identifier)">S2CID</a>&#160;<a rel="nofollow" class="external text" href="https://api.semanticscholar.org/CorpusID:155767924">155767924</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Israel+Journal+of+Chemistry&amp;rft.atitle=Spectroelectrochemistry+of+Quantum+Dots&amp;rft.volume=59&amp;rft.issue=8&amp;rft.pages=679-694&amp;rft.date=2019-05-03&amp;rft_id=info%3Ahdl%2F10259%2F6123&amp;rft_id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A155767924%23id-name%3DS2CID&amp;rft_id=info%3Adoi%2F10.1002%2Fijch.201900028&amp;rft.aulast=Garoz-Ruiz&amp;rft.aufirst=Jesus&amp;rft.au=Perales-Rondon%2C+Juan+V.&amp;rft.au=Heras%2C+Aranzazu&amp;rft.au=Colina%2C+Alvaro&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Doce-12"><span class="mw-cite-backlink">^ <a href="#cite_ref-Doce_12-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Doce_12-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFIbañezGaroz-RuizHerasColina2016" class="citation journal cs1">Ibañez, David; Garoz-Ruiz, Jesus; Heras, Aranzazu; Colina, Alvaro (28 July 2016). "Simultaneous UV–Visible Absorption and Raman Spectroelectrochemistry". <i>Analytical Chemistry</i>. <b>88</b> (16): 8210–8217. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1021%2Facs.analchem.6b02008">10.1021/acs.analchem.6b02008</a>. <a href="/wiki/Hdl_(identifier)" class="mw-redirect" title="Hdl (identifier)">hdl</a>:<span class="id-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://hdl.handle.net/10259%2F4945">10259/4945</a></span>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/27427898">27427898</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Analytical+Chemistry&amp;rft.atitle=Simultaneous+UV%E2%80%93Visible+Absorption+and+Raman+Spectroelectrochemistry&amp;rft.volume=88&amp;rft.issue=16&amp;rft.pages=8210-8217&amp;rft.date=2016-07-28&amp;rft_id=info%3Ahdl%2F10259%2F4945&amp;rft_id=info%3Apmid%2F27427898&amp;rft_id=info%3Adoi%2F10.1021%2Facs.analchem.6b02008&amp;rft.aulast=Iba%C3%B1ez&amp;rft.aufirst=David&amp;rft.au=Garoz-Ruiz%2C+Jesus&amp;rft.au=Heras%2C+Aranzazu&amp;rft.au=Colina%2C+Alvaro&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-13"><span class="mw-cite-backlink"><b><a href="#cite_ref-13">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFKalbacFarhatKavanKong2009" class="citation journal cs1">Kalbac, Martin; Farhat, Hootan; Kavan, Ladislav; Kong, Jing; Sasaki, Ken-ichi; Saito, Riichiro; Dresselhaus, Mildred S. (2009). "Electrochemical Charging of Individual Single-Walled Carbon Nanotubes". <i>ACS Nano</i>. <b>3</b> (8): 2320–2328. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1021%2Fnn9004318">10.1021/nn9004318</a>. <a href="/wiki/ISSN_(identifier)" class="mw-redirect" title="ISSN (identifier)">ISSN</a>&#160;<a rel="nofollow" class="external text" href="https://search.worldcat.org/issn/1936-0851">1936-0851</a>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/19645423">19645423</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=ACS+Nano&amp;rft.atitle=Electrochemical+Charging+of+Individual+Single-Walled+Carbon+Nanotubes&amp;rft.volume=3&amp;rft.issue=8&amp;rft.pages=2320-2328&amp;rft.date=2009&amp;rft.issn=1936-0851&amp;rft_id=info%3Apmid%2F19645423&amp;rft_id=info%3Adoi%2F10.1021%2Fnn9004318&amp;rft.aulast=Kalbac&amp;rft.aufirst=Martin&amp;rft.au=Farhat%2C+Hootan&amp;rft.au=Kavan%2C+Ladislav&amp;rft.au=Kong%2C+Jing&amp;rft.au=Sasaki%2C+Ken-ichi&amp;rft.au=Saito%2C+Riichiro&amp;rft.au=Dresselhaus%2C+Mildred+S.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-14"><span class="mw-cite-backlink"><b><a href="#cite_ref-14">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFKalbacReina-CeccoFarhatKong2010" class="citation journal cs1">Kalbac, Martin; Reina-Cecco, Alfonso; Farhat, Hootan; Kong, Jing; Kavan, Ladislav; Dresselhaus, Mildred S. (2010). "The Influence of Strong Electron and Hole Doping on the Raman Intensity of Chemical Vapor-Deposition Graphene". <i>ACS Nano</i>. <b>4</b> (10): 6055–6063. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1021%2Fnn1010914">10.1021/nn1010914</a>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/20931995">20931995</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=ACS+Nano&amp;rft.atitle=The+Influence+of+Strong+Electron+and+Hole+Doping+on+the+Raman+Intensity+of+Chemical+Vapor-Deposition+Graphene&amp;rft.volume=4&amp;rft.issue=10&amp;rft.pages=6055-6063&amp;rft.date=2010&amp;rft_id=info%3Adoi%2F10.1021%2Fnn1010914&amp;rft_id=info%3Apmid%2F20931995&amp;rft.aulast=Kalbac&amp;rft.aufirst=Martin&amp;rft.au=Reina-Cecco%2C+Alfonso&amp;rft.au=Farhat%2C+Hootan&amp;rft.au=Kong%2C+Jing&amp;rft.au=Kavan%2C+Ladislav&amp;rft.au=Dresselhaus%2C+Mildred+S.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Trece-15"><span class="mw-cite-backlink"><b><a href="#cite_ref-Trece_15-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFBrudtvig1995" class="citation book cs1">Brudtvig, Gary W. (1995). "Electron paramagnetic resonance spectroscopy". <i>Biochemical Spectroscopy</i>. Methods in Enzymology. Vol.&#160;246. pp.&#160;536–554. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1016%2F0076-6879%2895%2946024-1">10.1016/0076-6879(95)46024-1</a>. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-0-12-182147-0" title="Special:BookSources/978-0-12-182147-0"><bdi>978-0-12-182147-0</bdi></a>. <a href="/wiki/PMID_(identifier)" class="mw-redirect" title="PMID (identifier)">PMID</a>&#160;<a rel="nofollow" class="external text" href="https://pubmed.ncbi.nlm.nih.gov/7752937">7752937</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=Electron+paramagnetic+resonance+spectroscopy&amp;rft.btitle=Biochemical+Spectroscopy&amp;rft.series=Methods+in+Enzymology&amp;rft.pages=536-554&amp;rft.date=1995&amp;rft_id=info%3Apmid%2F7752937&amp;rft_id=info%3Adoi%2F10.1016%2F0076-6879%2895%2946024-1&amp;rft.isbn=978-0-12-182147-0&amp;rft.aulast=Brudtvig&amp;rft.aufirst=Gary+W.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+<li id="cite_note-Catorce-16"><span class="mw-cite-backlink"><b><a href="#cite_ref-Catorce_16-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222"><cite id="CITEREFMortimer2016" class="citation book cs1">Mortimer, R.J. (2016). <i>Encyclopedia of spectroscopy and spectrometry</i> (3rd&#160;ed.). Elsevier. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/9780128032244" title="Special:BookSources/9780128032244"><bdi>9780128032244</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Encyclopedia+of+spectroscopy+and+spectrometry&amp;rft.edition=3rd&amp;rft.pub=Elsevier&amp;rft.date=2016&amp;rft.isbn=9780128032244&amp;rft.aulast=Mortimer&amp;rft.aufirst=R.J.&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpectroelectrochemistry" class="Z3988"></span></span>
+</li>
+</ol></div></div>
+<div class="navbox-styles"><style data-mw-deduplicate="TemplateStyles:r1129693374">.mw-parser-output .hlist dl,.mw-parser-output .hlist ol,.mw-parser-output .hlist ul{margin:0;padding:0}.mw-parser-output .hlist dd,.mw-parser-output .hlist dt,.mw-parser-output .hlist li{margin:0;display:inline}.mw-parser-output .hlist.inline,.mw-parser-output .hlist.inline dl,.mw-parser-output .hlist.inline ol,.mw-parser-output .hlist.inline ul,.mw-parser-output .hlist dl dl,.mw-parser-output .hlist dl ol,.mw-parser-output .hlist dl ul,.mw-parser-output .hlist ol dl,.mw-parser-output .hlist ol ol,.mw-parser-output .hlist ol ul,.mw-parser-output .hlist ul dl,.mw-parser-output .hlist ul ol,.mw-parser-output .hlist ul ul{display:inline}.mw-parser-output .hlist .mw-empty-li{display:none}.mw-parser-output .hlist dt::after{content:": "}.mw-parser-output .hlist dd::after,.mw-parser-output .hlist li::after{content:" · ";font-weight:bold}.mw-parser-output .hlist dd:last-child::after,.mw-parser-output .hlist dt:last-child::after,.mw-parser-output .hlist li:last-child::after{content:none}.mw-parser-output .hlist dd dd:first-child::before,.mw-parser-output .hlist dd dt:first-child::before,.mw-parser-output .hlist dd li:first-child::before,.mw-parser-output .hlist dt dd:first-child::before,.mw-parser-output .hlist dt dt:first-child::before,.mw-parser-output .hlist dt li:first-child::before,.mw-parser-output .hlist li dd:first-child::before,.mw-parser-output .hlist li dt:first-child::before,.mw-parser-output .hlist li li:first-child::before{content:" (";font-weight:normal}.mw-parser-output .hlist dd dd:last-child::after,.mw-parser-output .hlist dd dt:last-child::after,.mw-parser-output .hlist dd li:last-child::after,.mw-parser-output .hlist dt dd:last-child::after,.mw-parser-output .hlist dt dt:last-child::after,.mw-parser-output .hlist dt li:last-child::after,.mw-parser-output .hlist li dd:last-child::after,.mw-parser-output .hlist li dt:last-child::after,.mw-parser-output .hlist li li:last-child::after{content:")";font-weight:normal}.mw-parser-output .hlist ol{counter-reset:listitem}.mw-parser-output .hlist ol>li{counter-increment:listitem}.mw-parser-output .hlist ol>li::before{content:" "counter(listitem)"\a0 "}.mw-parser-output .hlist dd ol>li:first-child::before,.mw-parser-output .hlist dt ol>li:first-child::before,.mw-parser-output .hlist li ol>li:first-child::before{content:" ("counter(listitem)"\a0 "}</style><style data-mw-deduplicate="TemplateStyles:r1236075235">.mw-parser-output .navbox{box-sizing:border-box;border:1px solid #a2a9b1;width:100%;clear:both;font-size:88%;text-align:center;padding:1px;margin:1em auto 0}.mw-parser-output .navbox .navbox{margin-top:0}.mw-parser-output .navbox+.navbox,.mw-parser-output .navbox+.navbox-styles+.navbox{margin-top:-1px}.mw-parser-output .navbox-inner,.mw-parser-output .navbox-subgroup{width:100%}.mw-parser-output .navbox-group,.mw-parser-output .navbox-title,.mw-parser-output .navbox-abovebelow{padding:0.25em 1em;line-height:1.5em;text-align:center}.mw-parser-output .navbox-group{white-space:nowrap;text-align:right}.mw-parser-output .navbox,.mw-parser-output .navbox-subgroup{background-color:#fdfdfd}.mw-parser-output .navbox-list{line-height:1.5em;border-color:#fdfdfd}.mw-parser-output .navbox-list-with-group{text-align:left;border-left-width:2px;border-left-style:solid}.mw-parser-output tr+tr>.navbox-abovebelow,.mw-parser-output tr+tr>.navbox-group,.mw-parser-output tr+tr>.navbox-image,.mw-parser-output tr+tr>.navbox-list{border-top:2px solid #fdfdfd}.mw-parser-output .navbox-title{background-color:#ccf}.mw-parser-output .navbox-abovebelow,.mw-parser-output .navbox-group,.mw-parser-output .navbox-subgroup .navbox-title{background-color:#ddf}.mw-parser-output .navbox-subgroup .navbox-group,.mw-parser-output .navbox-subgroup .navbox-abovebelow{background-color:#e6e6ff}.mw-parser-output .navbox-even{background-color:#f7f7f7}.mw-parser-output .navbox-odd{background-color:transparent}.mw-parser-output .navbox .hlist td dl,.mw-parser-output .navbox .hlist td ol,.mw-parser-output .navbox .hlist td ul,.mw-parser-output .navbox td.hlist dl,.mw-parser-output .navbox td.hlist ol,.mw-parser-output .navbox td.hlist ul{padding:0.125em 0}.mw-parser-output .navbox .navbar{display:block;font-size:100%}.mw-parser-output .navbox-title .navbar{float:left;text-align:left;margin-right:0.5em}body.skin--responsive .mw-parser-output .navbox-image img{max-width:none!important}@media print{body.ns-0 .mw-parser-output .navbox{display:none!important}}</style></div><div role="navigation" class="navbox" aria-labelledby="Branches_of_chemistry" style="padding:3px"><table class="nowraplinks hlist mw-collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1129693374"><style data-mw-deduplicate="TemplateStyles:r1239400231">.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a>span,.mw-parser-output .navbar a>abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}html.skin-theme-clientpref-night .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}@media(prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .navbar li a abbr{color:var(--color-base)!important}}@media print{.mw-parser-output .navbar{display:none!important}}</style><div class="navbar plainlinks hlist navbar-mini"><ul><li class="nv-view"><a href="/wiki/Template:Branches_of_chemistry" title="Template:Branches of chemistry"><abbr title="View this template">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:Branches_of_chemistry" title="Template talk:Branches of chemistry"><abbr title="Discuss this template">t</abbr></a></li><li class="nv-edit"><a href="/wiki/Special:EditPage/Template:Branches_of_chemistry" title="Special:EditPage/Template:Branches of chemistry"><abbr title="Edit this template">e</abbr></a></li></ul></div><div id="Branches_of_chemistry" style="font-size:114%;margin:0 4em">Branches of <a href="/wiki/Chemistry" title="Chemistry">chemistry</a></div></th></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+<ul><li><a href="/wiki/Glossary_of_chemical_formulae" title="Glossary of chemical formulae">Glossary of chemical formulae</a></li>
+<li><a href="/wiki/List_of_biomolecules" title="List of biomolecules">List of biomolecules</a></li>
+<li><a href="/wiki/List_of_inorganic_compounds" title="List of inorganic compounds">List of inorganic compounds</a></li>
+<li><a href="/wiki/Periodic_table" title="Periodic table">Periodic table</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Analytical_chemistry" title="Analytical chemistry">Analytical</a></th><td class="navbox-list-with-group navbox-list navbox-odd" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Instrumental_chemistry" title="Instrumental chemistry">Instrumental chemistry</a></li>
+<li><a href="/wiki/Electroanalytical_methods" title="Electroanalytical methods">Electroanalytical methods</a></li>
+<li><a href="/wiki/Spectroscopy" title="Spectroscopy">Spectroscopy</a>
+<ul><li><a href="/wiki/Infrared_spectroscopy" title="Infrared spectroscopy">IR</a></li>
+<li><a href="/wiki/Raman_spectroscopy" title="Raman spectroscopy">Raman</a></li>
+<li><a href="/wiki/Ultraviolet%E2%80%93visible_spectroscopy" title="Ultraviolet–visible spectroscopy">UV-Vis</a></li>
+<li><a href="/wiki/Nuclear_magnetic_resonance_spectroscopy" title="Nuclear magnetic resonance spectroscopy">NMR</a></li></ul></li>
+<li><a href="/wiki/Mass_spectrometry" title="Mass spectrometry">Mass spectrometry</a>
+<ul><li><a href="/wiki/Electron_ionization" title="Electron ionization">EI</a></li>
+<li><a href="/wiki/Inductively_coupled_plasma_mass_spectrometry" title="Inductively coupled plasma mass spectrometry">ICP</a></li>
+<li><a href="/wiki/Matrix-assisted_laser_desorption/ionization" title="Matrix-assisted laser desorption/ionization">MALDI</a></li></ul></li>
+<li><a href="/wiki/Separation_process" title="Separation process">Separation process</a></li>
+<li><a href="/wiki/Chromatography" title="Chromatography">Chromatography</a>
+<ul><li><a href="/wiki/Gas_chromatography" title="Gas chromatography">GC</a></li>
+<li><a href="/wiki/High-performance_liquid_chromatography" title="High-performance liquid chromatography">HPLC</a></li></ul></li>
+<li><a href="/wiki/Crystallography" title="Crystallography">Crystallography</a></li>
+<li><a href="/wiki/Characterization_(materials_science)" title="Characterization (materials science)">Characterization</a></li>
+<li><a href="/wiki/Titration" title="Titration">Titration</a></li>
+<li><a href="/wiki/Wet_chemistry" title="Wet chemistry">Wet chemistry</a></li>
+<li><a href="/wiki/Calorimetry" title="Calorimetry">Calorimetry</a></li>
+<li><a href="/wiki/Elemental_analysis" title="Elemental analysis">Elemental analysis</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Theoretical_chemistry" title="Theoretical chemistry">Theoretical</a></th><td class="navbox-list-with-group navbox-list navbox-even" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Quantum_chemistry" title="Quantum chemistry">Quantum chemistry</a></li>
+<li><a href="/wiki/Computational_chemistry" title="Computational chemistry">Computational chemistry</a>
+<ul><li><a href="/wiki/Mathematical_chemistry" title="Mathematical chemistry">Mathematical chemistry</a></li></ul></li>
+<li><a href="/wiki/Molecular_modelling" title="Molecular modelling">Molecular modelling</a></li>
+<li><a href="/wiki/Molecular_mechanics" title="Molecular mechanics">Molecular mechanics</a></li>
+<li><a href="/wiki/Molecular_dynamics" title="Molecular dynamics">Molecular dynamics</a></li>
+<li><a href="/wiki/Molecular_geometry" title="Molecular geometry">Molecular geometry</a>
+<ul><li><a href="/wiki/VSEPR_theory" title="VSEPR theory">VSEPR theory</a></li></ul></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Physical_chemistry" title="Physical chemistry">Physical</a></th><td class="navbox-list-with-group navbox-list navbox-odd" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Electrochemistry" title="Electrochemistry">Electrochemistry</a>
+<ul><li><a class="mw-selflink selflink">Spectroelectrochemistry</a></li>
+<li><a href="/wiki/Photoelectrochemistry" title="Photoelectrochemistry">Photoelectrochemistry</a></li></ul></li>
+<li><a href="/wiki/Thermochemistry" title="Thermochemistry">Thermochemistry</a></li>
+<li><a href="/wiki/Chemical_thermodynamics" title="Chemical thermodynamics">Chemical thermodynamics</a></li>
+<li><a href="/wiki/Surface_science" title="Surface science">Surface science</a></li>
+<li><a href="/wiki/Interface_and_colloid_science" title="Interface and colloid science">Interface and colloid science</a>
+<ul><li><a href="/wiki/Micromeritics" title="Micromeritics">Micromeritics</a></li></ul></li>
+<li><a href="/wiki/Cryochemistry" title="Cryochemistry">Cryochemistry</a></li>
+<li><a href="/wiki/Sonochemistry" title="Sonochemistry">Sonochemistry</a></li>
+<li><a href="/wiki/Structural_chemistry" title="Structural chemistry">Structural chemistry</a></li>
+<li><a href="/wiki/Chemical_physics" title="Chemical physics">Chemical physics</a>
+<ul><li><a href="/wiki/Molecular_physics" title="Molecular physics">Molecular physics</a></li></ul></li>
+<li><a href="/wiki/Femtochemistry" title="Femtochemistry">Femtochemistry</a></li>
+<li><a href="/wiki/Chemical_kinetics" title="Chemical kinetics">Chemical kinetics</a></li>
+<li><a href="/wiki/Spectroscopy" title="Spectroscopy">Spectroscopy</a></li>
+<li><a href="/wiki/Photochemistry" title="Photochemistry">Photochemistry</a></li>
+<li><a href="/wiki/Spin_chemistry" title="Spin chemistry">Spin chemistry</a></li>
+<li><a href="/wiki/Microwave_chemistry" title="Microwave chemistry">Microwave chemistry</a></li>
+<li><a href="/wiki/Equilibrium_chemistry" title="Equilibrium chemistry">Equilibrium chemistry</a></li>
+<li><a href="/wiki/Mechanochemistry" title="Mechanochemistry">Mechanochemistry</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Inorganic_chemistry" title="Inorganic chemistry">Inorganic</a></th><td class="navbox-list-with-group navbox-list navbox-even" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Coordination_complex" title="Coordination complex">Coordination chemistry</a></li>
+<li><a href="/wiki/Magnetochemistry" title="Magnetochemistry">Magnetochemistry</a></li>
+<li><a href="/wiki/Organometallic_chemistry" title="Organometallic chemistry">Organometallic chemistry</a>
+<ul><li><a href="/wiki/Organolanthanide_chemistry" title="Organolanthanide chemistry">Organolanthanide chemistry</a></li></ul></li>
+<li><a href="/wiki/Atom_cluster" class="mw-redirect" title="Atom cluster">Cluster chemistry</a></li>
+<li><a href="/wiki/Solid-state_chemistry" title="Solid-state chemistry">Solid-state chemistry</a></li>
+<li><a href="/wiki/Ceramic_chemistry" class="mw-redirect" title="Ceramic chemistry">Ceramic chemistry</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Organic_chemistry" title="Organic chemistry">Organic</a></th><td class="navbox-list-with-group navbox-list navbox-odd" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Stereochemistry" title="Stereochemistry">Stereochemistry</a>
+<ul><li><a href="/wiki/Alkane_stereochemistry" class="mw-redirect" title="Alkane stereochemistry">Alkane stereochemistry</a></li></ul></li>
+<li><a href="/wiki/Physical_organic_chemistry" title="Physical organic chemistry">Physical organic chemistry</a></li>
+<li><a href="/wiki/Organic_reactions" class="mw-redirect" title="Organic reactions">Organic reactions</a></li>
+<li><a href="/wiki/Organic_synthesis" title="Organic synthesis">Organic synthesis</a></li>
+<li><a href="/wiki/Retrosynthetic_analysis" title="Retrosynthetic analysis">Retrosynthetic analysis</a></li>
+<li><a href="/wiki/Enantioselective_synthesis" title="Enantioselective synthesis">Enantioselective synthesis</a></li>
+<li><a href="/wiki/Total_synthesis" title="Total synthesis">Total synthesis</a> / <a href="/wiki/Semisynthesis" title="Semisynthesis">Semisynthesis</a></li>
+<li><a href="/wiki/Fullerene_chemistry" title="Fullerene chemistry">Fullerene chemistry</a></li>
+<li><a href="/wiki/Polymer_chemistry" title="Polymer chemistry">Polymer chemistry</a></li>
+<li><a href="/wiki/Petrochemistry" class="mw-redirect" title="Petrochemistry">Petrochemistry</a></li>
+<li><a href="/wiki/Dynamic_covalent_chemistry" title="Dynamic covalent chemistry">Dynamic covalent chemistry</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Biochemistry" title="Biochemistry">Biological</a></th><td class="navbox-list-with-group navbox-list navbox-even" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Biochemistry" title="Biochemistry">Biochemistry</a>
+<ul><li><a href="/wiki/Molecular_biology" title="Molecular biology">Molecular biology</a></li>
+<li><a href="/wiki/Cell_biology" title="Cell biology">Cell biology</a></li></ul></li>
+<li><a href="/wiki/Chemical_biology" title="Chemical biology">Chemical biology</a>
+<ul><li><a href="/wiki/Bioorthogonal_chemistry" title="Bioorthogonal chemistry">Bioorthogonal chemistry</a></li></ul></li>
+<li><a href="/wiki/Medicinal_chemistry" title="Medicinal chemistry">Medicinal chemistry</a>
+<ul><li><a href="/wiki/Pharmacology" title="Pharmacology">Pharmacology</a></li></ul></li>
+<li><a href="/wiki/Clinical_chemistry" title="Clinical chemistry">Clinical chemistry</a></li>
+<li><a href="/wiki/Neurochemistry" title="Neurochemistry">Neurochemistry</a></li>
+<li><a href="/wiki/Bioorganic_chemistry" title="Bioorganic chemistry">Bioorganic chemistry</a></li>
+<li><a href="/wiki/Bioorganometallic_chemistry" title="Bioorganometallic chemistry">Bioorganometallic chemistry</a></li>
+<li><a href="/wiki/Bioinorganic_chemistry" title="Bioinorganic chemistry">Bioinorganic chemistry</a></li>
+<li><a href="/wiki/Biophysical_chemistry" title="Biophysical chemistry">Biophysical chemistry</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Interdisciplinarity" title="Interdisciplinarity">Interdisciplinarity</a></th><td class="navbox-list-with-group navbox-list navbox-odd" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Nuclear_chemistry" title="Nuclear chemistry">Nuclear chemistry</a>
+<ul><li><a href="/wiki/Radiochemistry" title="Radiochemistry">Radiochemistry</a></li>
+<li><a href="/wiki/Radiation_chemistry" title="Radiation chemistry">Radiation chemistry</a></li>
+<li><a href="/wiki/Actinide_chemistry" title="Actinide chemistry">Actinide chemistry</a></li></ul></li>
+<li><a href="/wiki/Cosmochemistry" title="Cosmochemistry">Cosmochemistry</a> / <a href="/wiki/Astrochemistry" title="Astrochemistry">Astrochemistry</a> / <a href="/wiki/Stellar_chemistry" title="Stellar chemistry">Stellar chemistry</a></li>
+<li><a href="/wiki/Geochemistry" title="Geochemistry">Geochemistry</a>
+<ul><li><a href="/wiki/Biogeochemistry" title="Biogeochemistry">Biogeochemistry</a></li>
+<li><a href="/wiki/Photogeochemistry" title="Photogeochemistry">Photogeochemistry</a></li></ul></li></ul>
+<ul><li><a href="/wiki/Environmental_chemistry" title="Environmental chemistry">Environmental chemistry</a>
+<ul><li><a href="/wiki/Atmospheric_chemistry" title="Atmospheric chemistry">Atmospheric chemistry</a></li>
+<li><a href="/wiki/Ocean_chemistry" class="mw-redirect" title="Ocean chemistry">Ocean chemistry</a></li></ul></li>
+<li><a href="/wiki/Clay_chemistry" title="Clay chemistry">Clay chemistry</a></li>
+<li><a href="/wiki/Carbochemistry" title="Carbochemistry">Carbochemistry</a></li>
+<li><a href="/wiki/Food_chemistry" title="Food chemistry">Food chemistry</a>
+<ul><li><a href="/wiki/Carbohydrate_chemistry" class="mw-redirect" title="Carbohydrate chemistry">Carbohydrate chemistry</a></li>
+<li><a href="/wiki/Food_physical_chemistry" title="Food physical chemistry">Food physical chemistry</a></li></ul></li>
+<li><a href="/wiki/Agricultural_chemistry" title="Agricultural chemistry">Agricultural chemistry</a>
+<ul><li><a href="/wiki/Soil_chemistry" title="Soil chemistry">Soil chemistry</a></li></ul></li></ul>
+<ul><li><a href="/wiki/Chemistry_education" title="Chemistry education">Chemistry education</a>
+<ul><li><a href="/wiki/Amateur_chemistry" title="Amateur chemistry">Amateur chemistry</a></li>
+<li><a href="/wiki/General_chemistry" title="General chemistry">General chemistry</a></li></ul></li>
+<li><a href="/wiki/Clandestine_chemistry" title="Clandestine chemistry">Clandestine chemistry</a></li>
+<li><a href="/wiki/Forensic_chemistry" title="Forensic chemistry">Forensic chemistry</a>
+<ul><li><a href="/wiki/Forensic_toxicology" title="Forensic toxicology">Forensic toxicology</a></li>
+<li><a href="/wiki/Post-mortem_chemistry" title="Post-mortem chemistry">Post-mortem chemistry</a></li></ul></li></ul>
+<ul><li><a href="/wiki/Nanochemistry" title="Nanochemistry">Nanochemistry</a>
+<ul><li><a href="/wiki/Supramolecular_chemistry" title="Supramolecular chemistry">Supramolecular chemistry</a></li></ul></li>
+<li><a href="/wiki/Chemical_synthesis" title="Chemical synthesis">Chemical synthesis</a>
+<ul><li><a href="/wiki/Green_chemistry" title="Green chemistry">Green chemistry</a></li>
+<li><a href="/wiki/Click_chemistry" title="Click chemistry">Click chemistry</a></li>
+<li><a href="/wiki/Combinatorial_chemistry" title="Combinatorial chemistry">Combinatorial chemistry</a></li>
+<li><a href="/wiki/Biosynthesis" title="Biosynthesis">Biosynthesis</a></li></ul></li>
+<li><a href="/wiki/Chemical_engineering" title="Chemical engineering">Chemical engineering</a>
+<ul><li><a href="/wiki/Stoichiometry" title="Stoichiometry">Stoichiometry</a></li></ul></li>
+<li><a href="/wiki/Materials_science" title="Materials science">Materials science</a>
+<ul><li><a href="/wiki/Metallurgy" title="Metallurgy">Metallurgy</a></li>
+<li><a href="/wiki/Ceramic_engineering" title="Ceramic engineering">Ceramic engineering</a></li>
+<li><a href="/wiki/Polymer_science" title="Polymer science">Polymer science</a></li></ul></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">See also</th><td class="navbox-list-with-group navbox-list navbox-even" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/History_of_chemistry" title="History of chemistry">History of chemistry</a></li>
+<li><a href="/wiki/Nobel_Prize_in_Chemistry" title="Nobel Prize in Chemistry">Nobel Prize in Chemistry</a></li>
+<li><a href="/wiki/Timeline_of_chemistry" title="Timeline of chemistry">Timeline of chemistry</a>
+<ul><li><a href="/wiki/Discovery_of_chemical_elements" title="Discovery of chemical elements">of element discoveries</a></li></ul></li>
+<li>"<a href="/wiki/The_central_science" title="The central science">The central science</a>"</li>
+<li><a href="/wiki/Chemical_reaction" title="Chemical reaction">Chemical reaction</a>
+<ul><li><a href="/wiki/Catalysis" title="Catalysis">Catalysis</a></li></ul></li>
+<li><a href="/wiki/Chemical_element" title="Chemical element">Chemical element</a></li>
+<li><a href="/wiki/Chemical_compound" title="Chemical compound">Chemical compound</a></li>
+<li><a href="/wiki/Atom" title="Atom">Atom</a></li>
+<li><a href="/wiki/Molecule" title="Molecule">Molecule</a></li>
+<li><a href="/wiki/Ion" title="Ion">Ion</a></li>
+<li><a href="/wiki/Chemical_substance" title="Chemical substance">Chemical substance</a></li>
+<li><a href="/wiki/Chemical_bond" title="Chemical bond">Chemical bond</a></li>
+<li><a href="/wiki/Alchemy" title="Alchemy">Alchemy</a></li>
+<li><a href="/wiki/Quantum_mechanics" title="Quantum mechanics">Quantum mechanics</a></li></ul>
+</div></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+<ul><li><span class="noviewer" typeof="mw:File"><span title="Category"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/9/96/Symbol_category_class.svg/16px-Symbol_category_class.svg.png" decoding="async" width="16" height="16" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/96/Symbol_category_class.svg/23px-Symbol_category_class.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/96/Symbol_category_class.svg/31px-Symbol_category_class.svg.png 2x" data-file-width="180" data-file-height="185" /></span></span> <b><a href="/wiki/Category:Chemistry" title="Category:Chemistry">Category</a></b></li>
+<li><span class="noviewer" typeof="mw:File"><span title="Commons page"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/12px-Commons-logo.svg.png" decoding="async" width="12" height="16" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/18px-Commons-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/24px-Commons-logo.svg.png 2x" data-file-width="1024" data-file-height="1376" /></span></span> <b><a href="https://commons.wikimedia.org/wiki/Category:Chemistry" class="extiw" title="commons:Category:Chemistry">Commons</a></b></li>
+<li><span class="noviewer" typeof="mw:File"><a href="/wiki/File:Symbol_portal_class.svg" class="mw-file-description" title="Portal"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/e/e2/Symbol_portal_class.svg/16px-Symbol_portal_class.svg.png" decoding="async" width="16" height="16" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/en/thumb/e/e2/Symbol_portal_class.svg/23px-Symbol_portal_class.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/e/e2/Symbol_portal_class.svg/31px-Symbol_portal_class.svg.png 2x" data-file-width="180" data-file-height="185" /></a></span> <b><a href="/wiki/Portal:Chemistry" title="Portal:Chemistry">Portal</a></b></li>
+<li><span class="noviewer" typeof="mw:File"><span title="WikiProject"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/37/People_icon.svg/16px-People_icon.svg.png" decoding="async" width="16" height="16" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/37/People_icon.svg/24px-People_icon.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/37/People_icon.svg/32px-People_icon.svg.png 2x" data-file-width="100" data-file-height="100" /></span></span> <b><a href="/wiki/Wikipedia:WikiProject_Chemistry" title="Wikipedia:WikiProject Chemistry">WikiProject</a></b></li></ul>
+</div></td></tr></tbody></table></div>
+<!-- 
+NewPP limit report
+Parsed by mw‐api‐ext.eqiad.main‐6696b4cc84‐q2twc
+Cached time: 20241124154408
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [vary‐revision‐sha1, show‐toc]
+CPU time usage: 0.396 seconds
+Real time usage: 0.528 seconds
+Preprocessor visited node count: 1396/1000000
+Post‐expand include size: 56697/2097152 bytes
+Template argument size: 303/2097152 bytes
+Highest expansion depth: 12/100
+Expensive parser function count: 2/500
+Unstrip recursion depth: 1/20
+Unstrip post‐expand size: 73279/5000000 bytes
+Lua time usage: 0.242/10.000 seconds
+Lua memory usage: 4369811/52428800 bytes
+Number of Wikibase entities loaded: 0/400
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  381.214      1 -total
+ 55.31%  210.866      1 Template:Reflist
+ 38.67%  147.420     10 Template:Cite_journal
+ 29.77%  113.494      1 Template:Branches_of_chemistry
+ 28.85%  109.979      1 Template:Navbox
+  9.79%   37.312      1 Template:Use_dmy_dates
+  8.96%   34.166      6 Template:Cite_book
+  4.02%   15.334      4 Template:Icon
+  3.62%   13.804      1 Template:DMCA
+  2.57%    9.806      1 Template:Dated_maintenance_category
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:64073069:|#|:idhash:canonical and timestamp 20241124154408 and revision id 1250267418. Rendering was triggered because: unknown
+ -->
+</div><!--esi <esi:include src="/esitest-fa8a495983347898/content" /> --><noscript><img src="https://login.wikimedia.org/wiki/Special:CentralAutoLogin/start?type=1x1&amp;useformat=desktop" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Spectroelectrochemistry&amp;oldid=1250267418">https://en.wikipedia.org/w/index.php?title=Spectroelectrochemistry&amp;oldid=1250267418</a>"</div></div>
+					<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Physical_chemistry" title="Category:Physical chemistry">Physical chemistry</a></li><li><a href="/wiki/Category:Spectroscopy" title="Category:Spectroscopy">Spectroscopy</a></li><li><a href="/wiki/Category:Electrochemistry" title="Category:Electrochemistry">Electrochemistry</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Use_dmy_dates_from_January_2024" title="Category:Use dmy dates from January 2024">Use dmy dates from January 2024</a></li></ul></div></div>
+				</div>
+			</main>
+			
+		</div>
+		<div class="mw-footer-container">
+			
+<footer id="footer" class="mw-footer" >
+	<ul id="footer-info">
+	<li id="footer-info-lastmod"> This page was last edited on 9 October 2024, at 12:04<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-copyright">Text is available under the <a href="/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License" title="Wikipedia:Text of the Creative Commons Attribution-ShareAlike 4.0 International License">Creative Commons Attribution-ShareAlike 4.0 License</a>;
+additional terms may apply. By using this site, you agree to the <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use" class="extiw" title="foundation:Special:MyLanguage/Policy:Terms of Use">Terms of Use</a> and <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy" class="extiw" title="foundation:Special:MyLanguage/Policy:Privacy policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a rel="nofollow" class="external text" href="https://wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+</ul>
+
+	<ul id="footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Wikipedia:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Spectroelectrochemistry&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><img src="/static/images/footer/wikimedia-button.svg" width="84" height="29" alt="Wikimedia Foundation" loading="lazy"></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><img src="/w/resources/assets/poweredby_mediawiki.svg" alt="Powered by MediaWiki" width="88" height="31" loading="lazy"></a></li>
+</ul>
+
+</footer>
+
+		</div>
+	</div> 
+</div> 
+<div class="vector-settings" id="p-dock-bottom">
+	<ul></ul>
+</div><script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.eqiad.main-6d555f5f66-62fqz","wgBackendResponseTime":163,"wgPageParseReport":{"limitreport":{"cputime":"0.396","walltime":"0.528","ppvisitednodes":{"value":1396,"limit":1000000},"postexpandincludesize":{"value":56697,"limit":2097152},"templateargumentsize":{"value":303,"limit":2097152},"expansiondepth":{"value":12,"limit":100},"expensivefunctioncount":{"value":2,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":73279,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  381.214      1 -total"," 55.31%  210.866      1 Template:Reflist"," 38.67%  147.420     10 Template:Cite_journal"," 29.77%  113.494      1 Template:Branches_of_chemistry"," 28.85%  109.979      1 Template:Navbox","  9.79%   37.312      1 Template:Use_dmy_dates","  8.96%   34.166      6 Template:Cite_book","  4.02%   15.334      4 Template:Icon","  3.62%   13.804      1 Template:DMCA","  2.57%    9.806      1 Template:Dated_maintenance_category"]},"scribunto":{"limitreport-timeusage":{"value":"0.242","limit":"10.000"},"limitreport-memusage":{"value":4369811,"limit":52428800}},"cachereport":{"origin":"mw-api-ext.eqiad.main-6696b4cc84-q2twc","timestamp":"20241124154408","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Spectroelectrochemistry","url":"https:\/\/en.wikipedia.org\/wiki\/Spectroelectrochemistry","sameAs":"http:\/\/www.wikidata.org\/entity\/Q96212237","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q96212237","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2020-05-26T10:25:16Z","dateModified":"2024-10-09T12:04:57Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/0\/0f\/Tipos_SEC.png"}</script>
+</body>
+</html> contentType 24 text/html; charset=UTF-8 url 57 https://en.wikipedia.org:443/wiki/Spectroelectrochemistry responseCode 3 200 

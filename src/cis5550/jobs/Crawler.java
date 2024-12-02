@@ -9,12 +9,11 @@ import cis5550.tools.Logger;
 import cis5550.tools.URLParser;
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -23,7 +22,96 @@ import java.io.ByteArrayInputStream;
 
 
 public class Crawler {
+    private static final int MAX_DEPTH = 5;                     // Maximum links from seed URL
+    private static final int MAX_URLS_PER_DOMAIN = 1000;       // Limit URLs per domain
+    private static final double MIN_PAGERANK = 0.1;            // Minimum PageRank threshold
+    private static final Set<String> BLACKLISTED_PATTERNS = Set.of(
+            ".*/archive/.*",
+            ".*/tags/.*",
+            ".*/search/.*",
+            ".*/page/\\d+/.*",
+            ".*/wp-admin/.*",
+            ".*/login/.*",
+            ".*/signup/.*",
+            ".*/rss/.*"
+    );
 
+    public static boolean shouldCrawlURL(String url) {
+        try {
+            URL urlObj = new URL(url);
+            String domain = urlObj.getHost();
+            String path = urlObj.getPath();
+
+            if (!isValidProtocol(urlObj)) {
+                return false;
+            }
+            if (matchesBlacklistedPattern(path)) {
+                return false;
+            }
+            int depth = getURLDepth(url);
+            if (depth > MAX_DEPTH) {
+                return false;
+            }
+
+            if (getDomainURLCount(domain) >= MAX_URLS_PER_DOMAIN) {
+                return false;
+            }
+            if (isUnwantedFileType(path)) {
+                return false;
+            }
+
+            if (hasHistoricalPageRank(url)) {
+                return getHistoricalPageRank(url) >= MIN_PAGERANK;
+            }
+
+            if (hasTooManyQueryParams(urlObj)) {
+                return false;
+            }
+
+
+            return true;
+        } catch (Exception e) {
+            logger.error("Error evaluating URL: " + url, e);
+            return false;
+        }
+    }
+
+    private static boolean isValidProtocol(URL url) {
+        String protocol = url.getProtocol().toLowerCase();
+        return protocol.equals("http") || protocol.equals("https");
+    }
+
+    private static boolean matchesBlacklistedPattern(String path) {
+        return BLACKLISTED_PATTERNS.stream()
+                .anyMatch(path::matches);
+    }
+
+    private static boolean isUnwantedFileType(String path) {
+        return path.matches(".*\\.(jpg|jpeg|gif|png|pdf|zip|exe|mp3|mp4|doc|docx)$");
+    }
+
+    private static boolean hasTooManyQueryParams(URL url) {
+        String query = url.getQuery();
+        if (query == null) return false;
+        return query.split("&").length > 3;
+    }
+
+    private static int getURLDepth(String url) {
+
+        return 0; // Placeholder
+    }
+
+    private static int getDomainURLCount(String domain) {
+        return 0; // Placeholder
+    }
+
+    private static boolean hasHistoricalPageRank(String url) {
+        return false;
+    }
+
+    private static double getHistoricalPageRank(String url) {
+        return 0.0;
+    }
     private static final String BUCKET_NAME = "corpuscrawled";
     private static AmazonS3 s3Client;
     private static final Logger logger = Logger.getLogger(Crawler.class);
@@ -117,7 +205,7 @@ public class Crawler {
                     countIt++;
 
                     // Parse URL to get the host, check that hosts robotsTxt
-                    URL urlObj = new URL(url);
+                    URL urlObj = new URI(url).toURL();
                     String host = urlObj.getHost();
 
                     // Check the robots.txt endpoint for the current URL host
@@ -166,6 +254,11 @@ public class Crawler {
                     // Check if URL allowed by robots.txt, otherwise don't explore this page
                     if (!isUrlAllowed(urlObj, robotsInfo)) {
                         return extractedAndNormalizedUrls; // empty (should be)
+                    }
+
+                    if (shouldCrawlURL(url)) {
+                        // Add the URL to the list of extracted and normalized URLs
+                        extractedAndNormalizedUrls.add(url);
                     }
 
                     HttpURLConnection headConnection = (HttpURLConnection) urlObj.openConnection();
