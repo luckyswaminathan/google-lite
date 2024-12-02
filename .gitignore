@@ -8,3 +8,6 @@
 *.iml
 worker1
 data
+.env
+
+~/.aws/credentials
