@@ -23,6 +23,7 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/kvs.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>local.cis5550</groupId>
             <artifactId>flame</artifactId>

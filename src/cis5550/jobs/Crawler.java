@@ -8,10 +8,9 @@ import cis5550.tools.Hasher;
 import cis5550.tools.Logger;
 import cis5550.tools.URLParser;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -33,90 +32,75 @@ public class Crawler {
             ".*/wp-admin/.*",
             ".*/login/.*",
             ".*/signup/.*",
-            ".*/rss/.*"
+            ".*/rss/.*",
+            ".*/es/.*",    // Spanish
+            ".*/de/.*",    // German
+            ".*/fr/.*",    // French
+            ".*/it/.*",    // Italian
+            ".*/pt/.*",    // Portuguese
+            ".*/ru/.*",    // Russian
+            ".*/zh/.*",    // Chinese
+            ".*/ja/.*",    // Japanese
+            ".*/ko/.*",    // Korean
+            ".*/nl/.*",    // Dutch
+            ".*/pl/.*",    // Polish
+            ".*/tr/.*",    // Turkish
+            ".*/ar/.*",    // Arabic
+            ".*/th/.*",    // Thai
+            ".*/vi/.*",    // Vietnamese
+            ".*/sv/.*",    // Swedish
+            ".*/da/.*",    // Danish
+            ".*/fi/.*",    // Finnish
+            ".*/no/.*",    // Norwegian
+            "^https?://es\\.wikipedia\\.org/.*",    // Spanish Wikipedia
+            "^https?://de\\.wikipedia\\.org/.*",    // German Wikipedia
+            "^https?://fr\\.wikipedia\\.org/.*",    // French Wikipedia
+            "^https?://it\\.wikipedia\\.org/.*",    // Italian Wikipedia
+            "^https?://pt\\.wikipedia\\.org/.*",    // Portuguese Wikipedia
+            "^https?://ru\\.wikipedia\\.org/.*",    // Russian Wikipedia
+            "^https?://zh\\.wikipedia\\.org/.*",    // Chinese Wikipedia
+            "^https?://ja\\.wikipedia\\.org/.*",    // Japanese Wikipedia
+            "^https?://ko\\.wikipedia\\.org/.*",    // Korean Wikipedia
+            "^https?://nl\\.wikipedia\\.org/.*",    // Dutch Wikipedia
+            "^https?://pl\\.wikipedia\\.org/.*",    // Polish Wikipedia
+            "^https?://tr\\.wikipedia\\.org/.*",    // Turkish Wikipedia
+            "^https?://ar\\.wikipedia\\.org/.*",    // Arabic Wikipedia
+            "^https?://th\\.wikipedia\\.org/.*",    // Thai Wikipedia
+            "^https?://vi\\.wikipedia\\.org/.*",    // Vietnamese Wikipedia
+            "^https?://sv\\.wikipedia\\.org/.*",    // Swedish Wikipedia
+            "^https?://da\\.wikipedia\\.org/.*",    // Danish Wikipedia
+            "^https?://fi\\.wikipedia\\.org/.*",    // Finnish Wikipedia
+            "^https?://no\\.wikipedia\\.org/.*"     // Norwegian Wikipedia
+
+
+
     );
 
     public static boolean shouldCrawlURL(String url) {
-        try {
-            URL urlObj = new URL(url);
-            String domain = urlObj.getHost();
-            String path = urlObj.getPath();
 
-            if (!isValidProtocol(urlObj)) {
-                return false;
-            }
-            if (matchesBlacklistedPattern(path)) {
-                return false;
-            }
-            int depth = getURLDepth(url);
-            if (depth > MAX_DEPTH) {
-                return false;
-            }
+        return pathDepth(url);
+    }
 
-            if (getDomainURLCount(domain) >= MAX_URLS_PER_DOMAIN) {
-                return false;
-            }
-            if (isUnwantedFileType(path)) {
-                return false;
-            }
-
-            if (hasHistoricalPageRank(url)) {
-                return getHistoricalPageRank(url) >= MIN_PAGERANK;
-            }
-
-            if (hasTooManyQueryParams(urlObj)) {
-                return false;
-            }
-
-
-            return true;
-        } catch (Exception e) {
-            logger.error("Error evaluating URL: " + url, e);
+    public static boolean pathDepth(String url) {
+        String[] depth = url.split("/");
+        if (depth.length > MAX_DEPTH) {
             return false;
         }
+        return true;
     }
+    Set<String> seenPaths = new HashSet<>();
 
-    private static boolean isValidProtocol(URL url) {
-        String protocol = url.getProtocol().toLowerCase();
-        return protocol.equals("http") || protocol.equals("https");
-    }
 
-    private static boolean matchesBlacklistedPattern(String path) {
-        return BLACKLISTED_PATTERNS.stream()
-                .anyMatch(path::matches);
-    }
 
-    private static boolean isUnwantedFileType(String path) {
-        return path.matches(".*\\.(jpg|jpeg|gif|png|pdf|zip|exe|mp3|mp4|doc|docx)$");
-    }
-
-    private static boolean hasTooManyQueryParams(URL url) {
-        String query = url.getQuery();
-        if (query == null) return false;
-        return query.split("&").length > 3;
-    }
-
-    private static int getURLDepth(String url) {
-
-        return 0; // Placeholder
-    }
-
-    private static int getDomainURLCount(String domain) {
-        return 0; // Placeholder
-    }
-
-    private static boolean hasHistoricalPageRank(String url) {
-        return false;
-    }
-
-    private static double getHistoricalPageRank(String url) {
-        return 0.0;
-    }
     private static final String BUCKET_NAME = "corpuscrawled";
     private static AmazonS3 s3Client;
     private static final Logger logger = Logger.getLogger(Crawler.class);
+    private static String currentCrawlFolder;
     static {
         try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+            currentCrawlFolder = "crawl_" + sdf.format(new Date()) + "/";
             s3Client = AmazonS3ClientBuilder.standard()
                     .withRegion("us-east-1")
                     .build();
@@ -128,10 +112,6 @@ public class Crawler {
             logger.error("Error initializing S3 client", e);
         }
     }
-
-
-    private static final long defaultCrawlDelay = 0; // in milliseconds
-    private static int countIt = 0;
     private static void uploadToS3(String url, byte[] content) {
         try {
             // Create a unique key for the S3 object using the URL hash
@@ -144,7 +124,7 @@ public class Crawler {
 
             // Upload the content to S3
             s3Client.putObject(BUCKET_NAME,
-                    key,
+                    currentCrawlFolder,
                     new ByteArrayInputStream(content),
                     metadata);
 
@@ -153,6 +133,12 @@ public class Crawler {
             logger.error("Error uploading to S3. URL: " + url, e);
         }
     }
+
+
+
+    private static final long defaultCrawlDelay = 0; // in milliseconds
+    private static int countIt = 0;
+
     public static void run(FlameContext flameContext, String[] args) throws Exception {
         if (args.length != 1) {
             flameContext.output("Error: Seed URL required");
@@ -165,22 +151,10 @@ public class Crawler {
             flameContext.output("Error: Invalid seed URL (failed on normalization).");
             return;
         }
-
+        KVSClient kvsC = flameContext.getKVS();
         FlameRDD urlQueue = flameContext.parallelize(List.of(seedUrl));
 
-        KVSClient kvsC = flameContext.getKVS();
 
-        // Clear existing tables
-        try {
-            kvsC.delete("pt-crawl");
-            kvsC.delete("hosts");
-            System.out.println("Cleared existing KVS tables");
-            // Verify tables are empty
-            Iterator<Row> verifyEmpty = kvsC.scan("pt-crawl");
-            System.out.println("KVS empty after clear: " + !verifyEmpty.hasNext());
-        } catch (Exception e) {
-            System.out.println("Error clearing KVS: " + e.getMessage());
-        }
 
         while (urlQueue.count() > 0) {
             System.out.println("iter: " + countIt);
@@ -199,14 +173,23 @@ public class Crawler {
                     if (kvsClient.existsRow("pt-crawl", rowKey)) {
                         return extractedAndNormalizedUrls; // Should be empty at this point
                     }
-                    if (countIt >= 100) {
+                    if (countIt >= 1000) {
                         return extractedAndNormalizedUrls;
                     }
                     countIt++;
 
+                    url = sanitizeUrl(url);
+                    if (url == null) {
+                        return Collections.emptyList();
+                    }
+
                     // Parse URL to get the host, check that hosts robotsTxt
                     URL urlObj = new URI(url).toURL();
                     String host = urlObj.getHost();
+
+                    if (isHostLimitReached(kvsClient, host)) {
+                        return extractedAndNormalizedUrls;
+                    }
 
                     // Check the robots.txt endpoint for the current URL host
                     Row hostRow = kvsClient.getRow("hosts", host);
@@ -236,11 +219,20 @@ public class Crawler {
 
                     if (hostRow != null && hostRow.get("lastAccessTime") != null) {
                         long lastAccessTime = Long.parseLong(hostRow.get("lastAccessTime"));
-                        if (currentTime - lastAccessTime < currHostCrawlDelay) {
-
+                        long waitTime = currentTime - lastAccessTime;
+                        if (waitTime < currHostCrawlDelay) {
+                            long lengthSleep = Math.max(0, currHostCrawlDelay - waitTime);
                             System.out.println("Rate limited for host: " + host +
                                     " Current delay: " + currHostCrawlDelay +
                                     " Time since last access: " + (currentTime - lastAccessTime));
+                            try {
+                                if (lengthSleep > 0) {
+                                    Thread.sleep(waitTime);
+                                }
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
                             // Rate limit reached so return this url for trying next cycle
                             extractedAndNormalizedUrls.add(url);
                             return extractedAndNormalizedUrls;
@@ -249,12 +241,17 @@ public class Crawler {
 
                     // Update last access time for host (done after rate limit check)
                     hostRow.put("lastAccessTime", String.valueOf(currentTime));
-                    kvsClient.putRow("hosts", hostRow);
+
 
                     // Check if URL allowed by robots.txt, otherwise don't explore this page
                     if (!isUrlAllowed(urlObj, robotsInfo)) {
                         return extractedAndNormalizedUrls; // empty (should be)
                     }
+
+                    if (!isUrlAccessible(url)) {
+                        return Collections.emptyList();
+                    }
+                    kvsClient.putRow("hosts", hostRow);
 
                     if (shouldCrawlURL(url)) {
                         // Add the URL to the list of extracted and normalized URLs
@@ -346,6 +343,27 @@ public class Crawler {
         buffer.flush();
         inStream.close();
         return buffer.toByteArray();
+    }
+
+    private static boolean isHostLimitReached(KVSClient kvsClient, String host) throws IOException {
+        Row hostRow = kvsClient.getRow("hosts", host);
+        if (hostRow == null) {
+            hostRow = new Row(host);
+            hostRow.put("urlCount", "1");
+            kvsClient.putRow("hosts", hostRow);
+            return false;
+        }
+
+        String countStr = hostRow.get("urlCount");
+        int count = countStr != null ? Integer.parseInt(countStr) : 0;
+
+        if (count >= MAX_URLS_PER_DOMAIN) {
+            return true;
+        }
+
+        hostRow.put("urlCount", String.valueOf(count + 1));
+        kvsClient.putRow("hosts", hostRow);
+        return false;
     }
 
     public static List<String> extractNormalizedUrls(String pageContent, String baseUrl) {
@@ -583,6 +601,28 @@ public class Crawler {
         }
     }
 
+    private static String sanitizeUrl(String url) {
+        try {
+            int queryIndex = url.indexOf('?');
+            if (queryIndex != -1) {
+                String base = url.substring(0, queryIndex);
+                String query = url.substring(queryIndex + 1);
+                query = URLEncoder.encode(query, StandardCharsets.UTF_8)
+                        .replace("%3D", "=")  // Keep = signs
+                        .replace("%26", "&");  // Keep & signs
+                return base + "?" + query;
+            }
+
+            return URLEncoder.encode(url, StandardCharsets.UTF_8)
+                    .replace("%3A", ":")
+                    .replace("%2F", "/");
+
+        } catch (Exception e) {
+            logger.error("Failed to sanitize URL: " + url, e);
+            return null;
+        }
+    }
+
     private static String normalizePath(String path) {
         String[] segments = path.split("/");
         Stack<String> pathStack = new Stack<>();
@@ -730,6 +770,8 @@ public class Crawler {
         return rules;
     }
 
+
+
     // Get RobotsTxtInfo object info from hostRow
     private static RobotsTxt getRobotsInfoFromHostRow(Row hostRow) {
         RobotsTxt robotsInfo = new RobotsTxt();
@@ -753,6 +795,20 @@ public class Crawler {
     // Check if the URL is allowed according to robotsTxt
     private static boolean isUrlAllowed(URL url, RobotsTxt robotsTxtObj) {
         String path = url.getPath();
+
+        String[] split = path.split("/");
+        if (split.length >= 5) {
+            return false;
+        }
+
+
+        for (String patternStr : BLACKLISTED_PATTERNS) {
+            if (path.matches(patternStr)) {
+                return false;
+            }
+        }
+
+
 
         // Use the first matching rule, or allow by default if no rule found
         for (RobotsTxtRule rule : robotsTxtObj.rules) {
@@ -779,6 +835,66 @@ public class Crawler {
         public RobotsTxtRule(String type, String ruleInfo) {
             this.type = type;
             this.ruleInfo = ruleInfo;
+        }
+    }
+
+
+
+    private static boolean isUrlAccessible(String url) {
+        HttpURLConnection connection = null;
+        try {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setRequestMethod("HEAD");  // Use HEAD to be efficient
+            connection.setConnectTimeout(5000);   // 5 second connect timeout
+            connection.setReadTimeout(5000);      // 5 second read timeout
+            connection.setInstanceFollowRedirects(false);  // Don't auto-follow redirects
+
+            int responseCode = connection.getResponseCode();
+
+            // Handle different response codes
+            switch (responseCode) {
+                case HttpURLConnection.HTTP_OK:  // 200
+                    return true;
+
+                case HttpURLConnection.HTTP_MOVED_PERM:   // 301
+                case HttpURLConnection.HTTP_MOVED_TEMP:   // 302
+                case HttpURLConnection.HTTP_SEE_OTHER:    // 303
+                case 307:  // Temp redirect
+                case 308:  // Perm redirect
+                    // Get the redirect location and maybe process it
+                    String newLocation = connection.getHeaderField("Location");
+                    return newLocation != null && !newLocation.isEmpty();
+
+                case HttpURLConnection.HTTP_NOT_FOUND:        // 404
+                case HttpURLConnection.HTTP_FORBIDDEN:        // 403
+                case HttpURLConnection.HTTP_UNAUTHORIZED:     // 401
+                case HttpURLConnection.HTTP_BAD_REQUEST:      // 400
+                case HttpURLConnection.HTTP_INTERNAL_ERROR:   // 500
+                    return false;
+
+                default:
+                    return false;
+            }
+
+        } catch (SocketTimeoutException e) {
+            // Timeout - might want to retry later
+            logger.debug("Timeout accessing URL: " + url);
+            return false;
+
+        } catch (UnknownHostException e) {
+            // DNS failed - domain doesn't exist
+            logger.debug("Unknown host: " + url);
+            return false;
+
+        } catch (Exception e) {
+            // Any other error
+            logger.debug("Error accessing URL: " + url + " - " + e.getMessage());
+            return false;
+
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
     }
 }
