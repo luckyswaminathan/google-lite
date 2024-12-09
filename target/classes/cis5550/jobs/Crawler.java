@@ -52,6 +52,26 @@ public class Crawler {
             ".*/da/.*",    // Danish
             ".*/fi/.*",    // Finnish
             ".*/no/.*",    // Norwegian
+            ".*/ro/.*",    // Romanian
+            ".*/cs/.*",    // Czech
+            ".*/sk/.*",    // Slovak
+            ".*/hu/.*",    // Hungarian
+            ".*/uk/.*",    // Ukrainian
+            ".*/el/.*",    // Greek
+            ".*/bg/.*",    // Bulgarian
+            ".*/hr/.*",    // Croatian
+            ".*/sr/.*",    // Serbian
+            ".*/sl/.*",    // Slovenian
+            ".*/et/.*",    // Estonian
+            ".*/lv/.*",    // Latvian
+            ".*/lt/.*",    // Lithuanian
+            ".*/he/.*",    // Hebrew
+            ".*/fa/.*",    // Persian/Farsi
+            ".*/hi/.*",    // Hindi
+            ".*/bn/.*",    // Bengali
+            ".*/id/.*",    // Indonesian
+            ".*/ms/.*",    // Malay
+            ".*/tl/.*",
             "^https?://es\\.wikipedia\\.org/.*",    // Spanish Wikipedia
             "^https?://de\\.wikipedia\\.org/.*",    // German Wikipedia
             "^https?://fr\\.wikipedia\\.org/.*",    // French Wikipedia
@@ -70,7 +90,48 @@ public class Crawler {
             "^https?://sv\\.wikipedia\\.org/.*",    // Swedish Wikipedia
             "^https?://da\\.wikipedia\\.org/.*",    // Danish Wikipedia
             "^https?://fi\\.wikipedia\\.org/.*",    // Finnish Wikipedia
-            "^https?://no\\.wikipedia\\.org/.*"     // Norwegian Wikipedia
+            "^https?://no\\.wikipedia\\.org/.*",     // Norwegian Wikipedia
+            "^https?://ro\\.wikipedia\\.org/.*",    // Romanian Wikipedia
+            "^https?://cs\\.wikipedia\\.org/.*",    // Czech Wikipedia
+            "^https?://sk\\.wikipedia\\.org/.*",    // Slovak Wikipedia
+            "^https?://hu\\.wikipedia\\.org/.*",    // Hungarian Wikipedia
+            "^https?://uk\\.wikipedia\\.org/.*",    // Ukrainian Wikipedia
+            "^https?://el\\.wikipedia\\.org/.*",    // Greek Wikipedia
+            "^https?://bg\\.wikipedia\\.org/.*",    // Bulgarian Wikipedia
+            "^https?://hr\\.wikipedia\\.org/.*",    // Croatian Wikipedia
+            "^https?://sr\\.wikipedia\\.org/.*",    // Serbian Wikipedia
+            "^https?://sl\\.wikipedia\\.org/.*",    // Slovenian Wikipedia
+            "^https?://et\\.wikipedia\\.org/.*",    // Estonian Wikipedia
+            "^https?://lv\\.wikipedia\\.org/.*",    // Latvian Wikipedia
+            "^https?://lt\\.wikipedia\\.org/.*",    // Lithuanian Wikipedia
+            "^https?://he\\.wikipedia\\.org/.*",    // Hebrew Wikipedia
+            "^https?://fa\\.wikipedia\\.org/.*",    // Persian/Farsi Wikipedia
+            "^https?://hi\\.wikipedia\\.org/.*",    // Hindi Wikipedia
+            "^https?://bn\\.wikipedia\\.org/.*",    // Bengali Wikipedia
+            "^https?://id\\.wikipedia\\.org/.*",    // Indonesian Wikipedia
+            "^https?://ms\\.wikipedia\\.org/.*",    // Malay Wikipedia
+            "^https?://tl\\.wikipedia\\.org/.*",   // Tagalog/Filipino Wikipedia
+            ".*/f/dansk.*",        // Danish forum
+            ".*/f/russkij.*",      // Russian forum
+            ".*/f/espanol.*",      // Spanish forum
+            ".*/f/deutsch.*",      // German forum
+            ".*/f/francais.*",     // French forum
+            ".*/forum/dansk.*",    // Alternative Danish forum path
+            ".*/forum/russkij.*",  // Alternative Russian forum path
+            ".*/forums/dansk.*",   // Another forum variant
+            ".*/forums/russkij.*" // Another forum variant
+
+            // Common forum/member paths that often contain non-English content
+//            ".*/members/.*",       // Member profiles often have non-English content
+//            ".*/forum/[^/]+\\d+/.*",  // Catches numbered forum sections
+//            ".*/f/[^/]+\\d+/.*",      // Catches numbered forum sections (short version)
+//            ".*/forums/[^/]+\\d+/.*", // Catches numbered forum sections
+//            ".*/profile/.*",          // Profile pages
+//            ".*/user/.*",            // User pages
+//            ".*/gebruiker/.*",       // Dutch user pages
+//            ".*/benutzer/.*",        // German user pages
+//            ".*/usuario/.*",         // Spanish user pages
+//            ".*/utilisateur/.*"     // French user pages
 
 
 
@@ -92,7 +153,7 @@ public class Crawler {
 
 
 
-    private static final String BUCKET_NAME = "corpuscrawled";
+    private static final String BUCKET_NAME = "newcorpus";
     private static AmazonS3 s3Client;
     private static final Logger logger = Logger.getLogger(Crawler.class);
     private static String currentCrawlFolder;
@@ -108,6 +169,11 @@ public class Crawler {
             if (!s3Client.doesBucketExistV2(BUCKET_NAME)) {
                 s3Client.createBucket(BUCKET_NAME);
             }
+            ObjectMetadata metadata = new ObjectMetadata();
+            s3Client.putObject(BUCKET_NAME,
+                    currentCrawlFolder + "/",
+                    new ByteArrayInputStream(new byte[0]),
+                    metadata);
         } catch (Exception e) {
             logger.error("Error initializing S3 client", e);
         }
@@ -121,10 +187,12 @@ public class Crawler {
             metadata.setContentType("text/html");
             metadata.setContentLength(content.length);
             metadata.addUserMetadata("original-url", url);
+            String fullObjectKey = currentCrawlFolder + key + ".html";
+
 
             // Upload the content to S3
             s3Client.putObject(BUCKET_NAME,
-                    currentCrawlFolder,
+                    fullObjectKey,
                     new ByteArrayInputStream(content),
                     metadata);
 
@@ -140,24 +208,33 @@ public class Crawler {
     private static int countIt = 0;
 
     public static void run(FlameContext flameContext, String[] args) throws Exception {
-        if (args.length != 1) {
+        if (args.length < 1) {
             flameContext.output("Error: Seed URL required");
             return;
         }
 
-        String seedUrl = args[0];
-        seedUrl = normalizeUrl(seedUrl, "");
-        if (seedUrl == null || seedUrl.isEmpty()) {
-            flameContext.output("Error: Invalid seed URL (failed on normalization).");
-            return;
+        ArrayList<String> urls = new ArrayList<>();
+        for (String arg : args) {
+            String normalA = normalizeUrl(arg, "");
+            if (normalA == null || normalA.isEmpty()) {
+                flameContext.output("Error: Invalid seed URL (failed on normalization).");
+                return;
+            }
+            urls.add(normalA);
+
         }
+
         KVSClient kvsC = flameContext.getKVS();
-        FlameRDD urlQueue = flameContext.parallelize(List.of(seedUrl));
+
+
+
+        FlameRDD urlQueue = flameContext.parallelize(urls);
 
 
 
         while (urlQueue.count() > 0) {
-            System.out.println("iter: " + countIt);
+            long queueSize = urlQueue.count();
+            System.out.println("Current queue size: " + queueSize + ", Processed URLs: " + countIt);
 
 
             urlQueue = urlQueue.flatMap(url -> {
