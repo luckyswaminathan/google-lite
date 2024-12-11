@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 
 
 public class Crawler {
-    private static Logger logger = Logger.getLogger(Crawler.class);
     private static final int MAX_DEPTH = 5;                     // Maximum links from seed URL
     private static final int MAX_URLS_PER_DOMAIN = 1000;       // Limit URLs per domain
     private static final double MIN_PAGERANK = 0.1;            // Minimum PageRank threshold
@@ -157,53 +156,53 @@ public class Crawler {
 
 
 
-//    private static final String BUCKET_NAME = "newcorpus";
-//    private static AmazonS3 s3Client;
-//    private static final Logger logger = Logger.getLogger(Crawler.class);
-//    private static String currentCrawlFolder;
-//    static {
-//        try {
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-//            currentCrawlFolder = "crawl_" + sdf.format(new Date()) + "/";
-//            System.out.println("Initializing S3 client...");
-//            s3Client = AmazonS3ClientBuilder.standard()
-//                    .withRegion("us-east-1")
-//                    .build();
-//            System.out.println("S3 client initialized");
-//
-//            System.out.println("Checking if bucket exists: " + BUCKET_NAME);
-//            if (!s3Client.doesBucketExistV2(BUCKET_NAME)) {
-//                System.out.println("Creating bucket: " + BUCKET_NAME);
-//                s3Client.createBucket(BUCKET_NAME);
-//            }
-//        } catch (Exception e) {
-//            System.err.println("S3 initialization failed: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
-//    private static void uploadToS3(String url, byte[] content) {
-//        try {
-//            // Create a unique key for the S3 object using the URL hash
-//            String key = Hasher.hash(url);
-//
-//            ObjectMetadata metadata = new ObjectMetadata();
-//            metadata.setContentType("text/html");
-//            metadata.setContentLength(content.length);
-//            metadata.addUserMetadata("original-url", url);
-//            String fullObjectKey = currentCrawlFolder + key + ".html";
-//
-//
-//            // Upload the content to S3
-//            s3Client.putObject(BUCKET_NAME,
-//                    fullObjectKey,
-//                    new ByteArrayInputStream(content),
-//                    metadata);
-//
-//            logger.info("Successfully uploaded content from URL: " + url + " to S3 with key: " + key);
-//        } catch (Exception e) {
-//            logger.error("Error uploading to S3. URL: " + url, e);
-//        }
-//    }
+    private static final String BUCKET_NAME = "newcorpus";
+    private static AmazonS3 s3Client;
+    private static final Logger logger = Logger.getLogger(Crawler.class);
+    private static String currentCrawlFolder;
+    static {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+            currentCrawlFolder = "crawl_" + sdf.format(new Date()) + "/";
+            System.out.println("Initializing S3 client...");
+            s3Client = AmazonS3ClientBuilder.standard()
+                    .withRegion("us-east-1")
+                    .build();
+            System.out.println("S3 client initialized");
+
+            System.out.println("Checking if bucket exists: " + BUCKET_NAME);
+            if (!s3Client.doesBucketExistV2(BUCKET_NAME)) {
+                System.out.println("Creating bucket: " + BUCKET_NAME);
+                s3Client.createBucket(BUCKET_NAME);
+            }
+        } catch (Exception e) {
+            System.err.println("S3 initialization failed: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    private static void uploadToS3(String url, byte[] content) {
+        try {
+            // Create a unique key for the S3 object using the URL hash
+            String key = Hasher.hash(url);
+
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentType("text/html");
+            metadata.setContentLength(content.length);
+            metadata.addUserMetadata("original-url", url);
+            String fullObjectKey = currentCrawlFolder + key + ".html";
+
+
+            // Upload the content to S3
+            s3Client.putObject(BUCKET_NAME,
+                    fullObjectKey,
+                    new ByteArrayInputStream(content),
+                    metadata);
+
+            logger.info("Successfully uploaded content from URL: " + url + " to S3 with key: " + key);
+        } catch (Exception e) {
+            logger.error("Error uploading to S3. URL: " + url, e);
+        }
+    }
 
 
 
@@ -392,7 +391,7 @@ public class Crawler {
 
                                 int length = getConnection.getContentLength();
                                 byte[] pageContentAsBytes = getPageContentAsBytes(getConnection);
-                             //   S3UploadBuffer.addToBuffer(url, pageContentAsBytes);
+                                S3UploadBuffer.addToBuffer(url, pageContentAsBytes);
 
 
                                 if (length != -1) {
@@ -410,7 +409,7 @@ public class Crawler {
 
                         headConnection.disconnect();
                     } catch (Exception e) {
-                       // logger.error("Error while running crawler run function; Current URL: " + url, e);
+                        logger.error("Error while running crawler run function; Current URL: " + url, e);
                     }
                     return extractedAndNormalizedUrls;
                 });
@@ -425,7 +424,7 @@ public class Crawler {
 
 
         }
-//        S3UploadBuffer.flushBuffer();
+        S3UploadBuffer.flushBuffer();
     }
 
     private static byte[] getPageContentAsBytes(HttpURLConnection connection) throws IOException {
@@ -997,51 +996,51 @@ public class Crawler {
         }
     }
 
-//    private static class S3UploadBuffer {
-//        private static final int BATCH_SIZE = 50;
-//        private static final Map<String, byte[]> contentBuffer = new ConcurrentHashMap<>();
-//        private static final Object bufferLock = new Object();
-//
-//        public static void addToBuffer(String url, byte[] content) {
-//            synchronized(bufferLock) {
-//                contentBuffer.put(url, content);
-//
-//                // If buffer reaches batch size, trigger upload
-//                if (contentBuffer.size() >= BATCH_SIZE) {
-//                    System.out.println("buffered: " + contentBuffer.size());
-//                    flushBuffer();
-//                }
-//            }
-//        }
-//
-//        public static void flushBuffer() {
-//            synchronized(bufferLock) {
-//                if (contentBuffer.isEmpty()) {
-//                    return;
-//                }
-//
-//                // Create copy of current buffer and clear it
-//                Map<String, byte[]> batchToUpload = new HashMap<>(contentBuffer);
-//                contentBuffer.clear();
-//
-//                // Upload batch in parallel
-//                List<CompletableFuture<Void>> uploads = batchToUpload.entrySet().stream()
-//                        .map(entry -> CompletableFuture.runAsync(() -> {
-//                            try {
-//                                uploadToS3(entry.getKey(), entry.getValue());
-//                            } catch (Exception e) {
-//                                logger.error("Failed to upload to S3: " + entry.getKey(), e);
-//                            }
-//                        }))
-//                        .collect(Collectors.toList());
-//
-//                // Wait for all uploads to complete
-//                CompletableFuture.allOf(uploads.toArray(new CompletableFuture[0]))
-//                        .exceptionally(throwable -> {
-//                            logger.error("Error in batch S3 upload", throwable);
-//                            return null;
-//                        });
-//            }
-//        }
-//    }
+    private static class S3UploadBuffer {
+        private static final int BATCH_SIZE = 100;
+        private static final Map<String, byte[]> contentBuffer = new ConcurrentHashMap<>();
+        private static final Object bufferLock = new Object();
+
+        public static void addToBuffer(String url, byte[] content) {
+            synchronized(bufferLock) {
+                contentBuffer.put(url, content);
+
+                // If buffer reaches batch size, trigger upload
+                if (contentBuffer.size() >= BATCH_SIZE) {
+                    System.out.println("buffered: " + contentBuffer.size());
+                    flushBuffer();
+                }
+            }
+        }
+
+        public static void flushBuffer() {
+            synchronized(bufferLock) {
+                if (contentBuffer.isEmpty()) {
+                    return;
+                }
+
+                // Create copy of current buffer and clear it
+                Map<String, byte[]> batchToUpload = new HashMap<>(contentBuffer);
+                contentBuffer.clear();
+
+                // Upload batch in parallel
+                List<CompletableFuture<Void>> uploads = batchToUpload.entrySet().stream()
+                        .map(entry -> CompletableFuture.runAsync(() -> {
+                            try {
+                                uploadToS3(entry.getKey(), entry.getValue());
+                            } catch (Exception e) {
+                                logger.error("Failed to upload to S3: " + entry.getKey(), e);
+                            }
+                        }))
+                        .collect(Collectors.toList());
+
+                // Wait for all uploads to complete
+                CompletableFuture.allOf(uploads.toArray(new CompletableFuture[0]))
+                        .exceptionally(throwable -> {
+                            logger.error("Error in batch S3 upload", throwable);
+                            return null;
+                        });
+            }
+        }
+    }
 }
