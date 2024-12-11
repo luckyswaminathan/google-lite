@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # Get the directory where the script is located
-# Get the directory where the script is located
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Define our classpath
-CLASSPATH="$DIR/crawler.jar:$DIR/lib/flame.jar:$DIR/lib/kvs.jar:$DIR/lib/webserver.jar"
+CLASSPATH="$DIR/crawler.jar:$DIR/lib/flame.jar:$DIR/lib/kvs.jar:$DIR/lib/webserver.jar:$DIR/lib/*"
 
 # Print classpath for debugging
 echo "Using classpath: $CLASSPATH"
@@ -23,8 +22,6 @@ for url in "$@"; do
     echo "- $url"
 done
 
-# Join all URLs with commas to pass as a single argument
-SEED_URLS=$(IFS=,; echo "$*")
+# Run the crawler job with each seed URL passed as a separate argument
+java -cp "$CLASSPATH" cis5550.flame.FlameSubmit 52.90.29.134:9000 "$DIR/crawler.jar" cis5550.jobs.Crawler "$@"
 
-# Run the crawler with all seed URLs
-java -cp "$CLASSPATH" cis5550.flame.FlameSubmit localhost:9000 "$DIR/crawler.jar" cis5550.jobs.Crawler "$SEED_URLS"

@@ -76,6 +76,7 @@ class Coordinator extends cis5550.generic.Coordinator {
 
       Thread[] threads = new Thread[getWorkers().size()];
       String[] results = new String[getWorkers().size()];
+      System.out.println("workers: " + getWorkers().size());
       for (int i = 0; i < getWorkers().size(); i++) {
         final String url = "http://" + getWorkers().get(i) + "/useJAR";
         final int j = i;
@@ -125,7 +126,7 @@ class Coordinator extends cis5550.generic.Coordinator {
       // underlying cause and report it
       // back to the user in the HTTP response, to help with debugging.
 
-      FlameContextImpl cxt = new FlameContextImpl(kvs, kvs.getCoordinator().split(":")[0] + ":" + myPort);
+      FlameContextImpl cxt = new FlameContextImpl(kvs, "localhost:" + myPort);
       try {
         Loader.invokeRunMethod(jarFile, className, cxt, argVector);
       } catch (IllegalAccessException iae) {

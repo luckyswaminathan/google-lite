@@ -1,6 +1,8 @@
 package cis5550.jobs;
 
 import cis5550.flame.FlameContext;
+import cis5550.flame.FlamePair;
+import cis5550.flame.FlamePairRDD;
 import cis5550.flame.FlameRDD;
 import cis5550.kvs.KVSClient;
 import cis5550.kvs.Row;
@@ -17,7 +19,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import java.io.ByteArrayInputStream;
-
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 
 public class Crawler {
@@ -159,23 +162,22 @@ public class Crawler {
     private static String currentCrawlFolder;
     static {
         try {
-
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             currentCrawlFolder = "crawl_" + sdf.format(new Date()) + "/";
+            System.out.println("Initializing S3 client...");
             s3Client = AmazonS3ClientBuilder.standard()
                     .withRegion("us-east-1")
                     .build();
+            System.out.println("S3 client initialized");
 
+            System.out.println("Checking if bucket exists: " + BUCKET_NAME);
             if (!s3Client.doesBucketExistV2(BUCKET_NAME)) {
+                System.out.println("Creating bucket: " + BUCKET_NAME);
                 s3Client.createBucket(BUCKET_NAME);
             }
-            ObjectMetadata metadata = new ObjectMetadata();
-            s3Client.putObject(BUCKET_NAME,
-                    currentCrawlFolder + "/",
-                    new ByteArrayInputStream(new byte[0]),
-                    metadata);
         } catch (Exception e) {
-            logger.error("Error initializing S3 client", e);
+            System.err.println("S3 initialization failed: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     private static void uploadToS3(String url, byte[] content) {
@@ -224,186 +226,205 @@ public class Crawler {
 
         }
 
+        System.err.println("reached here in run");
+
         KVSClient kvsC = flameContext.getKVS();
+
+
 
 
 
         FlameRDD urlQueue = flameContext.parallelize(urls);
 
-
-
         while (urlQueue.count() > 0) {
             long queueSize = urlQueue.count();
             System.out.println("Current queue size: " + queueSize + ", Processed URLs: " + countIt);
-
-
+            FlamePairRDD urlsByDomain = urlQueue.mapToPair(url -> {
+                URL urlObj = new URI(url).toURL();
+                return new FlamePair(urlObj.getHost(), url);
+            });
+            FlamePairRDD groupedUrls = urlsByDomain.foldByKey("", (accumulator, url) -> {
+                if (accumulator.isEmpty()) {
+                    return url;
+                }
+                // Limit URLs per domain during folding to prevent memory issues
+                String[] existingUrls = accumulator.split("\n");
+                if (existingUrls.length >= MAX_URLS_PER_DOMAIN) {
+                    return accumulator;
+                }
+                return accumulator + "\n" + url;
+            });
             urlQueue = urlQueue.flatMap(url -> {
 
-                List<String> extractedAndNormalizedUrls = new ArrayList<>();
+                    List<String> extractedAndNormalizedUrls = new ArrayList<>();
 
 
-                try {
-                    String rowKey = Hasher.hash(url);
-                    KVSClient kvsClient = flameContext.getKVS();
+                    try {
+                        String rowKey = Hasher.hash(url);
+                        KVSClient kvsClient = flameContext.getKVS();
 
 
-                    if (kvsClient.existsRow("pt-crawl", rowKey)) {
-                        return extractedAndNormalizedUrls; // Should be empty at this point
-                    }
-                    if (countIt >= 1000) {
-                        return extractedAndNormalizedUrls;
-                    }
-                    countIt++;
-
-                    url = sanitizeUrl(url);
-                    if (url == null) {
-                        return Collections.emptyList();
-                    }
-
-                    // Parse URL to get the host, check that hosts robotsTxt
-                    URL urlObj = new URI(url).toURL();
-                    String host = urlObj.getHost();
-
-                    if (isHostLimitReached(kvsClient, host)) {
-                        return extractedAndNormalizedUrls;
-                    }
-
-                    // Check the robots.txt endpoint for the current URL host
-                    Row hostRow = kvsClient.getRow("hosts", host);
-                    RobotsTxt robotsInfo;
-                    if (hostRow == null || hostRow.get("robotsFetched") == null) {
-                        hostRow = hostRow != null ? hostRow : new Row(host);
-
-                        // Fetch, parse, and serialize robots.txt for hosts table storage
-                        String robotsTxtContent = fetchRobotsTxt(host);
-                        hostRow.put("robotsTxt", robotsTxtContent != null ? robotsTxtContent : "");
-                        hostRow.put("robotsFetched", "true"); // Mark that robots.txt has been fetched
-                        robotsInfo = parseRobotsTxt(robotsTxtContent);
-                        hostRow.put("crawlDelay", String.valueOf(robotsInfo.crawlDelay));
-                        hostRow.put("robotsRules", serializeRobotsRules(robotsInfo.rules));
-                        kvsClient.putRow("hosts", hostRow);
-                    } else {
-                        robotsInfo = getRobotsInfoFromHostRow(hostRow);
-                    }
-
-                    // Check that last access time was at least currHostCrawlDelay away
-                    long currHostCrawlDelay = defaultCrawlDelay;
-                    if (hostRow.get("crawlDelay") != null) {
-                        currHostCrawlDelay = (long) (Double.parseDouble(hostRow.get("crawlDelay")) * 1000);
-                    }
-
-                    long currentTime = System.currentTimeMillis();
-
-                    if (hostRow != null && hostRow.get("lastAccessTime") != null) {
-                        long lastAccessTime = Long.parseLong(hostRow.get("lastAccessTime"));
-                        long waitTime = currentTime - lastAccessTime;
-                        if (waitTime < currHostCrawlDelay) {
-                            long lengthSleep = Math.max(0, currHostCrawlDelay - waitTime);
-                            System.out.println("Rate limited for host: " + host +
-                                    " Current delay: " + currHostCrawlDelay +
-                                    " Time since last access: " + (currentTime - lastAccessTime));
-                            try {
-                                if (lengthSleep > 0) {
-                                    Thread.sleep(waitTime);
-                                }
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-
-                            // Rate limit reached so return this url for trying next cycle
-                            extractedAndNormalizedUrls.add(url);
+                        if (kvsClient.existsRow("pt-crawl", rowKey)) {
+                            return extractedAndNormalizedUrls; // Should be empty at this point
+                        }
+                        if (countIt >= 100000) {
                             return extractedAndNormalizedUrls;
                         }
-                    }
+                        countIt++;
 
-                    // Update last access time for host (done after rate limit check)
-                    hostRow.put("lastAccessTime", String.valueOf(currentTime));
+                        url = sanitizeUrl(url);
+                        if (url == null) {
+                            return Collections.emptyList();
+                        }
 
+                        // Parse URL to get the host, check that hosts robotsTxt
+                        URL urlObj = new URI(url).toURL();
+                        String host = urlObj.getHost();
 
-                    // Check if URL allowed by robots.txt, otherwise don't explore this page
-                    if (!isUrlAllowed(urlObj, robotsInfo)) {
-                        return extractedAndNormalizedUrls; // empty (should be)
-                    }
+                        if (isHostLimitReached(kvsClient, host)) {
+                            return extractedAndNormalizedUrls;
+                        }
 
-                    if (!isUrlAccessible(url)) {
-                        return Collections.emptyList();
-                    }
-                    kvsClient.putRow("hosts", hostRow);
+                        // Check the robots.txt endpoint for the current URL host
+                        Row hostRow = kvsClient.getRow("hosts", host);
+                        RobotsTxt robotsInfo;
+                        if (hostRow == null || hostRow.get("robotsFetched") == null) {
+                            hostRow = hostRow != null ? hostRow : new Row(host);
 
-                    if (shouldCrawlURL(url)) {
-                        // Add the URL to the list of extracted and normalized URLs
-                        extractedAndNormalizedUrls.add(url);
-                    }
+                            // Fetch, parse, and serialize robots.txt for hosts table storage
+                            String robotsTxtContent = fetchRobotsTxt(host);
+                            hostRow.put("robotsTxt", robotsTxtContent != null ? robotsTxtContent : "");
+                            hostRow.put("robotsFetched", "true"); // Mark that robots.txt has been fetched
+                            robotsInfo = parseRobotsTxt(robotsTxtContent);
+                            hostRow.put("crawlDelay", String.valueOf(robotsInfo.crawlDelay));
+                            hostRow.put("robotsRules", serializeRobotsRules(robotsInfo.rules));
+                            kvsClient.putRow("hosts", hostRow);
+                        } else {
+                            robotsInfo = getRobotsInfoFromHostRow(hostRow);
+                        }
 
-                    HttpURLConnection headConnection = (HttpURLConnection) urlObj.openConnection();
-                    headConnection.setRequestMethod("HEAD");
-                    headConnection.setRequestProperty("User-Agent", "cis5550-crawler");
-                    headConnection.setInstanceFollowRedirects(false); // From Ed post: to not follow re-directs
-                    headConnection.connect();
+                        // Check that last access time was at least currHostCrawlDelay away
+                        long currHostCrawlDelay = defaultCrawlDelay;
+                        if (hostRow.get("crawlDelay") != null) {
+                            currHostCrawlDelay = (long) (Double.parseDouble(hostRow.get("crawlDelay")) * 1000);
+                        }
 
-                    Row row = new Row(rowKey);
+                        long currentTime = System.currentTimeMillis();
 
-                    // Add in url, responseCode, contentType, length metadata
-                    row.put("url", url);
+                        if (hostRow != null && hostRow.get("lastAccessTime") != null) {
+                            long lastAccessTime = Long.parseLong(hostRow.get("lastAccessTime"));
+                            long waitTime = currentTime - lastAccessTime;
+                            if (waitTime < currHostCrawlDelay) {
+                                long lengthSleep = Math.max(0, currHostCrawlDelay - waitTime);
+                                System.out.println("Rate limited for host: " + host +
+                                        " Current delay: " + currHostCrawlDelay +
+                                        " Time since last access: " + (currentTime - lastAccessTime));
+                                try {
+                                    if (lengthSleep > 0) {
+                                        Thread.sleep(waitTime);
+                                    }
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
 
-                    int responseCode = headConnection.getResponseCode();
-                    row.put("responseCode", String.valueOf(responseCode));
-
-                    String contentType = headConnection.getContentType();
-                    if (contentType != null) {
-                        row.put("contentType", contentType);
-                    }
-
-                    if (isRedirect(responseCode)) {
-                        String locationHeader = headConnection.getHeaderField("Location");
-                        if (locationHeader != null && !locationHeader.isEmpty()) {
-                            String nextUrl = normalizeUrl(locationHeader, url);
-                            if (nextUrl != null && !nextUrl.isEmpty()) {
-                                extractedAndNormalizedUrls.add(nextUrl);
+                                // Rate limit reached so return this url for trying next cycle
+                                extractedAndNormalizedUrls.add(url);
+                                return extractedAndNormalizedUrls;
                             }
                         }
-                    } else {
-                        // Do GET request only if responseCode on HEAD is 200 AND contentType is
-                        // text/html
-                        if (responseCode == HttpURLConnection.HTTP_OK && contentType != null
-                                && contentType.toLowerCase().contains("text/html")) {
-                            HttpURLConnection getConnection = (HttpURLConnection) urlObj.openConnection();
-                            getConnection.setRequestMethod("GET");
-                            getConnection.setRequestProperty("User-Agent", "cis5550-crawler");
-                            getConnection.connect();
 
-                            int length = getConnection.getContentLength();
-                            byte[] pageContentAsBytes = getPageContentAsBytes(getConnection);
-                            uploadToS3(url, pageContentAsBytes);
+                        // Update last access time for host (done after rate limit check)
+                        hostRow.put("lastAccessTime", String.valueOf(currentTime));
 
 
-                            if (length != -1) {
-                                row.put("length", String.valueOf(length));
-                            }
-                            row.put("page", pageContentAsBytes);
-                            row.put("s3_key", Hasher.hash(url));
-
-                            String pageContent = new String(pageContentAsBytes, StandardCharsets.UTF_8);
-                            extractedAndNormalizedUrls.addAll(extractNormalizedUrls(pageContent, url));
-                            getConnection.disconnect();
+                        // Check if URL allowed by robots.txt, otherwise don't explore this page
+                        if (!isUrlAllowed(urlObj, robotsInfo)) {
+                            return extractedAndNormalizedUrls; // empty (should be)
                         }
+
+                        if (!isUrlAccessible(url)) {
+                            return Collections.emptyList();
+                        }
+                        kvsClient.putRow("hosts", hostRow);
+
+                        if (shouldCrawlURL(url)) {
+                            // Add the URL to the list of extracted and normalized URLs
+                            extractedAndNormalizedUrls.add(url);
+                        }
+
+                        HttpURLConnection headConnection = (HttpURLConnection) urlObj.openConnection();
+                        headConnection.setRequestMethod("HEAD");
+                        headConnection.setRequestProperty("User-Agent", "cis5550-crawler");
+                        headConnection.setInstanceFollowRedirects(false); // From Ed post: to not follow re-directs
+                        headConnection.connect();
+
+                        Row row = new Row(rowKey);
+
+                        // Add in url, responseCode, contentType, length metadata
+                        row.put("url", url);
+
+                        int responseCode = headConnection.getResponseCode();
+                        row.put("responseCode", String.valueOf(responseCode));
+
+                        String contentType = headConnection.getContentType();
+                        if (contentType != null) {
+                            row.put("contentType", contentType);
+                        }
+
+                        if (isRedirect(responseCode)) {
+                            String locationHeader = headConnection.getHeaderField("Location");
+                            if (locationHeader != null && !locationHeader.isEmpty()) {
+                                String nextUrl = normalizeUrl(locationHeader, url);
+                                if (nextUrl != null && !nextUrl.isEmpty()) {
+                                    extractedAndNormalizedUrls.add(nextUrl);
+                                }
+                            }
+                        } else {
+                            // Do GET request only if responseCode on HEAD is 200 AND contentType is
+                            // text/html
+                            if (responseCode == HttpURLConnection.HTTP_OK && contentType != null
+                                    && (contentType.toLowerCase().contains("text/html") || contentType.toLowerCase().contains("text/plain"))) {
+                                HttpURLConnection getConnection = (HttpURLConnection) urlObj.openConnection();
+                                getConnection.setRequestMethod("GET");
+                                getConnection.setRequestProperty("User-Agent", "cis5550-crawler");
+                                getConnection.connect();
+
+                                int length = getConnection.getContentLength();
+                                byte[] pageContentAsBytes = getPageContentAsBytes(getConnection);
+                                S3UploadBuffer.addToBuffer(url, pageContentAsBytes);
+
+
+                                if (length != -1) {
+                                    row.put("length", String.valueOf(length));
+                                }
+                                row.put("page", pageContentAsBytes);
+                                row.put("s3_key", Hasher.hash(url));
+
+                                String pageContent = new String(pageContentAsBytes, StandardCharsets.UTF_8);
+                                extractedAndNormalizedUrls.addAll(extractNormalizedUrls(pageContent, url));
+                                getConnection.disconnect();
+                            }
+                        }
+                        kvsClient.putRow("pt-crawl", row);
+
+                        headConnection.disconnect();
+                    } catch (Exception e) {
+                        logger.error("Error while running crawler run function; Current URL: " + url, e);
                     }
-                    kvsClient.putRow("pt-crawl", row);
+                    return extractedAndNormalizedUrls;
+                });
 
-                    headConnection.disconnect();
-                } catch (Exception e) {
-                    logger.error("Error while running crawler run function; Current URL: " + url, e);
-                }
-                return extractedAndNormalizedUrls;
-            });
+                // Sleep to prevent too-quick loops during testing
+                // try {
+                // Thread.sleep(500);
+                // } catch (InterruptedException e) {
+                // Thread.currentThread().interrupt();
+                // }
 
-            // Sleep to prevent too-quick loops during testing
-            // try {
-            // Thread.sleep(500);
-            // } catch (InterruptedException e) {
-            // Thread.currentThread().interrupt();
-            // }
+
+
         }
+        S3UploadBuffer.flushBuffer();
     }
 
     private static byte[] getPageContentAsBytes(HttpURLConnection connection) throws IOException {
@@ -971,6 +992,54 @@ public class Crawler {
         } finally {
             if (connection != null) {
                 connection.disconnect();
+            }
+        }
+    }
+
+    private static class S3UploadBuffer {
+        private static final int BATCH_SIZE = 50;
+        private static final Map<String, byte[]> contentBuffer = new ConcurrentHashMap<>();
+        private static final Object bufferLock = new Object();
+
+        public static void addToBuffer(String url, byte[] content) {
+            synchronized(bufferLock) {
+                contentBuffer.put(url, content);
+
+                // If buffer reaches batch size, trigger upload
+                if (contentBuffer.size() >= BATCH_SIZE) {
+                    System.out.println("buffered: " + contentBuffer.size());
+                    flushBuffer();
+                }
+            }
+        }
+
+        public static void flushBuffer() {
+            synchronized(bufferLock) {
+                if (contentBuffer.isEmpty()) {
+                    return;
+                }
+
+                // Create copy of current buffer and clear it
+                Map<String, byte[]> batchToUpload = new HashMap<>(contentBuffer);
+                contentBuffer.clear();
+
+                // Upload batch in parallel
+                List<CompletableFuture<Void>> uploads = batchToUpload.entrySet().stream()
+                        .map(entry -> CompletableFuture.runAsync(() -> {
+                            try {
+                                uploadToS3(entry.getKey(), entry.getValue());
+                            } catch (Exception e) {
+                                logger.error("Failed to upload to S3: " + entry.getKey(), e);
+                            }
+                        }))
+                        .collect(Collectors.toList());
+
+                // Wait for all uploads to complete
+                CompletableFuture.allOf(uploads.toArray(new CompletableFuture[0]))
+                        .exceptionally(throwable -> {
+                            logger.error("Error in batch S3 upload", throwable);
+                            return null;
+                        });
             }
         }
     }

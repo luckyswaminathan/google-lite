@@ -57,12 +57,19 @@ public class FlameContextImpl implements FlameContext, Serializable {
 
     public void invokeOperation(String operation, byte[] lambda, String inputTable, String outputTable)
             throws Exception {
+        System.out.println(this.flameCoordinatorAddr);
         invokeOperation(operation, lambda, inputTable, outputTable, null, false);
     }
 
     public List<String> invokeOperation(String operation, byte[] lambda, String inputTable, String outputTable,
             String extraString, boolean collectResults)
             throws Exception {
+
+        System.err.println("Debug: About to invoke operation");
+        System.err.println("Debug: Coordinator address is: " + this.flameCoordinatorAddr);
+        System.err.println("Debug: Operation: " + operation);
+        System.err.println("Debug: Input table: " + inputTable);
+        System.err.println("Debug: Output table: " + outputTable);
         Partitioner partitioner = new Partitioner();
         List<Integer> statusCodes = Collections.synchronizedList(new ArrayList<>());
         List<String> results = Collections.synchronizedList(new ArrayList<>());
@@ -75,7 +82,7 @@ public class FlameContextImpl implements FlameContext, Serializable {
         partitioner.addKVSWorker(kvs.getWorkerAddress(kvs.numWorkers() - 1),
                 kvs.getWorkerID(kvs.numWorkers() - 1), null);
         partitioner.addKVSWorker(kvs.getWorkerAddress(kvs.numWorkers() - 1), null, kvs.getWorkerID(0));
-
+        System.out.println("ADDR: " + this.flameCoordinatorAddr);
         String resp = new String(HTTP.doRequest("GET", "http://" + this.flameCoordinatorAddr +
                 "/workers", (byte[]) null).body());
         String[] workersArray = resp.split("\n");
