@@ -27,118 +27,9 @@ public class Crawler {
     private static final int MAX_DEPTH = 5;                     // Maximum links from seed URL
     private static final int MAX_URLS_PER_DOMAIN = 1000;       // Limit URLs per domain
     private static final double MIN_PAGERANK = 0.1;            // Minimum PageRank threshold
-    private static final Set<String> BLACKLISTED_PATTERNS = Set.of(
-            ".*/archive/.*",
-            ".*/tags/.*",
-            ".*/search/.*",
-            ".*/page/\\d+/.*",
-            ".*/wp-admin/.*",
-            ".*/login/.*",
-            ".*/signup/.*",
-            ".*/rss/.*",
-            ".*/es/.*",    // Spanish
-            ".*/de/.*",    // German
-            ".*/fr/.*",    // French
-            ".*/it/.*",    // Italian
-            ".*/pt/.*",    // Portuguese
-            ".*/ru/.*",    // Russian
-            ".*/zh/.*",    // Chinese
-            ".*/ja/.*",    // Japanese
-            ".*/ko/.*",    // Korean
-            ".*/nl/.*",    // Dutch
-            ".*/pl/.*",    // Polish
-            ".*/tr/.*",    // Turkish
-            ".*/ar/.*",    // Arabic
-            ".*/th/.*",    // Thai
-            ".*/vi/.*",    // Vietnamese
-            ".*/sv/.*",    // Swedish
-            ".*/da/.*",    // Danish
-            ".*/fi/.*",    // Finnish
-            ".*/no/.*",    // Norwegian
-            ".*/ro/.*",    // Romanian
-            ".*/cs/.*",    // Czech
-            ".*/sk/.*",    // Slovak
-            ".*/hu/.*",    // Hungarian
-            ".*/uk/.*",    // Ukrainian
-            ".*/el/.*",    // Greek
-            ".*/bg/.*",    // Bulgarian
-            ".*/hr/.*",    // Croatian
-            ".*/sr/.*",    // Serbian
-            ".*/sl/.*",    // Slovenian
-            ".*/et/.*",    // Estonian
-            ".*/lv/.*",    // Latvian
-            ".*/lt/.*",    // Lithuanian
-            ".*/he/.*",    // Hebrew
-            ".*/fa/.*",    // Persian/Farsi
-            ".*/hi/.*",    // Hindi
-            ".*/bn/.*",    // Bengali
-            ".*/id/.*",    // Indonesian
-            ".*/ms/.*",    // Malay
-            ".*/tl/.*",
-            "^https?://es\\.wikipedia\\.org/.*",    // Spanish Wikipedia
-            "^https?://de\\.wikipedia\\.org/.*",    // German Wikipedia
-            "^https?://fr\\.wikipedia\\.org/.*",    // French Wikipedia
-            "^https?://it\\.wikipedia\\.org/.*",    // Italian Wikipedia
-            "^https?://pt\\.wikipedia\\.org/.*",    // Portuguese Wikipedia
-            "^https?://ru\\.wikipedia\\.org/.*",    // Russian Wikipedia
-            "^https?://zh\\.wikipedia\\.org/.*",    // Chinese Wikipedia
-            "^https?://ja\\.wikipedia\\.org/.*",    // Japanese Wikipedia
-            "^https?://ko\\.wikipedia\\.org/.*",    // Korean Wikipedia
-            "^https?://nl\\.wikipedia\\.org/.*",    // Dutch Wikipedia
-            "^https?://pl\\.wikipedia\\.org/.*",    // Polish Wikipedia
-            "^https?://tr\\.wikipedia\\.org/.*",    // Turkish Wikipedia
-            "^https?://ar\\.wikipedia\\.org/.*",    // Arabic Wikipedia
-            "^https?://th\\.wikipedia\\.org/.*",    // Thai Wikipedia
-            "^https?://vi\\.wikipedia\\.org/.*",    // Vietnamese Wikipedia
-            "^https?://sv\\.wikipedia\\.org/.*",    // Swedish Wikipedia
-            "^https?://da\\.wikipedia\\.org/.*",    // Danish Wikipedia
-            "^https?://fi\\.wikipedia\\.org/.*",    // Finnish Wikipedia
-            "^https?://no\\.wikipedia\\.org/.*",     // Norwegian Wikipedia
-            "^https?://ro\\.wikipedia\\.org/.*",    // Romanian Wikipedia
-            "^https?://cs\\.wikipedia\\.org/.*",    // Czech Wikipedia
-            "^https?://sk\\.wikipedia\\.org/.*",    // Slovak Wikipedia
-            "^https?://hu\\.wikipedia\\.org/.*",    // Hungarian Wikipedia
-            "^https?://uk\\.wikipedia\\.org/.*",    // Ukrainian Wikipedia
-            "^https?://el\\.wikipedia\\.org/.*",    // Greek Wikipedia
-            "^https?://bg\\.wikipedia\\.org/.*",    // Bulgarian Wikipedia
-            "^https?://hr\\.wikipedia\\.org/.*",    // Croatian Wikipedia
-            "^https?://sr\\.wikipedia\\.org/.*",    // Serbian Wikipedia
-            "^https?://sl\\.wikipedia\\.org/.*",    // Slovenian Wikipedia
-            "^https?://et\\.wikipedia\\.org/.*",    // Estonian Wikipedia
-            "^https?://lv\\.wikipedia\\.org/.*",    // Latvian Wikipedia
-            "^https?://lt\\.wikipedia\\.org/.*",    // Lithuanian Wikipedia
-            "^https?://he\\.wikipedia\\.org/.*",    // Hebrew Wikipedia
-            "^https?://fa\\.wikipedia\\.org/.*",    // Persian/Farsi Wikipedia
-            "^https?://hi\\.wikipedia\\.org/.*",    // Hindi Wikipedia
-            "^https?://bn\\.wikipedia\\.org/.*",    // Bengali Wikipedia
-            "^https?://id\\.wikipedia\\.org/.*",    // Indonesian Wikipedia
-            "^https?://ms\\.wikipedia\\.org/.*",    // Malay Wikipedia
-            "^https?://tl\\.wikipedia\\.org/.*",   // Tagalog/Filipino Wikipedia
-            ".*/f/dansk.*",        // Danish forum
-            ".*/f/russkij.*",      // Russian forum
-            ".*/f/espanol.*",      // Spanish forum
-            ".*/f/deutsch.*",      // German forum
-            ".*/f/francais.*",     // French forum
-            ".*/forum/dansk.*",    // Alternative Danish forum path
-            ".*/forum/russkij.*",  // Alternative Russian forum path
-            ".*/forums/dansk.*",   // Another forum variant
-            ".*/forums/russkij.*" // Another forum variant
-
-            // Common forum/member paths that often contain non-English content
-//            ".*/members/.*",       // Member profiles often have non-English content
-//            ".*/forum/[^/]+\\d+/.*",  // Catches numbered forum sections
-//            ".*/f/[^/]+\\d+/.*",      // Catches numbered forum sections (short version)
-//            ".*/forums/[^/]+\\d+/.*", // Catches numbered forum sections
-//            ".*/profile/.*",          // Profile pages
-//            ".*/user/.*",            // User pages
-//            ".*/gebruiker/.*",       // Dutch user pages
-//            ".*/benutzer/.*",        // German user pages
-//            ".*/usuario/.*",         // Spanish user pages
-//            ".*/utilisateur/.*"     // French user pages
 
 
 
-    );
 
     public static boolean shouldCrawlURL(String url) {
 
@@ -228,41 +119,22 @@ public class Crawler {
 
         System.err.println("reached here in run");
 
-        KVSClient kvsC = flameContext.getKVS();
-
-
-
-
+        KVSClient kvsClient = flameContext.getKVS();
 
         FlameRDD urlQueue = flameContext.parallelize(urls);
 
         while (urlQueue.count() > 0) {
             long queueSize = urlQueue.count();
             System.out.println("Current queue size: " + queueSize + ", Processed URLs: " + countIt);
-            FlamePairRDD urlsByDomain = urlQueue.mapToPair(url -> {
-                URL urlObj = new URI(url).toURL();
-                return new FlamePair(urlObj.getHost(), url);
-            });
-            FlamePairRDD groupedUrls = urlsByDomain.foldByKey("", (accumulator, url) -> {
-                if (accumulator.isEmpty()) {
-                    return url;
-                }
-                // Limit URLs per domain during folding to prevent memory issues
-                String[] existingUrls = accumulator.split("\n");
-                if (existingUrls.length >= MAX_URLS_PER_DOMAIN) {
-                    return accumulator;
-                }
-                return accumulator + "\n" + url;
-            });
+
             urlQueue = urlQueue.flatMap(urlO -> {
-
-                List<String> extractedAndNormalizedUrls = new ArrayList<>();
                 final String url = sanitizeUrl(urlO);
+                List<String> extractedAndNormalizedUrls = new ArrayList<>();
 
-                Future<List<String>> future = Executors.newSingleThreadExecutor().submit(() -> {
+                ExecutorService executor = Executors.newSingleThreadExecutor();
+                Future<List<String>> future = executor.submit((Callable<List<String>>) () -> {
                     try {
                         String rowKey = Hasher.hash(url);
-                        KVSClient kvsClient = flameContext.getKVS();
 
 
                         if (kvsClient.existsRow("pt-crawl", rowKey)) {
@@ -285,6 +157,7 @@ public class Crawler {
                             return extractedAndNormalizedUrls;
                         }
 
+
                         // Check the robots.txt endpoint for the current URL host
                         Row hostRow = kvsClient.getRow("hosts", host);
                         RobotsTxt robotsInfo;
@@ -302,7 +175,6 @@ public class Crawler {
                         } else {
                             robotsInfo = getRobotsInfoFromHostRow(hostRow);
                         }
-
                         // Check that last access time was at least currHostCrawlDelay away
                         long currHostCrawlDelay = defaultCrawlDelay;
                         if (hostRow.get("crawlDelay") != null) {
@@ -391,7 +263,7 @@ public class Crawler {
 
                                 int length = getConnection.getContentLength();
                                 byte[] pageContentAsBytes = getPageContentAsBytes(getConnection);
-                                S3UploadBuffer.addToBuffer(url, pageContentAsBytes);
+                                // S3UploadBuffer.addToBuffer(url, pageContentAsBytes);
 
 
                                 if (length != -1) {
@@ -413,15 +285,19 @@ public class Crawler {
                     }
                     return extractedAndNormalizedUrls;
                 });
+                    try {
+                        return future.get(30, TimeUnit.SECONDS);
+                    } catch (TimeoutException e) {
+                        logger.warn("URL processing timed out after 30 seconds: " + url);
+                        future.cancel(true);
+                        return new ArrayList<>();
+                    } finally {
+                        executor.shutdown();  // Clean up the executor
+                    }
+                });
 
-                try {
-                    return future.get(30, TimeUnit.SECONDS);
-                } catch (TimeoutException e) {
-                    logger.warn("URL processing timed out after 30 seconds: " + url);
-                    future.cancel(true);
-                    return new ArrayList<>();
-                }
-            });
+
+
 
 
 
@@ -435,7 +311,7 @@ public class Crawler {
 
 
         }
-        S3UploadBuffer.flushBuffer();
+        //S3UploadBuffer.flushBuffer();
     }
 
     private static byte[] getPageContentAsBytes(HttpURLConnection connection) throws IOException {
@@ -928,16 +804,6 @@ public class Crawler {
         }
 
 
-        for (String patternStr : BLACKLISTED_PATTERNS) {
-            if (path.matches(patternStr)) {
-                return false;
-            }
-        }
-
-
-
-
-
         // Use the first matching rule, or allow by default if no rule found
         for (RobotsTxtRule rule : robotsTxtObj.rules) {
             if (path.startsWith(rule.ruleInfo)) {
@@ -946,6 +812,13 @@ public class Crawler {
                 return rule.type.equals("allow");
             }
         }
+
+        if (URLBlacklist.isBlacklisted(url.toString())) {
+            return false;
+        }
+
+
+
 
         return true;
     }

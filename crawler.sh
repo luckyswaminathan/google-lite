@@ -23,5 +23,5 @@ for url in "$@"; do
 done
 
 # Run the crawler job with each seed URL passed as a separate argument
-java -cp "$CLASSPATH" cis5550.flame.FlameSubmit 52.90.29.134:9000 "$DIR/crawler.jar" cis5550.jobs.Crawler "$@"
+java -cp "$CLASSPATH" cis5550.flame.FlameSubmit localhost:9000 "$DIR/crawler.jar" cis5550.jobs.Crawler "$@"
 

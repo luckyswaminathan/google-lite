@@ -65,11 +65,7 @@ public class FlameContextImpl implements FlameContext, Serializable {
             String extraString, boolean collectResults)
             throws Exception {
 
-        System.err.println("Debug: About to invoke operation");
-        System.err.println("Debug: Coordinator address is: " + this.flameCoordinatorAddr);
-        System.err.println("Debug: Operation: " + operation);
-        System.err.println("Debug: Input table: " + inputTable);
-        System.err.println("Debug: Output table: " + outputTable);
+
         Partitioner partitioner = new Partitioner();
         List<Integer> statusCodes = Collections.synchronizedList(new ArrayList<>());
         List<String> results = Collections.synchronizedList(new ArrayList<>());
