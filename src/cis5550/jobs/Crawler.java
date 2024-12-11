@@ -254,11 +254,12 @@ public class Crawler {
                 }
                 return accumulator + "\n" + url;
             });
-            urlQueue = urlQueue.flatMap(url -> {
+            urlQueue = urlQueue.flatMap(urlO -> {
 
-                    List<String> extractedAndNormalizedUrls = new ArrayList<>();
+                List<String> extractedAndNormalizedUrls = new ArrayList<>();
+                final String url = sanitizeUrl(urlO);
 
-
+                Future<List<String>> future = Executors.newSingleThreadExecutor().submit(() -> {
                     try {
                         String rowKey = Hasher.hash(url);
                         KVSClient kvsClient = flameContext.getKVS();
@@ -272,7 +273,6 @@ public class Crawler {
                         }
                         countIt++;
 
-                        url = sanitizeUrl(url);
                         if (url == null) {
                             return Collections.emptyList();
                         }
@@ -413,6 +413,17 @@ public class Crawler {
                     }
                     return extractedAndNormalizedUrls;
                 });
+
+                try {
+                    return future.get(30, TimeUnit.SECONDS);
+                } catch (TimeoutException e) {
+                    logger.warn("URL processing timed out after 30 seconds: " + url);
+                    future.cancel(true);
+                    return new ArrayList<>();
+                }
+            });
+
+
 
                 // Sleep to prevent too-quick loops during testing
                 // try {
@@ -893,6 +904,23 @@ public class Crawler {
     // Check if the URL is allowed according to robotsTxt
     private static boolean isUrlAllowed(URL url, RobotsTxt robotsTxtObj) {
         String path = url.getPath();
+        if (LanguageCodes.containsNonEnglishLanguage(url.toString())) {
+            return false;
+        }
+
+        // Check path segments
+        String[] pathSegments = url.getPath().split("/");
+        for (String segment : pathSegments) {
+            if (LanguageCodes.isNonEnglishPath(segment)) {
+                return false;
+            }
+        }
+
+        // Extract language code if present
+        Optional<String> langCode = LanguageCodes.extractLanguageCode(url.toString());
+        if (langCode.isPresent() && !langCode.get().equals("en")) {
+            return false;
+        }
 
         String[] split = path.split("/");
         if (split.length >= 5) {
@@ -905,6 +933,8 @@ public class Crawler {
                 return false;
             }
         }
+
+
 
 
 
