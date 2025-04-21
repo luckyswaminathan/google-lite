@@ -1,3 +1,8 @@
+HTTP 1.1 Version of Google
+hosted on AWS (so no longer live but can run with commands and jars)
+
+
+
 to use search:
 - make sure crawler and pagerank have been run
  make sure tfidf.jar exists in root folder. this can be built from jobs/TFIDF.java. 
